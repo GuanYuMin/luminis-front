@@ -1,1 +1,120 @@
+
+@font-face {
+  font-family: GreycliffCFBold;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-Bold.woff2);
+}
+@font-face {
+  font-family: GreycliffCFDemiBold;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-DemiBold.woff2);
+}
+@font-face {
+  font-family: GreycliffCExtraBold;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-ExtraBold.woff2);
+}
+@font-face {
+  font-family: GreycliffCFHeavy;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-Heavy.woff2);
+}
+@font-face {
+  font-family: GreycliffCFLight;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-Light.woff2);
+}
+@font-face {
+  font-family: GreycliffCFMedium;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-Medium.woff2);
+}
+@font-face {
+  font-family: GreycliffCFRegular;
+  src: url(assets/fonts/greycliff-cf/GreycliffCF-Regular.woff2);
+}
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
 /* You can add global styles to this file, and also import other style files */
+$primary-color: rgb(192,185,221);
+$primary-color-opacity: rgba(192,185,221,0.3);
+$secondary-color: rgb(17,138,178);
+$secondary-color-opacity: rgba(17,138,178, 0.3);
+$third-color: rgb(117,201,200);
+$third-color-opacity: rgba(117,201,200, 0.3);
+$white:#f2f2f2;
+$dark: #000000;
+
+body{
+  height: 100vh;
+  font-size: 1em;
+  font-family: "GreycliffCFRegular" !important;
+}
+
+.text-white{
+  color: $white;
+}
+
+
+.outline-white-button{
+  border-color: $white;
+  border: 1px solid;
+  color: $white;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+}
+
+.rounded-white-button{
+  border-color: $white;
+  color: $dark;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  background-color: $white;
+}
+
+.rounded-large-primary-button {
+  background-color: $primary-color;
+  color: $white;
+  border-radius: 2rem;
+  font-size: 1rem;
+  width: 17rem;
+}
+.rounded-large-secondary-button {
+  background-color: $secondary-color;
+  color: $white;
+  border-radius: 2rem;
+  font-size: 1rem;
+  width: 17rem;
+}
+.rounded-large-third-button {
+  background-color: $third-color;
+  color: $white;
+  border-radius: 2rem;
+  font-size: 1rem;
+  width: auto;
+}
+.text-large{
+  font-size:x-large;
+}
+.font-weight-cliff-bold{
+  font-family: 'GreycliffCFBold';
+}
+.font-weight-montse-bold{
+  font-family: 'GreycliffCFBold';
+}
+.background-mutted{
+  background-color: $primary-color-opacity;
+}
+.background-blue{
+  background-color: $secondary-color
+}
+.background-blue-mutted{
+  background-color: $secondary-color-opacity;
+}
+.background-sky-blue{
+  background-color: $third-color;
+}
+.background-sky-blue-mutted{
+  background-color: $third-color-opacity;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
