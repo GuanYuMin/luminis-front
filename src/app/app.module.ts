@@ -17,6 +17,11 @@ import { LandingComunidadsSectionComponent } from './shared/components/landing-c
 import { LandingTituloblogSectionComponent } from './shared/components/landing-tituloblog-section/landing-tituloblog-section.component';
 import { LandingEntriesSectionComponent } from './shared/components/landing-entries-section/landing-entries-section.component';
 import { LandingFooterSectionComponent } from './shared/components/landing-footer-section/landing-footer-section.component';
+import { AboutUsComponent } from './shared/components/about-us/about-us.component';
+import { HomeComponent } from './shared/components/home/home.component';
+import { AboutFirstSectionComponent } from './shared/components/about-first-section/about-first-section.component';
+import { AboutMisionSectionComponent } from './shared/components/about-mision-section/about-mision-section.component';
+import { AboutFormacionSectionComponent } from './shared/components/about-formacion-section/about-formacion-section.component';
 
 const icons = {
   ArrowRight
@@ -32,7 +37,12 @@ const icons = {
     LandingComunidadsSectionComponent,
     LandingTituloblogSectionComponent,
     LandingEntriesSectionComponent,
-    LandingFooterSectionComponent
+    LandingFooterSectionComponent,
+    AboutUsComponent,
+    HomeComponent,
+    AboutFirstSectionComponent,
+    AboutMisionSectionComponent,
+    AboutFormacionSectionComponent
   ],
   imports: [
     BrowserModule,
