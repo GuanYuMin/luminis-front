@@ -14,6 +14,9 @@ import { ArrowRight } from 'angular-feather/icons';
 import { LandingThirdSectionComponent } from './shared/components/landing-third-section/landing-third-section.component';
 import { LandingProductsSectionComponent } from './shared/components/landing-products-section/landing-products-section.component';
 import { LandingComunidadsSectionComponent } from './shared/components/landing-comunidads-section/landing-comunidads-section.component';
+import { LandingTituloblogSectionComponent } from './shared/components/landing-tituloblog-section/landing-tituloblog-section.component';
+import { LandingEntriesSectionComponent } from './shared/components/landing-entries-section/landing-entries-section.component';
+import { LandingFooterSectionComponent } from './shared/components/landing-footer-section/landing-footer-section.component';
 
 const icons = {
   ArrowRight
@@ -26,7 +29,10 @@ const icons = {
     LandingSecondSectionComponent,
     LandingThirdSectionComponent,
     LandingProductsSectionComponent,
-    LandingComunidadsSectionComponent
+    LandingComunidadsSectionComponent,
+    LandingTituloblogSectionComponent,
+    LandingEntriesSectionComponent,
+    LandingFooterSectionComponent
   ],
   imports: [
     BrowserModule,

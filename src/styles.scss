@@ -37,8 +37,11 @@ $primary-color: rgb(192,185,221);
 $primary-color-opacity: rgba(192,185,221,0.3);
 $secondary-color: rgb(17,138,178);
 $secondary-color-opacity: rgba(17,138,178, 0.3);
+$secondary-color-opacity-50: rgba(17,138,178, 0.5);
 $third-color: rgb(117,201,200);
 $third-color-opacity: rgba(117,201,200, 0.3);
+$red-color: rgb(247,142,105);
+$red-color-opacity: rgba(247,142,105, 0.3);
 $white:#f2f2f2;
 $dark: #000000;
 
@@ -52,7 +55,9 @@ body{
   color: $white;
 }
 
-
+.text-red {
+  color: $red-color;
+}
 .outline-white-button{
   border-color: $white;
   border: 1px solid;
@@ -90,6 +95,13 @@ body{
   font-size: 1rem;
   width: auto;
 }
+.rounded-large-white-button {
+  background-color: $white;
+  color: black;
+  border-radius: 2rem;
+  font-size: 1rem;
+  width: auto;
+}
 .text-large{
   font-size:x-large;
 }
@@ -108,11 +120,26 @@ body{
 .background-blue-mutted{
   background-color: $secondary-color-opacity;
 }
+.background-blue-mutted{
+  background-color: $secondary-color-opacity-50;
+}
 .background-sky-blue{
   background-color: $third-color;
 }
 .background-sky-blue-mutted{
   background-color: $third-color-opacity;
+}
+.background-red{
+  background-color: $red-color;
+}
+.background-red-mutted{
+  background-color: $red-color-opacity;
+}
+.background-primary{
+  background-color: $primary-color;
+}
+.background-primary-mutted{
+  background-color: $primary-color-opacity;
 }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
