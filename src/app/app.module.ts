@@ -22,6 +22,11 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { AboutFirstSectionComponent } from './shared/components/about-first-section/about-first-section.component';
 import { AboutMisionSectionComponent } from './shared/components/about-mision-section/about-mision-section.component';
 import { AboutFormacionSectionComponent } from './shared/components/about-formacion-section/about-formacion-section.component';
+import { AboutHistoriaSectionComponent } from './shared/components/about-historia-section/about-historia-section.component';
+import { AboutTituloblogSectionComponent } from './shared/components/about-tituloblog-section/about-tituloblog-section.component';
+import { TalleresComponent } from './shared/components/talleres/talleres.component';
+import { TalleresFirstSectionComponent } from './shared/components/talleres-first-section/talleres-first-section.component';
+import { TalleresListSectionComponent } from './shared/components/talleres-list-section/talleres-list-section.component';
 
 const icons = {
   ArrowRight
@@ -42,7 +47,12 @@ const icons = {
     HomeComponent,
     AboutFirstSectionComponent,
     AboutMisionSectionComponent,
-    AboutFormacionSectionComponent
+    AboutFormacionSectionComponent,
+    AboutHistoriaSectionComponent,
+    AboutTituloblogSectionComponent,
+    TalleresComponent,
+    TalleresFirstSectionComponent,
+    TalleresListSectionComponent
   ],
   imports: [
     BrowserModule,
