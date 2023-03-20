@@ -10,7 +10,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingSecondSectionComponent } from './shared/components/landing-second-section/landing-second-section.component';
 import { FeatherModule } from 'angular-feather';
-import { ArrowRight } from 'angular-feather/icons';
+import {
+  ArrowRight,
+  Search,
+  ArrowDown,
+  ArrowLeft
+} from 'angular-feather/icons';
 import { LandingThirdSectionComponent } from './shared/components/landing-third-section/landing-third-section.component';
 import { LandingProductsSectionComponent } from './shared/components/landing-products-section/landing-products-section.component';
 import { LandingComunidadsSectionComponent } from './shared/components/landing-comunidads-section/landing-comunidads-section.component';
@@ -29,7 +34,10 @@ import { TalleresFirstSectionComponent } from './shared/components/talleres-firs
 import { TalleresListSectionComponent } from './shared/components/talleres-list-section/talleres-list-section.component';
 
 const icons = {
-  ArrowRight
+  ArrowRight,
+  Search,
+  ArrowDown,
+  ArrowLeft
 };
 @NgModule({
   declarations: [
