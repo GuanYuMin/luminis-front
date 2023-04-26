@@ -6,6 +6,7 @@ import { AboutUsComponent } from './shared/components/about-us/about-us.componen
 import { HomeComponent } from './shared/components/home/home.component';
 import { TalleresComponent } from './shared/components/talleres/talleres.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
+import { TallerComponent } from './shared/components/taller/taller.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
   {
     path: 'talleres',
     component: TalleresComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'taller',
+    component: TallerComponent,
     canActivate: [ClientGuard]
   },
   {

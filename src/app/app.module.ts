@@ -14,7 +14,9 @@ import {
   ArrowRight,
   Search,
   ArrowDown,
-  ArrowLeft
+  ArrowLeft,
+  Smile,
+  Heart
 } from 'angular-feather/icons';
 import { LandingThirdSectionComponent } from './shared/components/landing-third-section/landing-third-section.component';
 import { LandingProductsSectionComponent } from './shared/components/landing-products-section/landing-products-section.component';
@@ -33,13 +35,16 @@ import { TalleresComponent } from './shared/components/talleres/talleres.compone
 import { TalleresFirstSectionComponent } from './shared/components/talleres-first-section/talleres-first-section.component';
 import { TalleresListSectionComponent } from './shared/components/talleres-list-section/talleres-list-section.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
+import { TallerComponent } from './shared/components/taller/taller.component';
 
 
 const icons = {
   ArrowRight,
   Search,
   ArrowDown,
-  ArrowLeft
+  ArrowLeft,
+  Smile,
+  Heart
 };
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ const icons = {
     TalleresComponent,
     TalleresFirstSectionComponent,
     TalleresListSectionComponent,
-    ProfileComponent
+    ProfileComponent,
+    TallerComponent
   ],
   imports: [
     BrowserModule,

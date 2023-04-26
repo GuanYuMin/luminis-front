@@ -1,0 +1,259 @@
+<app-top-menu></app-top-menu>
+<div class="container p-4">
+  <div class="w-100 mt-3">
+    <span style="font-size: 2.5rem;" class="me-4">{{ taller.name }}</span><span style="font-size: 1.8rem;">- 3 módulos, {{ taller.duracion }} minutos.</span>
+    <div class="row mt-3">
+      <div class="col-12" style="height: 60vh;">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/fQfZtg9Y_6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-lg-2 col-sm-6 px-3 py-2">
+        <a class="search-outline px-4 py-2">
+          {{ taller.autor }}
+        </a>
+      </div>
+      <div class="col-lg-2 col-sm-6 px-2 py-2">
+        <a class="search-outline px-4 py-2">
+          {{ taller.tipo }}
+        </a>
+      </div>
+      <div class="col-lg-2 col-sm-6 d-flex justify-content-center align-items-center">
+        <span class="me-2"><strong>MÓDULOS</strong></span>
+        <i-feather name="arrow-down"></i-feather>
+      </div>
+      <div class="col-lg-3 col-sm-6 d-flex justify-content-center align-items-center">
+        <span class="me-2"><strong>MATERIAL DESCARGABLE</strong></span>
+        <i-feather name="arrow-down"></i-feather>
+      </div>
+      <div class="col-lg-1 col-sm-6"></div>
+      <div class="col-lg-2 col-sm-6"></div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-12 px-3 py-2">
+        <p style="font-size: 1.75rem;">
+          <strong>
+            {{ taller.descripcion }}
+          </strong>
+        </p>
+      </div>
+    </div>
+    <div class="row mt-3 border-top pt-4">
+      <div class="col-sm-12 col-lg-6 px-3 py-2">
+        <div class="row">
+          <h4><strong>TEMARIO</strong></h4>
+        </div>
+        <div class="row">
+          <ul class="mi-lista">
+            <li *ngFor="let temario of taller.temario" style="font-size:1.5rem;" class="d-flex align-items-center">{{ temario.titulo }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-6 px-3 py-2">
+        <div class="row">
+          <h4><strong>APRENDIZAJES</strong></h4>
+        </div>
+        <div class="row">
+          <ul class="">
+            <li *ngFor="let apr of taller.aprendizajes" class="d-flex align-items-center" style="font-size:1.5rem;">
+              <i-feather name="arrow-right" class="me-4 big"></i-feather>
+              {{ apr.titulo }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+<div class="row mt-3 border-top pt-4 px-5 pb-4 background-mutted-red">
+  <div class="px-5">
+    <div class="row">
+      <h1>Conecta con la comunidad</h1>
+    </div>
+    <div class="row">
+      <div class="col-12" style="background-color: white;">
+        <div class="mt-3 d-flex">
+          <div class="ms-3 me-3">
+            <img src="https://i.pravatar.cc/100" class="rounded-circle" />
+          </div>
+          <div class="d-flex align-items-center" style="font-size:1.5rem;">
+            <strong>Nombre de usuario</strong>
+          </div>
+        </div>
+        <div class="mt-3 d-flex px-4">
+          <textarea rows="4" style="border:none;" class="w-100" placeholder="Escribe un comentario..."></textarea>
+        </div>
+        <div class="mt-3 d-flex border-top mt-4 py-3 px-3 justify-content-between">
+          <div>
+            <a class="search-outline px-4 py-2 me-3">
+              IMAGEN
+            </a>
+            <a class="search-outline px-4 py-2">
+              ARCHIVO
+            </a>
+          </div>
+          <div>
+            <a class="search-outline px-4 pb-2 d-flex align-items-center">
+              <i-feather name="smile" class="big"></i-feather>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="mt-3 d-flex mt-1 py-1 px-1 justify-content-end">
+      <a  class="search-outline px-4 py-2 me-3 d-flex justify-content-between align-items-center" style="background-color: white;">
+        <span class="me-3">PUBLICAR</span> <i-feather name="arrow-down"></i-feather>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container p-4">
+  <div class="w-100 mt-3">
+    <div class="mt-3 d-flex">
+      <div class="ms-3 me-3">
+        <img src="https://i.pravatar.cc/100" class="rounded-circle" />
+      </div>
+      <div class="d-flex align-items-center" style="font-size:1.5rem;">
+        <strong>Nombre de usuario</strong><span style="font-size:small" class="ms-3"> - 26/04/2023 17:25pm</span>
+      </div>
+    </div>
+    <div class="mt-3 d-flex px-5">
+      <span style="font-size: 1.75rem;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+      sed diam nonummy nibh euismod tincidunt ut laoreet
+      dolore magna aliquam erat volutpat.</span>
+    </div>
+    <div class="mt-3 d-flex border-top mt-4 py-3 px-3 justify-content-between">
+      <div style="width:50%;" class="d-flex flex-wrap align-items-center">
+        <a class="search-outline px-4 py-2 me-3">
+          <i-feather name="heart" class="me-2"></i-feather> <span>ME GUSTA</span>
+        </a>
+        <a class="search-outline px-4 py-2">
+          RESPONDER
+        </a>
+        <div class="px-4 py-2">
+          <span class="me-2"><strong>VER RESPUESTAS</strong></span>
+          <i-feather name="arrow-down"></i-feather>
+        </div>
+      </div>
+      <div style="width:50%;" class="d-flex flex-wrap align-items-center justify-content-end">
+        <a class="search-outline px-4 py-2">
+          REPORTAR
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container p-4">
+  <div class="w-100 mt-3">
+    <div class="mt-3 d-flex">
+      <div class="ms-3 me-3">
+        <img src="https://i.pravatar.cc/100" class="rounded-circle" />
+      </div>
+      <div class="d-flex align-items-center" style="font-size:1.5rem;">
+        <strong>Nombre de usuario</strong><span style="font-size:small" class="ms-3"> - 26/04/2023 17:25pm</span>
+      </div>
+    </div>
+    <div class="mt-3 d-flex px-5">
+      <span style="font-size: 1.75rem;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+      sed diam nonummy nibh euismod tincidunt ut laoreet
+      dolore magna aliquam erat volutpat.</span>
+    </div>
+    <div class="mt-3 d-flex border-top mt-4 py-3 px-3 justify-content-between">
+      <div style="width:50%;" class="d-flex flex-wrap align-items-center">
+        <a class="search-outline px-4 py-2 me-3">
+          <i-feather name="heart" class="me-2"></i-feather> <span>ME GUSTA</span>
+        </a>
+        <a class="search-outline px-4 py-2">
+          RESPONDER
+        </a>
+        <div class="px-4 py-2">
+          <span class="me-2"><strong>VER RESPUESTAS</strong></span>
+          <i-feather name="arrow-down"></i-feather>
+        </div>
+      </div>
+      <div style="width:50%;" class="d-flex flex-wrap align-items-center justify-content-end">
+        <a class="search-outline px-4 py-2">
+          REPORTAR
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-3 border-top pt-4 px-5 pb-4 background-mutted-purple">
+  <div class="px-5">
+    <div class="row">
+      <h1 style="color: #f2f2f2;">CTA Otros talleres</h1>
+    </div>
+    <div class="row mt-4">
+      <div class="col-sm-12 col-lg-4 px-3">
+        <div class="w-100" style="height: 20rem; background-color:#efefef">
+
+        </div>
+        <div class="w-100 px-4" style="background-color:#f2f2f2; font-size:1.5rem">
+          <div class="w-100">
+            <span><strong>Título de artículo o noticia va en este espacio.</strong></span>
+          </div>
+          <div class="w-100 mt-2" style="font-size: 1rem;">
+            <span>NOMBRE AUTOR</span>
+          </div>
+          <div class="w-100 mt-3 mb-4">
+            <span class="font-size: 0.7rem;">
+              Descripción del producto. Lorem ipsum
+              dolor sit amet. Consectetuer adipiscing
+              elit, sed diam nonummy nibh. Ut wisi enim
+              ad minim veniam, quis nostrud.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-4">
+        <div class="w-100" style="height: 20rem; background-color:#efefef">
+
+        </div>
+        <div class="w-100 px-4" style="background-color:#f2f2f2; font-size:1.5rem">
+          <div class="w-100">
+            <span><strong>Título de artículo o noticia va en este espacio.</strong></span>
+          </div>
+          <div class="w-100 mt-2" style="font-size: 1rem;">
+            <span>NOMBRE AUTOR</span>
+          </div>
+          <div class="w-100 mt-3 mb-4">
+            <span class="font-size: 0.7rem;">
+              Descripción del producto. Lorem ipsum
+              dolor sit amet. Consectetuer adipiscing
+              elit, sed diam nonummy nibh. Ut wisi enim
+              ad minim veniam, quis nostrud.
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-4">
+        <div class="w-100" style="height: 20rem; background-color:#efefef">
+
+        </div>
+        <div class="w-100 px-4" style="background-color:#f2f2f2; font-size:1.5rem">
+          <div class="w-100">
+            <span><strong>Título de artículo o noticia va en este espacio.</strong></span>
+          </div>
+          <div class="w-100 mt-2" style="font-size: 1rem;">
+            <span>NOMBRE AUTOR</span>
+          </div>
+          <div class="w-100 mt-3 mb-4">
+            <span class="font-size: 0.7rem;">
+              Descripción del producto. Lorem ipsum
+              dolor sit amet. Consectetuer adipiscing
+              elit, sed diam nonummy nibh. Ut wisi enim
+              ad minim veniam, quis nostrud.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-landing-footer-section></app-landing-footer-section>
