@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './shared/components/top-menu/top-menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,6 +64,7 @@ const icons = {
     TalleresListSectionComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
