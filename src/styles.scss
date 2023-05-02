@@ -1,4 +1,29 @@
 
+body{
+  height: 100vh;
+  /* font-size: 1em; */
+  font-family: "GreycliffCFRegular" !important;
+}
+
+html{
+  a{
+    text-decoration: none;
+  }
+  ul,ol{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  button{
+    border: none;
+    box-shadow: none;
+  }
+}
+
+* {
+  font-size: 12px;
+}
+
 @font-face {
   font-family: GreycliffCFBold;
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Bold.woff2);
@@ -30,26 +55,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
-
-
-/* You can add global styles to this file, and also import other style files */
-$primary-color: rgb(192,185,221);
-$primary-color-opacity: rgba(192,185,221,0.3);
-$secondary-color: rgb(17,138,178);
-$secondary-color-opacity: rgba(17,138,178, 0.3);
-$secondary-color-opacity-50: rgba(17,138,178, 0.5);
-$third-color: rgb(117,201,200);
-$third-color-opacity: rgba(117,201,200, 0.3);
-$red-color: rgb(247,142,105);
-$red-color-opacity: rgba(247,142,105, 0.3);
-$white:#f2f2f2;
-$dark: #000000;
-
-body{
-  height: 100vh;
-  font-size: 1em;
-  font-family: "GreycliffCFRegular" !important;
-}
+@import 'assets/scss/variables';
 
 .text-white{
   color: $white;

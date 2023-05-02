@@ -1,0 +1,29 @@
+@import '../../../../assets/scss/variables';
+
+.titulo-blog{
+
+    .titulo-blog__title-container{
+        background-color: $primary-color;
+        width: 100%;
+        padding: 5rem;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media screen and (min-width: $tablet) {
+            height: 30rem;
+        }
+
+        small{
+            font-size: 1.2rem;
+        }
+        
+        h3{
+            margin-bottom: 5rem;
+        }
+        p{
+
+        }
+    }
+}

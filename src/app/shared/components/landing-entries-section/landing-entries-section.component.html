@@ -1,50 +1,18 @@
-<div class="mt-2 px-5" style="height: 80vh;">
-  <div class="w-100 row">
+<div class="container my-5 px-3">
+  <div class="row">
     <h1 class="mb-5 ">Últimas entradas</h1>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título de artículo o noticia va en este espacio.
-      </div>
-      <div class="product-author px-3 pb-3">
-        NOMBRE AUTOR
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let post of posts">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="assets/img/{{post.img}}" alt="">
+        </div>
+        <div class="product-name p-3">
+          {{post.name}}
+        </div>
+        <div class="product-description px-3 py-1">
+          {{post.description}}
       </div>
     </div>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título de artículo o noticia va en este espacio.
-      </div>
-      <div class="product-author px-3 pb-3">
-        NOMBRE AUTOR
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título de artículo o noticia va en este espacio.
-      </div>
-      <div class="product-author px-3 pb-3">
-        NOMBRE AUTOR
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
-      </div>
     </div>
   </div>
 </div>
