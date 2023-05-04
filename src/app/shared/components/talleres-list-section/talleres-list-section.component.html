@@ -16,151 +16,25 @@
       </div>
     </div>
     <div class="d-flex w-100 px-4 pt-5">
-      <div class="col-sm-6 col-lg-4 p-3">
+      <div *ngFor="let curso of vmCurso" class="col-sm-6 col-lg-4 p-3">
         <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
         </div>
         <div class="product-name p-3">
-          Título del curso va en este espacio.
+          {{ curso.name }}
         </div>
         <div class="product-author px-3 pb-3">
           NOMBRE AUTOR
         </div>
         <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-    </div>
-    <div class="d-flex w-100 px-4 pt-5">
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-    </div>
-    <div class="d-flex w-100 px-4 pt-5">
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          Título del curso va en este espacio.
-        </div>
-        <div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>
-        <div class="product-description px-3 py-1">
-          Descripción del producto. Lorem ipsum
-          dolor sit amet. Consectetuer adipiscing
-          elit, sed diam nonummy nibh.
+          {{ curso.description }}
         </div>
       </div>
     </div>
     <div class="py-5 d-flex justify-content-center align-items-center">
       <i-feather name="arrow-left" class="big"></i-feather>
       <div class="d-flex align-items-center justify-content-center">
-        <div role="button"  class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">1</div>
-        <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2 active">2</div>
+        <div role="button"  class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2 active">1</div>
+        <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">2</div>
         <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">3</div>
         <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">...</div>
       </div>
