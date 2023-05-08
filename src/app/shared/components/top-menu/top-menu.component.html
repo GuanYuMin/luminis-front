@@ -18,7 +18,7 @@
       </li>
     </ul>
     <div class="menu__login-btn">
-      <button class="rounded-white-button py-2 px-3 font-weight-cliff-bold" href="#contact">INICIAR SESIÓN</button>
+      <button class="rounded-white-button py-2 px-3 font-weight-cliff-bold" (click)="openLoginModal(logincontent)">INICIAR SESIÓN</button>
     </div>
   </div>
 </div>
@@ -44,7 +44,68 @@
       <a href="">CONTACTOS</a>
     </li>
     <li>
-      <a href="">INICIAR SESION</a>
+      <a (click)="openLoginModal(logincontent)">INICIAR SESION</a>
     </li>
   </ul>
 </div>
+
+<ng-template #logincontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">INICIAR SESION</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Correo/usuario</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Contraseña</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+              </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
+		<button type="button" class="btn btn-outline-dark">Iniciar sesión</button>
+	</div>
+</ng-template>
+
+<ng-template #registercontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">REGISTRO</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Nombre(s)</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Apellido Materno</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Correo</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+            </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark">Inscribirse</button>
+	</div>
+</ng-template>
