@@ -1,16 +1,50 @@
-<div id="navbar" class="d-flex justify-content-between">
-  <div class="logo">
-    <a href="/">
-      <img src="/assets/img/iso-white-orange.png" width="100%" />
-    </a>
+<div class="menu">
+  <div class="container">
+    <div class="d-flex">
+      <img class="menu__logo" src="assets/img/iso-white-orange.png" alt="">
+    </div>
+    <ul class="menu__links">
+      <li>
+        <a class="font-weight-cliff-bold" href="#news">MEMBRESÍAS</a>
+      </li>
+      <li>
+        <a class="font-weight-cliff-bold" href="#contact">PRODUCTOS</a>
+      </li>
+      <li>
+        <a class="font-weight-cliff-bold" href="#contact">BLOG</a>
+      </li>
+      <li>
+        <a class="font-weight-cliff-bold" href="#contact">CONTACTOS</a>
+      </li>
+    </ul>
+    <div class="menu__login-btn">
+      <button class="rounded-white-button py-2 px-3 font-weight-cliff-bold" href="#contact">INICIAR SESIÓN</button>
+    </div>
   </div>
-  <div class="d-flex align-items-center">
-    <a class="outline-white-button py-2 px-3 me-3 font-weight-cliff-bold" href="#news">MEMBRESÍAS</a>
-    <a class="outline-white-button py-2 px-3 me-3 font-weight-cliff-bold" href="#contact">PRODUCTOS</a>
-    <a class="outline-white-button py-2 px-3 me-3 font-weight-cliff-bold" href="#contact">BLOG</a>
-    <a class="outline-white-button py-2 px-3 me-3 font-weight-cliff-bold" href="#contact">CONTACTOS</a>
+</div>
+
+<div class="menu-mobile">
+  <div class="container">
+      <img class="menu-mobile__logo" src="assets/img/iso-white-orange.png" alt="">
+      <div class="menu-mobile__toggler" (click)="menumobile = !menumobile">
+        <i-feather name="menu" class="big"></i-feather>
+      </div>
   </div>
-  <div class="pe-5 d-flex align-items-center">
-    <a class="rounded-white-button py-2 px-3 font-weight-cliff-bold" href="#contact">INICIAR SESIÓN</a>
-  </div>
+  <ul class="menu-mobile__links" [ngClass]="{'d-none' : menumobile }">
+    <li>
+      <a href="">MEMBRESIAS</a>
+    </li>
+    <li>
+      <a href="">PRODUCTOS</a>
+    </li>
+    <li>
+      <a href="">BLOG</a>
+    </li>
+    <li>
+      <a href="">CONTACTOS</a>
+    </li>
+    <li>
+      <a href="">INICIAR SESION</a>
+    </li>
+  </ul>
 </div>

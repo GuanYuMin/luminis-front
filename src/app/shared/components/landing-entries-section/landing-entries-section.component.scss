@@ -1,13 +1,20 @@
-.product-name {
-  font-weight: 505;
-  font-size: 1.25rem;
-  font-family: 'Montserrat';
-}
-.product-author {
-  font-weight: 400;
-  font-size: 0.8rem;
-  font-family: 'Montserrat';
-}
-.product-description {
-  font-family: 'Montserrat';
+.product-card{
+  padding: 1rem;
+
+  .product-img{
+    height: 12rem;
+
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .product-name {
+    font-weight: 505;
+    font-size: 1.25rem;
+    font-family: 'Montserrat';
+  }
+  .product-description {
+    font-family: 'Montserrat';
+  }
 }
