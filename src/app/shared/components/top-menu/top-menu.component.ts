@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./top-menu.component.scss']
 })
 export class TopMenuComponent {
+  menuopen: boolean = true
+  menumobile: boolean = true 
 
 }

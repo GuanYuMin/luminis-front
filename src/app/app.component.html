@@ -1,1 +1,96 @@
 <router-outlet></router-outlet>
+<button class="btn btn-primary" (click)="openLoginModal(logincontent)">Login Modal</button>
+<button class="btn btn-primary" (click)="openRegisterModal(registercontent)">Register Modal</button>
+<button class="btn btn-primary" (click)="openUpdatePasswordModal(updatepasswordcontent)">Actualizar Password Modal</button>
+<button class="btn btn-primary" (click)="openRestorePasswordModal(restorepasswordcontent)">Recuperar Password Modal</button>
+
+<ng-template #logincontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">INICIAR SESION</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Correo/usuario</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Contraseña</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+              </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
+		<button type="button" class="btn btn-outline-dark">Iniciar sesión</button>
+	</div>
+</ng-template>
+
+<ng-template #registercontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">REGISTRO</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Nombre(s)</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+                <div class="col">
+                    <label for="formGroupExampleInput2" class="form-label">Apellido Materno</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                </div>
+            </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark">Enviar</button>
+	</div>
+</ng-template>
+
+<ng-template #updatepasswordcontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">ACTUALIZAR CONTRASEÑA</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Nueva contaseña</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+              </div>
+              <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Confirmar nueva contaseña</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+              </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark">Enviar</button>
+	</div>
+</ng-template>
+
+<ng-template #restorepasswordcontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">RECUPERAR CONTRASEÑA</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Correo</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+              </div>
+		</form>
+	</div>
+	<div class="modal-footer d-flex justify-content-center">
+		<button type="button" class="btn btn-outline-dark">Enviar</button>
+	</div>
+</ng-template>

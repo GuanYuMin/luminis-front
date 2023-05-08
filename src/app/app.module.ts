@@ -12,12 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingSecondSectionComponent } from './shared/components/landing-second-section/landing-second-section.component';
 import { FeatherModule } from 'angular-feather';
 import {
-  ArrowRight,
-  Search,
-  ArrowDown,
-  ArrowLeft,
-  Smile,
-  Heart
+  allIcons
 } from 'angular-feather/icons';
 import { LandingThirdSectionComponent } from './shared/components/landing-third-section/landing-third-section.component';
 import { LandingProductsSectionComponent } from './shared/components/landing-products-section/landing-products-section.component';
@@ -39,14 +34,14 @@ import { ProfileComponent } from './shared/components/profile/profile.component'
 import { TallerComponent } from './shared/components/taller/taller.component';
 
 
-const icons = {
+/* const icons = {
   ArrowRight,
   Search,
   ArrowDown,
   ArrowLeft,
   Smile,
   Heart
-};
+}; */
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +74,7 @@ const icons = {
     NgbModule,
     CarouselModule,
     BrowserAnimationsModule,
-    FeatherModule.pick(icons)
+    FeatherModule.pick(allIcons)
   ],
   providers: [],
   bootstrap: [AppComponent]
