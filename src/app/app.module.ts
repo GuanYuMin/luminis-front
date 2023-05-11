@@ -32,6 +32,7 @@ import { TalleresFirstSectionComponent } from './shared/components/talleres-firs
 import { TalleresListSectionComponent } from './shared/components/talleres-list-section/talleres-list-section.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { TallerComponent } from './shared/components/taller/taller.component';
+import { MembresiasComponent } from './shared/components/membresias/membresias.component';
 
 
 /* const icons = {
@@ -65,7 +66,8 @@ import { TallerComponent } from './shared/components/taller/taller.component';
     TalleresFirstSectionComponent,
     TalleresListSectionComponent,
     ProfileComponent,
-    TallerComponent
+    TallerComponent,
+    MembresiasComponent
   ],
   imports: [
     HttpClientModule,

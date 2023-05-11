@@ -7,6 +7,7 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { TalleresComponent } from './shared/components/talleres/talleres.component';
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { TallerComponent } from './shared/components/taller/taller.component';
+import { MembresiasComponent } from './shared/components/membresias/membresias.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
   {
     path: 'perfil',
     component: ProfileComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'membresias',
+    component: MembresiasComponent,
     canActivate: [ClientGuard]
   }
 ];
