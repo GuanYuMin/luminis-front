@@ -1,0 +1,15 @@
+@import '../../../assets/scss/variables';
+
+.faqs{
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+
+    h1{
+        margin-bottom: 5rem;
+        text-align: center;
+
+        @media screen and (min-width: $tablet) {
+            
+        }
+    }
+}

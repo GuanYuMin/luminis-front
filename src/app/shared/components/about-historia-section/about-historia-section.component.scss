@@ -1,0 +1,52 @@
+@import '../../../../assets/scss/variables';
+
+.historia{
+    .historia__header{
+        
+        .historia__header-txt{
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            margin: auto;
+
+            @media screen and (min-width: $tablet) {
+                width: 90%;
+            }
+
+            >div{
+                display: flex;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            h2{
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                color: white;
+            }
+
+            p{
+                font-size: 1.5rem;
+                color: white;
+            }
+
+            .historia__header-logo{
+                height: 3.5rem;
+                margin-left: 0.5rem;
+            }
+        }
+        .historia__header-img{
+            height: 20rem;
+            width: 100%;
+            object-fit: cover;
+
+            @media screen and (min-width: $tablet) {
+                height: 40rem;
+            }
+    }
+
+    }
+}

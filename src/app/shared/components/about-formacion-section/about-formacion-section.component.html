@@ -1,41 +1,19 @@
 <div class="container my-5 px-3">
   <div class="row">
     <h1 class="mb-5 ">Formación</h1>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5" *ngFor="let product of products">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="assets/img/{{product.img}}" alt="">
+        </div>
+        <div class="product-name p-3">
+          {{product.name}}
+        </div>
+        <div class="product-description px-3 py-1">
+          {{product.description}}
       </div>
     </div>
-    <div class="col-sm-6 col-lg-4 px-4">
-      <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-      </div>
-      <div class="product-name p-3">
-        Título
-      </div>
-      <div class="product-description px-3 py-1">
-        Descripción del producto. Lorem ipsum
-        dolor sit amet. Consectetuer adipiscing
-        elit, sed diam nonummy nibh.
-      </div>
     </div>
   </div>
 </div>
+
