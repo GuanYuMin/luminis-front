@@ -1,0 +1,40 @@
+@import '../../../../assets/scss/variables';
+
+.nuestra-mision {
+  padding: 5rem 2rem;
+  background-color: rgba(17, 138, 178, 0.3);
+  min-height: 40rem;
+
+  .nuestra-mision__block-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    @media screen and (min-width: $mobile) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .nuestra-mision__outline-btn {
+        color: white;
+        font-size: 1.6rem;
+        border: 1px solid white;
+        border-radius: 30px;
+        padding: 1rem;
+        margin-top: 1rem;
+        
+        @media screen and (min-width: $mobile) {
+            margin-top: 0;
+          }
+
+    }
+      .nuestra-mision__logo {
+        height: 6rem;
+      }
+    }
+    
+  p {
+    font-size: 2rem;
+  }
+}

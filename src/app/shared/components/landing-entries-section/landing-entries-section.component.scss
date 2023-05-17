@@ -1,20 +1,48 @@
-.product-card{
-  padding: 1rem;
+@import '../../../../assets/scss/variables';
 
-  .product-img{
-    height: 12rem;
+.blog-entries{
+  background-color: $primary-color; 
+  margin-top: 3rem;
+  padding: 5rem 0 3rem 0;
 
-    img{
-      height: 100%;
-      width: 100%;
+  h1{
+    color: white;
+  }
+  
+  .post-card{
+    background-color: white;
+    border-radius: 5px;
+
+    .post-img{
+      height: 15rem;
+      
+      img{
+        height: 100%;
+        width: 100%;
+      }
     }
-  }
-  .product-name {
-    font-weight: 505;
-    font-size: 1.25rem;
-    font-family: 'Montserrat';
-  }
-  .product-description {
-    font-family: 'Montserrat';
+
+    .post-card__body{
+      padding: 1.5rem;
+
+      .post-name {
+        h5{
+          font-size: 1.25rem;
+          font-weight: 600;
+        }
+      }
+      .post-author{
+        margin-bottom: 1rem;
+
+        small{
+          color:gray;
+        }
+      }
+      .post-description {
+        p{
+          font-size: 0.8rem;
+        }
+      }
+    }
   }
 }
