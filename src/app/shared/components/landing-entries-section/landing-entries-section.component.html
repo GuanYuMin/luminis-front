@@ -1,18 +1,31 @@
-<div class="container my-5 px-3">
-  <div class="row">
-    <h1 class="mb-5 ">Últimas entradas</h1>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let post of posts">
-      <div class="product-card">
-        <div class="product-img">
-          <img src="assets/img/{{post.img}}" alt="">
+<div class="blog-entries">
+  <div class="container px-3">
+    <div class="row">
+      <h1 class="mb-5 ">Últimas entradas</h1>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let post of posts">
+        <div class="post-card">
+          <div class="post-img">
+            <img src="assets/img/{{post.img}}" alt="">
+          </div>
+          <div class="post-card__body">
+            <div class="post-name">
+              <h5>
+                {{post.name}}
+              </h5>
+            </div>
+            <div class="post-author">
+              <small>
+                {{post.author}}
+              </small>
+            </div>
+            <div class="post-description">
+              <p>
+                {{post.description}}
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="product-name p-3">
-          {{post.name}}
-        </div>
-        <div class="product-description px-3 py-1">
-          {{post.description}}
       </div>
-    </div>
     </div>
   </div>
 </div>

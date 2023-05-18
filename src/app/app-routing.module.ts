@@ -8,6 +8,8 @@ import { TalleresComponent } from './shared/components/talleres/talleres.compone
 import { ProfileComponent } from './shared/components/profile/profile.component';
 import { TallerComponent } from './shared/components/taller/taller.component';
 import { MembresiasComponent } from './shared/components/membresias/membresias.component';
+import { BlogComponent } from './views/blog/blog.component';
+import { FaqsComponent } from './views/faqs/faqs.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,16 @@ const routes: Routes = [
   {
     path: 'membresias',
     component: MembresiasComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'blog',
+    component: BlogComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'faqs',
+    component: FaqsComponent,
     canActivate: [ClientGuard]
   }
 ];

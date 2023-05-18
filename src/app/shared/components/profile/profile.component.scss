@@ -1,0 +1,18 @@
+@import '../../../../assets/scss/variables';
+
+.profile{
+    .profile__photo{
+        text-align: center;
+
+        @media screen and (min-width: $tablet) {
+            text-align: left;
+    }
+    }
+    .profile__user-data{
+        text-align: center;
+
+        @media screen and (min-width: $tablet) {
+            text-align: left;
+    }
+    }
+}

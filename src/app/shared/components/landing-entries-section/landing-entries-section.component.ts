@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 interface Posts { 
   img: string,
   name: string,
+  author: string,
   description: string,
 }
 
@@ -15,22 +16,26 @@ export class LandingEntriesSectionComponent {
   posts: Posts[] = [
     {
       img: 'bg.webp',
-      name: ' NOMBRE AUTOR ',
+      name: 'Titulo de articulo o noticia',
+      author: 'NOMBRE AUTOR',
       description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
     },
     {
       img: 'bg.webp',
-      name: ' NOMBRE AUTOR ',
+      name: 'Titulo de articulo o noticia',
+      author: 'NOMBRE AUTOR',
       description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
     },
     {
       img: 'bg.webp',
-      name: ' NOMBRE AUTOR ',
+      name: 'Titulo de articulo o noticia',
+      author: 'NOMBRE AUTOR',
       description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
     },
     {
       img: 'bg.webp',
-      name: ' NOMBRE AUTOR ',
+      name: 'Titulo de articulo o noticia',
+      author: 'NOMBRE AUTOR',
       description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
     },
   ]
