@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'app/shared/services/login.service';
 import { UserService } from 'app/shared/services/user.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-top-menu',
@@ -17,6 +18,8 @@ export class TopMenuComponent implements OnInit {
   register_response: any
   logged_in: boolean = false
   public loading: boolean = false;
+  loginForm: FormGroup;
+  registerForm: FormGroup;
 
   constructor(
   private modalService: NgbModal,
@@ -24,10 +27,37 @@ export class TopMenuComponent implements OnInit {
   private loginService: LoginService,
   private userService: UserService,
   private toastaService: ToastaService,
-  private toastaConfig: ToastaConfig
+  private toastaConfig: ToastaConfig,
+  private fb: FormBuilder
   ) {
       this.toastaConfig.theme = 'bootstrap';
       this.toastaConfig.position = 'top-right';
+      this.createForms();
+  }
+
+  createForms() {
+    this.loginForm = this.fb.group({
+       email: ['', [Validators.required, Validators.email]],
+       password: ['', [Validators.required, Validators.minLength(12)]]
+    });
+
+    this.registerForm = this.fb.group({
+       nombres: ['', [Validators.required, Validators.minLength(2)]],
+       apellidos: ['', [Validators.required, Validators.minLength(2)]],
+       nombre_usuario: ['', [Validators.required, Validators.minLength(2)]],
+       telefono: ['', [Validators.required, Validators.minLength(10)]],
+       email_registro: ['', [Validators.required, Validators.email]],
+       password_registro: ['', [Validators.required, Validators.minLength(12)]],
+       password_registro2: ['', [Validators.required, Validators.minLength(12), this.ComparePassword('password_registro')]]
+    });
+  }
+
+  ComparePassword(field_name): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } => {
+        const input = control.value;
+        const isSame = control.root.value[field_name] == input;
+        return !isSame ? {'isSame': {isSame}}: null;
+      };
   }
 
   ngOnInit(): void {
