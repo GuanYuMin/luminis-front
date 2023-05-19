@@ -17,7 +17,7 @@ export class UserService {
     return this.http.put(environment.apiURL + 'user/update_user/' + id, user);
   }
 
-  fn_RecoverPassword(data: any): Observable<any>{
-    return this.http.post(environment.apiURL + 'user/recovery_password', data);
+  fn_RecoverPassword(email: string): Observable<any>{
+    return this.http.post(environment.apiURL + 'user/recovery_password?email=' + email, null, { observe: 'response' });
   }
 }
