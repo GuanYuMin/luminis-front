@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from 'app/shared/services/login.service';
 import { UserService } from 'app/shared/services/user.service';
+import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 
 @Component({
   selector: 'app-top-menu',
@@ -21,8 +22,13 @@ export class TopMenuComponent implements OnInit {
   private modalService: NgbModal,
   private router: Router,
   private loginService: LoginService,
-  private userService: UserService
-  ) { }
+  private userService: UserService,
+  private toastaService: ToastaService,
+  private toastaConfig: ToastaConfig
+  ) {
+      this.toastaConfig.theme = 'bootstrap';
+      this.toastaConfig.position = 'top-right';
+  }
 
   ngOnInit(): void {
     let token = localStorage.getItem("token") || ""
@@ -56,10 +62,14 @@ export class TopMenuComponent implements OnInit {
                 window.location.reload();
               });
       } else {
-        console.log('error');
+        this.showError("Inicio de sesión", "Ha ocurrido un error");
       }
     }, (err) => {
-      console.log('error2');
+      if (err.error.message) {
+        this.showError("Inicio de sesión", err.error.message);
+      } else {
+        this.showError("Inicio de sesión", err.message);
+      }
       this.loading = false;
     });
 	}
@@ -79,16 +89,45 @@ export class TopMenuComponent implements OnInit {
         photo_id: 1
 	  }).subscribe((res) => {
 	    this.loading = false;
-	    console.log(res);
 	    if (res.status == 200) {
 	      this.modalService.dismissAll();
-        console.log('ok');
+	      this.showSuccess("Registro", res.message);
       } else {
-        console.log('error');
+        this.showError("Registro", "Ha ocurrido un error");
       }
     }, (err) => {
-      console.log('error2');
+      if (err.error.message) {
+        this.showError("Registro", err.error.message);
+      } else {
+        this.showError("Registro", err.message);
+      }
       this.loading = false;
     });
 	}
+
+	showError(title: string, message: string) {
+      var toastOptions:ToastOptions = {
+          title: title,
+          msg: message,
+          showClose: true,
+          timeout: 5000,
+          theme: 'bootstrap'
+      };
+      this.toastaService.error(toastOptions);
+      //this.toastaService.info(toastOptions);
+      //this.toastaService.success(toastOptions);
+      //this.toastaService.wait(toastOptions);
+      //this.toastaService.warning(toastOptions);
+  }
+
+  showSuccess(title: string, message: string) {
+      var toastOptions:ToastOptions = {
+          title: title,
+          msg: message,
+          showClose: true,
+          timeout: 5000,
+          theme: 'bootstrap'
+      };
+      this.toastaService.success(toastOptions);
+  }
 }
