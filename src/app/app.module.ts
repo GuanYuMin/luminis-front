@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
+import {ToastaModule} from 'ngx-toasta';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -83,13 +84,14 @@ import { FaqsComponent } from './views/faqs/faqs.component';
     BrowserAnimationsModule,
     FeatherModule.pick(allIcons),
     NgxLoadingModule.forRoot({
-      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      animationType: ngxLoadingAnimationTypes.threeBounce,
       backdropBackgroundColour: "rgba(0,0,0,0.1)",
       backdropBorderRadius: "4px",
       primaryColour: "#ffffff",
       secondaryColour: "#ffffff",
       tertiaryColour: "#ffffff",
-    })
+    }),
+    ToastaModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
