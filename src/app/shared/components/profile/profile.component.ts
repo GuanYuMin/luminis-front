@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
+import { LoginService } from 'app/shared/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,6 +9,13 @@ import * as moment from 'moment';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+  logout_response: any
+
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
+
   public userProfile = {
     name: "Jhon Wick",
     birthDate: moment().subtract(18, 'years').toDate(),
@@ -56,4 +65,22 @@ export class ProfileComponent {
     }
   ]
 
+  doLogout() {
+    /*this.loginService.fn_Logout({
+    }).subscribe((res) => {
+      this.login_response = res;
+      if (res.status == 200) {
+        localStorage.setItem("token", res.body.token);
+        this.modalService.dismissAll();
+        this.router.navigate(['perfil']);
+      } else {
+        console.log('error');
+      }
+    });*/
+    localStorage.clear();
+    this.router.navigate(['/home'])
+      .then(() => {
+        window.location.reload();
+      });
+  }
 }

@@ -1,23 +1,25 @@
 <div class="menu">
   <div class="container">
     <div class="d-flex">
-      <img class="menu__logo" src="assets/img/iso-white-orange.png" alt="">
+      <a href="#home">
+        <img class="menu__logo" src="assets/img/iso-white-orange.png" alt="">
+      </a>
     </div>
     <ul class="menu__links">
       <li>
-        <a class="font-weight-cliff-bold" href="#news">MEMBRESÍAS</a>
+        <a class="font-weight-cliff-bold" href="#membresias">MEMBRESÍAS</a>
       </li>
       <li>
         <a class="font-weight-cliff-bold" href="#contact">PRODUCTOS</a>
       </li>
       <li>
-        <a class="font-weight-cliff-bold" href="#contact">BLOG</a>
+        <a class="font-weight-cliff-bold" href="#blog">BLOG</a>
       </li>
       <li>
         <a class="font-weight-cliff-bold" href="#contact">CONTACTOS</a>
       </li>
     </ul>
-    <div class="menu__login-btn">
+    <div *ngIf="!logged_in" class="menu__login-btn">
       <button class="rounded-white-button py-2 px-3 font-weight-cliff-bold" (click)="openLoginModal(logincontent)">INICIAR SESIÓN</button>
     </div>
   </div>
@@ -44,68 +46,102 @@
       <a href="">CONTACTOS</a>
     </li>
     <li>
-      <a (click)="openLoginModal(logincontent)">INICIAR SESION</a>
+      <a *ngIf="!logged_in" (click)="openLoginModal(logincontent)">INICIAR SESION</a>
     </li>
   </ul>
 </div>
 
 <ng-template #logincontent let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">INICIAR SESION</h4>
+		<h4 class="modal-title" id="modal-login-title">INICIAR SESION</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form>
+		<form autocomplete="off">
 			<div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Correo/usuario</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="email" class="form-label">Correo</label>
+                <input type="text" class="form-control" id="email" placeholder="" #email>
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Contraseña</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" placeholder="" #password>
               </div>
 		</form>
+    <div class="my-container">
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+          <h3>Por favor espere...</h3>
+        </div>
+      </ng-template>
+
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
+    </div>
 	</div>
 	<div class="modal-footer d-flex justify-content-center">
 		<button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
-		<button type="button" class="btn btn-outline-dark">Iniciar sesión</button>
+		<button type="button" class="btn btn-outline-dark" (click)="doLogin(email.value, password.value)">Iniciar sesión</button>
 	</div>
 </ng-template>
 
 <ng-template #registercontent let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">REGISTRO</h4>
+		<h4 class="modal-title" id="modal-registro-title">REGISTRO</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form>
+		<form autocomplete="off">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label">Nombre(s)</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+                <label for="nombres" class="form-label">Nombre(s)</label>
+                <input type="text" class="form-control" id="nombres" placeholder="" #nombres>
+            </div>
+            <div class="mb-3">
+                <label for="apellidos" class="form-label">Apellido(s)</label>
+                <input type="text" class="form-control" id="apellidos" placeholder="" #apellidos>
+            </div>
+            <div class="mb-3">
+              <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
+              <input type="text" class="form-control" id="nombre_usuario" placeholder="" #nombre_usuario>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Apellido Paterno</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="tel" class="form-control" id="telefono" placeholder="" #telefono>
                 </div>
                 <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Apellido Materno</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                    <label for="email_registro" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="email_registro" placeholder="" #email_registro>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Teléfono</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                    <label for="password_registro" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password_registro" placeholder="" #password_registro>
                 </div>
                 <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Correo</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                  <label for="password_registro2" class="form-label">Confirme contraseña</label>
+                  <input type="password" class="form-control" id="password_registro2" placeholder="" #password_registro2>
                 </div>
             </div>
 		</form>
+    <div class="my-container">
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+          <h3>Por favor espere...</h3>
+        </div>
+      </ng-template>
+
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
+    </div>
 	</div>
 	<div class="modal-footer d-flex justify-content-center">
-		<button type="button" class="btn btn-outline-dark">Inscribirse</button>
+		<button type="button" class="btn btn-outline-dark" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
 	</div>
 </ng-template>
