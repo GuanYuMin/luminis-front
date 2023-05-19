@@ -1,13 +1,12 @@
-<router-outlet></router-outlet>
 <div>
 	<app-top-menu></app-top-menu>
 	<router-outlet></router-outlet>
 	<app-landing-footer-section></app-landing-footer-section>
 </div>
-<button class="btn btn-primary" (click)="openLoginModal(logincontent)">Login Modal</button>
+<!-- <button class="btn btn-primary" (click)="openLoginModal(logincontent)">Login Modal</button>
 <button class="btn btn-primary" (click)="openRegisterModal(registercontent)">Register Modal</button>
 <button class="btn btn-primary" (click)="openUpdatePasswordModal(updatepasswordcontent)">Actualizar Password Modal</button>
-<button class="btn btn-primary" (click)="openRestorePasswordModal(restorepasswordcontent)">Recuperar Password Modal</button>
+<button class="btn btn-primary" (click)="openRestorePasswordModal(restorepasswordcontent)">Recuperar Password Modal</button> -->
 
 <ng-template #logincontent let-modal>
 	<div class="modal-header">
@@ -44,14 +43,8 @@
                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
             </div>
             <div class="row mb-3">
-                <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Apellido Paterno</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-                </div>
-                <div class="col">
-                    <label for="formGroupExampleInput2" class="form-label">Apellido Materno</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
-                </div>
+                <label for="formGroupExampleInput2" class="form-label">Apellido(s)</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
             </div>
 		</form>
 	</div>

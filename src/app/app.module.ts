@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -80,7 +81,15 @@ import { FaqsComponent } from './views/faqs/faqs.component';
     NgbModule,
     CarouselModule,
     BrowserAnimationsModule,
-    FeatherModule.pick(allIcons)
+    FeatherModule.pick(allIcons),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: "rgba(0,0,0,0.1)",
+      backdropBorderRadius: "4px",
+      primaryColour: "#ffffff",
+      secondaryColour: "#ffffff",
+      tertiaryColour: "#ffffff",
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
