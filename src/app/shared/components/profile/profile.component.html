@@ -28,8 +28,8 @@
       <button class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="border:none;">
         Editar Información
       </button>
-      <button class="rounded-large-secondary-button py-2 px-3 mt-2 font-weight-cliff-bold" style="border:none;">
-        Reestablecer contraseña
+      <button (click)="openUpdatePasswordModal(updatepasswordcontent)" class="rounded-large-secondary-button py-2 px-3 mt-2 font-weight-cliff-bold" style="border:none;">
+        Actualizar contraseña
       </button>
       <button (click)="doLogout()" class="rounded-large-third-button py-2 px-3 mt-2 font-weight-cliff-bold" style="width:17rem;border:none;">
         Cerrar sesión
@@ -101,5 +101,58 @@
     </div>
   </div>
 </div>
-
 </div>
+
+<ng-template #updatepasswordcontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-update-password-title">ACTUALIZAR CONTRASEÑA</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updatePasswordForm" autocomplete="off" novalidate>
+      <div class="mb-3">
+        <label for="password" class="form-label">Nueva contaseña</label>
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="" #password maxlength="50">
+      </div>
+      <div *ngIf="updatePasswordForm.controls['password'].invalid && (updatePasswordForm.controls['password'].dirty || updatePasswordForm.controls['password'].touched)" class="alert alert-danger">
+        <div *ngIf="updatePasswordForm.controls['password'].errors?.['required']">
+          Contraseña es requerida.
+        </div>
+        <div *ngIf="updatePasswordForm.controls['password'].invalid && password.value.length > 0">
+          Contraseña inválida.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password2" class="form-label">Confirmar nueva contaseña</label>
+        <input type="password" class="form-control" formControlName="password2" id="password2" placeholder="" #password2 maxlength="50">
+      </div>
+      <div *ngIf="updatePasswordForm.controls['password2'].invalid && (updatePasswordForm.controls['password2'].dirty || updatePasswordForm.controls['password2'].touched)" class="alert alert-danger">
+        <div *ngIf="updatePasswordForm.controls['password2'].errors?.['required']">
+          Debe confirmar su contraseña.
+        </div>
+        <div *ngIf="updatePasswordForm.controls['password2'].invalid && password2.value.length > 0 && !updatePasswordForm.get('password2').hasError('isSame')">
+          Confirmación de contraseña inválida.
+        </div>
+        <div *ngIf="updatePasswordForm.get('password2').hasError('isSame') && password2.value.length > 0">
+          Contraseñas no coinciden.
+        </div>
+      </div>
+    </form>
+    <div class="my-container">
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+          <h4>Por favor espere...</h4>
+        </div>
+      </ng-template>
+
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-center">
+    <button type="button" [disabled]="updatePasswordForm.pristine || updatePasswordForm.invalid" class="btn btn-outline-dark" (click)="doUpdatePassword(password.value)">Enviar</button>
+  </div>
+</ng-template>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from 'app/shared/services/login.service';
 import { UserService } from 'app/shared/services/user.service';
@@ -19,7 +19,9 @@ export class TopMenuComponent implements OnInit {
   logged_in: boolean = false
   public loading: boolean = false;
   loginForm: FormGroup;
+  recoverForm: FormGroup;
   registerForm: FormGroup;
+  modalReference: NgbModalRef;
 
   constructor(
   private modalService: NgbModal,
@@ -38,7 +40,11 @@ export class TopMenuComponent implements OnInit {
   createForms() {
     this.loginForm = this.fb.group({
        email: ['', [Validators.required, Validators.email]],
-       password: ['', [Validators.required, Validators.minLength(12)]]
+       password: ['', [Validators.required, Validators.minLength(10)]]
+    });
+
+    this.recoverForm = this.fb.group({
+       email_recover: ['', [Validators.required, Validators.email]]
     });
 
     this.registerForm = this.fb.group({
@@ -68,12 +74,27 @@ export class TopMenuComponent implements OnInit {
   }
 
   openLoginModal(logincontent: any) {
-		this.modalService.open(logincontent)
-
+    let ngbModalOptions: NgbModalOptions = {
+          backdrop : 'static',
+          keyboard : false
+    };
+		this.modalService.open(logincontent, ngbModalOptions);
   }
 
   openRegisterModal(registercontent: any) {
-		this.modalService.open(registercontent)
+    let ngbModalOptions: NgbModalOptions = {
+          backdrop : 'static',
+          keyboard : false
+    };
+		this.modalService.open(registercontent, ngbModalOptions);
+	}
+
+	openRecoverModal(restorepasswordcontent: any) {
+	  let ngbModalOptions: NgbModalOptions = {
+          backdrop : 'static',
+          keyboard : false
+    };
+	  this.modalReference = this.modalService.open(restorepasswordcontent, ngbModalOptions);
 	}
 
 	doLogin(email: string, password: string) {
@@ -99,6 +120,26 @@ export class TopMenuComponent implements OnInit {
         this.showError("Inicio de sesión", err.error.message);
       } else {
         this.showError("Inicio de sesión", err.message);
+      }
+      this.loading = false;
+    });
+	}
+
+	doRecover(email: string) {
+    this.loading = true;
+    this.userService.fn_RecoverPassword(email).subscribe((res) => {
+      this.loading = false;
+      if (res.status == 200) {
+        this.modalReference.close();
+        this.showSuccess("Recuperación de contraseña", res.body.message);
+      } else {
+        this.showError("Recuperación de contraseña", "Ha ocurrido un error");
+      }
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Recuperación de contraseña", err.error.message);
+      } else {
+        this.showError("Recuperación de contraseña", err.message);
       }
       this.loading = false;
     });

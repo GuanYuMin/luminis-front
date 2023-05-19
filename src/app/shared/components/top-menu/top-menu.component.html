@@ -98,9 +98,49 @@
     </div>
 	</div>
 	<div class="modal-footer d-flex justify-content-center">
-		<button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
-		<button type="button" class="btn btn-outline-dark" [disabled]="loginForm.pristine || loginForm.invalid" (click)="doLogin(email.value, password.value)">Iniciar sesión</button>
+		<button type="submit" class="btn btn-outline-dark" [disabled]="loginForm.pristine || loginForm.invalid" (click)="doLogin(email.value, password.value)">Iniciar sesión</button>
+    <button type="button" class="btn btn-outline-dark" (click)="openRecoverModal(restorepasswordcontent)">Recuperar contraseña</button>
+    <button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
 	</div>
+</ng-template>
+
+<ng-template #restorepasswordcontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-recover-title">RECUPERAR CONTRASEÑA</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="recoverForm" autocomplete="off" novalidate>
+      <div class="mb-3">
+        <label for="email_recover" class="form-label">Correo</label>
+        <input type="email" class="form-control" formControlName="email_recover" id="email_recover" placeholder="" #email_recover maxlength="255">
+      </div>
+      <div *ngIf="recoverForm.controls['email_recover'].invalid && (recoverForm.controls['email_recover'].dirty || recoverForm.controls['email_recover'].touched)" class="alert alert-danger">
+        <div *ngIf="recoverForm.controls['email_recover'].errors?.['required']">
+          Correo es requerido.
+        </div>
+        <div *ngIf="recoverForm.controls['email_recover'].invalid && email_recover.value.length > 0">
+          Correo inválido.
+        </div>
+      </div>
+    </form>
+    <div class="my-container">
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+          <h4>Por favor espere...</h4>
+        </div>
+      </ng-template>
+
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-center">
+    <button type="button" [disabled]="recoverForm.pristine || recoverForm.invalid" class="btn btn-outline-dark" (click)="doRecover(email_recover.value)">Enviar</button>
+  </div>
 </ng-template>
 
 <ng-template #registercontent let-modal>
