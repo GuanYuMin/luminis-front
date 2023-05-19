@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
-import {ToastaModule} from 'ngx-toasta';
+import { ToastaModule } from 'ngx-toasta';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -91,7 +93,8 @@ import { FaqsComponent } from './views/faqs/faqs.component';
       secondaryColour: "#ffffff",
       tertiaryColour: "#ffffff",
     }),
-    ToastaModule.forRoot()
+    ToastaModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
