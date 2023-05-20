@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BlogService } from 'app/shared/services/blog.service';
 
-interface Posts { 
-  img: string,
-  name: string,
+interface Posts {
+  image: string,
+  title: string,
   author: string,
-  description: string,
+  sub_title: string,
 }
 
 @Component({
@@ -12,31 +13,24 @@ interface Posts {
   templateUrl: './landing-entries-section.component.html',
   styleUrls: ['./landing-entries-section.component.scss']
 })
-export class LandingEntriesSectionComponent {
-  posts: Posts[] = [
-    {
-      img: 'bg.webp',
-      name: 'Titulo de articulo o noticia',
-      author: 'NOMBRE AUTOR',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Titulo de articulo o noticia',
-      author: 'NOMBRE AUTOR',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Titulo de articulo o noticia',
-      author: 'NOMBRE AUTOR',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Titulo de articulo o noticia',
-      author: 'NOMBRE AUTOR',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-    },
-  ]
+export class LandingEntriesSectionComponent implements OnInit {
+  posts: Posts[];
+
+  constructor(
+  private blogService: BlogService
+  ) { }
+
+  ngOnInit(): void {
+    this.loadPosts();
+  }
+
+  loadPosts() {
+    this.blogService.fn_ObtenerLista().subscribe((res) => {
+      if (res.status == 200) {
+        this.posts = res.body.slice(0,5);
+      }
+    }, (err) => {
+
+    });
+  }
 }

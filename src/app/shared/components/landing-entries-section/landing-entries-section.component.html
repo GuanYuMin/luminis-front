@@ -5,12 +5,12 @@
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let post of posts">
         <div class="post-card">
           <div class="post-img">
-            <img src="assets/img/{{post.img}}" alt="">
+            <img src="{{post.image}}" alt="">
           </div>
           <div class="post-card__body">
             <div class="post-name">
               <h5>
-                {{post.name}}
+                {{post.title}}
               </h5>
             </div>
             <div class="post-author">
@@ -20,7 +20,7 @@
             </div>
             <div class="post-description">
               <p>
-                {{post.description}}
+                {{post.sub_title}}
               </p>
             </div>
           </div>
