@@ -6,7 +6,8 @@ interface Course {
   name: string,
   image: string,
   description: string,
-  product: string
+  product: string,
+  active: boolean
 }
 
 @Component({
