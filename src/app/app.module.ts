@@ -39,6 +39,8 @@ import { TallerComponent } from './shared/components/taller/taller.component';
 import { MembresiasComponent } from './shared/components/membresias/membresias.component';
 import { BlogComponent } from './views/blog/blog.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
+import { AvisoComponent } from './views/aviso/aviso.component';
+import { TycComponent } from './views/tyc/tyc.component';
 
 
 /* const icons = {
@@ -75,7 +77,9 @@ import { FaqsComponent } from './views/faqs/faqs.component';
     TallerComponent,
     MembresiasComponent,
     BlogComponent,
-    FaqsComponent
+    FaqsComponent,
+    AvisoComponent,
+    TycComponent
   ],
   imports: [
     HttpClientModule,
