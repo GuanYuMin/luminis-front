@@ -29,12 +29,12 @@ export class TalleresListSectionComponent implements OnInit {
       console.log(error);
     });
   }
-  
+
   fn_ObtenerCursos(){
     this.cursoService.fn_ObtenerLista().subscribe((res:any) => {
-      debugger;
+      //debugger;
       this.vmCurso = res;
-      debugger;
+      //debugger;
     });
   }
 }

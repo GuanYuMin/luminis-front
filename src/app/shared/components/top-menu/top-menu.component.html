@@ -10,13 +10,16 @@
         <a class="font-weight-cliff-bold" href="#membresias">MEMBRESÍAS</a>
       </li>
       <li>
-        <a class="font-weight-cliff-bold" href="#contact">PRODUCTOS</a>
+        <a class="font-weight-cliff-bold" href="#talleres">PRODUCTOS</a>
       </li>
       <li>
         <a class="font-weight-cliff-bold" href="#blog">BLOG</a>
       </li>
       <li>
-        <a class="font-weight-cliff-bold" href="#contact">CONTACTOS</a>
+        <a class="font-weight-cliff-bold" href="#about">NOSOTROS</a>
+      </li>
+      <li *ngIf="logged_in">
+        <a class="font-weight-cliff-bold" href="#perfil">PERFIL</a>
       </li>
     </ul>
     <div *ngIf="!logged_in" class="menu__login-btn">
@@ -40,10 +43,13 @@
       <a href="">PRODUCTOS</a>
     </li>
     <li>
-      <a href="">BLOG</a>
+      <a href="#talleres">BLOG</a>
     </li>
     <li>
-      <a href="">CONTACTOS</a>
+      <a href="#about">NOSOTROS</a>
+    </li>
+    <li *ngIf="logged_in">
+      <a href="">PERFIL</a>
     </li>
     <li>
       <a *ngIf="!logged_in" (click)="openLoginModal(logincontent)">INICIAR SESION</a>
