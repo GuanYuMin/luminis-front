@@ -2,7 +2,7 @@
   <div class="row">
     <h1 class="mb-5 ">Formación</h1>
     <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5" *ngFor="let course of courses">
-      <div class="product-card">
+      <div *ngIf="course.active" class="product-card">
         <div class="product-img">
           <img src="{{course.image}}" alt="">
         </div>
