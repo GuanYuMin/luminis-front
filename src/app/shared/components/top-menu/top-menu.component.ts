@@ -12,11 +12,11 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from
   styleUrls: ['./top-menu.component.scss']
 })
 export class TopMenuComponent implements OnInit {
-  menuopen: boolean = true
-  menumobile: boolean = true
-  login_response: any
-  register_response: any
-  logged_in: boolean = false
+  menuopen: boolean = true;
+  menumobile: boolean = true;
+  login_response: any;
+  register_response: any;
+  logged_in: boolean = false;
   public loading: boolean = false;
   loginForm: FormGroup;
   recoverForm: FormGroup;
