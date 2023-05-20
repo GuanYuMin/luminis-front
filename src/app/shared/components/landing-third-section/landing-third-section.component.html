@@ -4,20 +4,14 @@
       <div class="col-sm-12 col-lg-6 d-flex align-items-start justify-content-center flex-column">
         <h1 class="mt-3">¡Comienza hoy!</h1>
         <p style="font-size: 1.5rem">
-          Tenemos increíbles talleres y herramientas para tí. Ya sea que eres padre o madre de familia, maestro o tutor,
-          psicólogo, adolescente o adulto joven, tenemos lo necesario para complementar tu camino de vida y prepararte
-          para diversas situaciones.
+          Lorem ipsum dolor sit amet, consectetuer
+          adipiscing elit, sed diam nonummy nibh.
+          esse molestie consequat, vel illum dolore
+          eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim.
         </p>
-<<<<<<< Updated upstream
         <div *ngIf="!logged_in" class="mt-5">
-          <a href="" class="d-flex rounded-large-secondary-button px-3 py-2 text-decoration-none justify-content-between align-items-center">
+          <a (click)="openRegisterModal(registercontent)" class="d-flex rounded-large-secondary-button px-3 py-2 text-decoration-none justify-content-between align-items-center">
             <span class="font-weight-cliff-bold text-large">REGÍSTRATE</span>
-=======
-        <div class="mt-5">
-          <a href=""
-            class="d-flex rounded-large-secondary-button px-3 py-2 text-decoration-none justify-content-between align-items-center">
-            <span class="font-weight-cliff-bold text-large">SIGN UP</span>
->>>>>>> Stashed changes
             <i-feather name="arrow-right"></i-feather>
           </a>
         </div>
@@ -28,5 +22,123 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </div>
+
+<ng-template #registercontent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-registro-title">REGISTRO</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="registerForm" autocomplete="off" novalidate>
+      <div class="mb-3">
+        <label for="nombres" class="form-label">Nombre(s)</label>
+        <input type="text" class="form-control" formControlName="nombres" id="nombres" placeholder="" #nombres maxlength="255">
+      </div>
+      <div *ngIf="registerForm.controls['nombres'].invalid && (registerForm.controls['nombres'].dirty || registerForm.controls['nombres'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['nombres'].errors?.['required']">
+          Nombre(s) requerido.
+        </div>
+        <div *ngIf="registerForm.controls['nombres'].invalid && nombres.value.length > 0">
+          Nombre(s) inválido(s).
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="apellidos" class="form-label">Apellido(s)</label>
+        <input type="text" class="form-control" formControlName="apellidos" id="apellidos" placeholder="" #apellidos maxlength="255">
+      </div>
+      <div *ngIf="registerForm.controls['apellidos'].invalid && (registerForm.controls['apellidos'].dirty || registerForm.controls['apellidos'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['apellidos'].errors?.['required']">
+          Apellido(s) requerido.
+        </div>
+        <div *ngIf="registerForm.controls['apellidos'].invalid && apellidos.value.length > 0">
+          Apellido(s) inválido(s).
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" formControlName="nombre_usuario" id="nombre_usuario" placeholder="" #nombre_usuario maxlength="255">
+      </div>
+      <div *ngIf="registerForm.controls['nombre_usuario'].invalid && (registerForm.controls['nombre_usuario'].dirty || registerForm.controls['nombre_usuario'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['nombre_usuario'].errors?.['required']">
+          Nombre de usuario requerido.
+        </div>
+        <div *ngIf="registerForm.controls['nombre_usuario'].invalid && nombre_usuario.value.length > 0">
+          Nombre de usuario inválido.
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono maxlength="10">
+        </div>
+        <div class="col">
+          <label for="email_registro" class="form-label">Correo</label>
+          <input type="email" class="form-control" formControlName="email_registro" id="email_registro" placeholder="" #email_registro maxlength="255">
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['telefono'].invalid && (registerForm.controls['telefono'].dirty || registerForm.controls['telefono'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['telefono'].errors?.['required']">
+          Teléfono es requerido.
+        </div>
+        <div *ngIf="registerForm.controls['telefono'].invalid && telefono.value.length > 0">
+          Teléfono inválido.
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['email_registro'].invalid && (registerForm.controls['email_registro'].dirty || registerForm.controls['email_registro'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['email_registro'].errors?.['required']">
+          Correo es requerido.
+        </div>
+        <div *ngIf="registerForm.controls['email_registro'].invalid && email_registro.value.length > 0">
+          Correo inválido.
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="password_registro" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" formControlName="password_registro" id="password_registro" placeholder="" #password_registro maxlength="50">
+        </div>
+        <div class="col">
+          <label for="password_registro2" class="form-label">Confirme contraseña</label>
+          <input type="password" class="form-control" formControlName="password_registro2" id="password_registro2" placeholder="" #password_registro2 maxlength="50">
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['password_registro'].invalid && (registerForm.controls['password_registro'].dirty || registerForm.controls['password_registro'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['password_registro'].errors?.['required']">
+          Contraseña es requerida.
+        </div>
+        <div *ngIf="registerForm.controls['password_registro'].invalid && password_registro.value.length > 0">
+          Contraseña inválida.
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['password_registro2'].invalid && (registerForm.controls['password_registro2'].dirty || registerForm.controls['password_registro2'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['password_registro2'].errors?.['required']">
+          Debe confirmar su contraseña.
+        </div>
+        <div *ngIf="registerForm.controls['password_registro2'].invalid && password_registro2.value.length > 0 && !registerForm.get('password_registro2').hasError('isSame')">
+          Confirmación de contraseña inválida.
+        </div>
+        <div *ngIf="registerForm.get('password_registro2').hasError('isSame') && password_registro2.value.length > 0">
+          Contraseñas no coinciden.
+        </div>
+      </div>
+    </form>
+    <div class="my-container">
+      <ng-template #customLoadingTemplate>
+        <div class="custom-class">
+          <h4>Por favor espere...</h4>
+        </div>
+      </ng-template>
+
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
+    </div>
+  </div>
+  <div class="modal-footer d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
+  </div>
+</ng-template>
