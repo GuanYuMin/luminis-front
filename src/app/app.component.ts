@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'luminis_client';
 
   constructor(private modalService: NgbModal,private alerts: AlertsService) {}
-  
+
   testSucc(){
     this.alerts.successAlert('La compra fue exitosa');
   }
@@ -23,17 +23,4 @@ export class AppComponent {
   testError(){
     this.alerts.errorAlert('Error');
   }
-
-  openLoginModal(logincontent: any) {
-		this.modalService.open(logincontent)
-	}
-  openRegisterModal(registercontent: any) {
-		this.modalService.open(registercontent)
-	}
-  openRestorePasswordModal(restorepasswordcontent: any) {
-		this.modalService.open(restorepasswordcontent)
-	}
-  openUpdatePasswordModal(updatepasswordcontent: any) {
-		this.modalService.open(updatepasswordcontent)
-	}
 }
