@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
+import { SlideViewModel } from 'app/shared/models/viewmodels/slide.model';
 import { CursoService } from 'app/shared/services/curso.service';
 import { VideoService } from 'app/shared/services/video.service';
 
@@ -14,6 +15,9 @@ export class TalleresListSectionComponent implements OnInit {
   displayMessage = "LO MÁS NUEVO";
   sortOptions = ["LO MÁS NUEVO", "LO MÁS ANTIGUO"]
   value = '';
+  slides: SlideViewModel[] = [];
+  slide: SlideViewModel = {} as SlideViewModel;
+  contador_slides: number = 0;
 
   constructor(
     private videoService: VideoService,
@@ -36,10 +40,9 @@ export class TalleresListSectionComponent implements OnInit {
 
   fn_ObtenerCursos(){
     this.cursoService.fn_ObtenerLista().subscribe((res:any) => {
-      //debugger;
       this.vmCurso = res.body;
       this.vmOrig = res.body;
-      //debugger;
+      this.displayCursos();
     });
   }
 
@@ -69,9 +72,33 @@ export class TalleresListSectionComponent implements OnInit {
     } else {
       this.vmCurso = this.vmOrig.filter(curso => this.replaceChars(curso.name.toLowerCase()).includes(this.value) || (curso.description != null && this.replaceChars(curso.description.toLowerCase()).includes(this.value)));
     }
+    this.displayCursos();
   }
 
   replaceChars(origin: string) {
     return origin.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n");
+  }
+
+  displayCursos() {
+    this.contador_slides = 0;
+    this.slides = [];
+    this.slide = {} as SlideViewModel;
+    this.vmCurso.forEach( (element) => {
+      if (element.active == true) {
+        if (this.contador_slides == 0) {
+          this.slide = {} as SlideViewModel;
+          this.slide.cursos = [];
+        }
+        this.slide.cursos.push(element);
+        this.contador_slides = this.contador_slides + 1;
+        if (this.contador_slides == 3) {
+          this.slides.push(this.slide);
+          this.contador_slides = 0;
+        }
+      }
+    });
+    if (this.contador_slides > 0) {
+      this.slides.push(this.slide);
+    }
   }
 }
