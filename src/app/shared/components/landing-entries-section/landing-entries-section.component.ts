@@ -1,12 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BlogViewModel } from 'app/shared/models/viewmodels/blog.model';
 import { BlogService } from 'app/shared/services/blog.service';
-
-interface Posts {
-  image: string,
-  title: string,
-  author: string,
-  sub_title: string,
-}
+import { Router } from '@angular/router';
+import { AlertsService } from "app/shared/services/alerts.service";
 
 @Component({
   selector: 'app-landing-entries-section',
@@ -14,12 +10,18 @@ interface Posts {
   styleUrls: ['./landing-entries-section.component.scss']
 })
 export class LandingEntriesSectionComponent implements OnInit {
-  posts: Posts[];
+  posts: BlogViewModel[];
   @Input() blogsort: number;
 
   constructor(
-  private blogService: BlogService
+  private blogService: BlogService,
+  private router: Router,
+  private alerts: AlertsService
   ) { }
+
+  goTo(id: string) {
+    this.router.navigate([`ver-blog/${id}`]);
+  }
 
   ngOnInit(): void {
     this.loadPosts();
@@ -31,7 +33,7 @@ export class LandingEntriesSectionComponent implements OnInit {
         this.posts = res.body.slice(0,this.blogsort);
       }
     }, (err) => {
-
+      this.alerts.errorAlertNavigate('No se pudieron obtener los blogs.', '/home');
     });
   }
 }

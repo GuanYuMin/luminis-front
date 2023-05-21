@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Alert from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,12 @@ import Alert from 'sweetalert2';
 
 export class AlertsService {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     cerrarAlerta() {
         Alert.close();
     }
-  
+
     successAlert(text: string) {
         return Alert.fire({
           icon: 'success',
@@ -46,7 +47,7 @@ export class AlertsService {
           allowOutsideClick: false
         });
     }
-  
+
     errorAlert(text: string) {
         return Alert.fire({
           icon: "error",
@@ -61,6 +62,25 @@ export class AlertsService {
           },
           buttonsStyling: false,
           allowOutsideClick: false
+        });
+    }
+
+    errorAlertNavigate(text: string, link: string) {
+        return Alert.fire({
+          icon: "error",
+          title: "Error",
+          text: text,
+          showCancelButton: false,
+          showConfirmButton: true,
+          confirmButtonText: "Aceptar",
+          customClass:{
+            confirmButton: 'btn btn-danger',
+            popup: 'custom-alerts',
+          },
+          buttonsStyling: false,
+          allowOutsideClick: false
+        }).then((result) => {
+            this.router.navigate([link])
         });
     }
 }

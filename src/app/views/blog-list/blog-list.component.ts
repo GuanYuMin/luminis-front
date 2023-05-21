@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-list.component.scss']
 })
 export class BlogListComponent {
-  blogpages:number = 20;
-
+  blogpages: number = 20;
 }
