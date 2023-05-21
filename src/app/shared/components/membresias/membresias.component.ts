@@ -215,10 +215,6 @@ export class MembresiasComponent implements OnInit {
           theme: 'bootstrap'
       };
       this.toastaService.error(toastOptions);
-      //this.toastaService.info(toastOptions);
-      //this.toastaService.success(toastOptions);
-      //this.toastaService.wait(toastOptions);
-      //this.toastaService.warning(toastOptions);
   }
 
   showSuccess(title: string, message: string) {
