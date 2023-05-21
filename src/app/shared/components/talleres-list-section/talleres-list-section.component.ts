@@ -62,6 +62,7 @@ export class TalleresListSectionComponent implements OnInit {
         break;
       }
     }
+    this.displayCursos();
   }
 
   onKey(event: any) {
