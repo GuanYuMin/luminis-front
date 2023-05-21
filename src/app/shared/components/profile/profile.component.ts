@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { LoginService } from 'app/shared/services/login.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { UserService } from 'app/shared/services/user.service';
+import { PhotoService } from 'app/shared/services/photo.service';
+import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model'
+import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model'
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +19,8 @@ export class ProfileComponent {
   logout_response: any;
   updatePasswordForm: FormGroup;
   public loading: boolean = false;
+  profile: PerfilViewModel;
+  photo: PhotoViewModel;
 
   constructor(
     private loginService: LoginService,
@@ -22,11 +28,15 @@ export class ProfileComponent {
     private modalService: NgbModal,
     private fb: FormBuilder,
     private toastaService: ToastaService,
-    private toastaConfig: ToastaConfig
+    private toastaConfig: ToastaConfig,
+    private userService: UserService,
+    private photoService: PhotoService
   ) {
     this.toastaConfig.theme = 'bootstrap';
     this.toastaConfig.position = 'top-right';
     this.createForms();
+    this.getUserData();
+    this.getUserPhoto();
   }
 
   createForms() {
@@ -43,6 +53,43 @@ export class ProfileComponent {
         return !isSame ? {'isSame': {isSame}}: null;
       };
   }
+
+  getUserData() {
+    //this.loading = true;
+    this.userService.fn_GetUser(
+       localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      //this.loading = false;
+      console.log(res);
+      this.profile = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Perfil", err.error.message);
+      } else {
+        this.showError("Perfil", err.message);
+      }
+      //this.loading = false;
+    });
+  }
+
+  getUserPhoto() {
+    //this.loading = true;
+    this.photoService.fn_GetPhoto(
+       localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      //this.loading = false;
+      console.log(res);
+      this.photo = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Perfil", err.error.message);
+      } else {
+        this.showError("Perfil", err.message);
+      }
+      //this.loading = false;
+    });
+  }
+
 
   public userProfile = {
     name: "Jhon Wick",

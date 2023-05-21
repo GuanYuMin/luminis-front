@@ -20,4 +20,8 @@ export class UserService {
   fn_RecoverPassword(email: string): Observable<any>{
     return this.http.post(environment.apiURL + 'user/recovery_password?email=' + email, null, { observe: 'response' });
   }
+
+  fn_GetUser(id: string): Observable<any>{
+    return this.http.get(environment.apiURL + 'user/get_user/' + id, { observe: 'response' });
+  }
 }

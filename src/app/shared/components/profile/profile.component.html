@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-sm-12 col-lg-6">
             <div class="profile__photo">
-              <img src="https://i.pravatar.cc/200" alt="Descripción de la imagen" class="rounded-circle h-4" style="border: 1px solid #333333;">
+              <img loading="lazy" src="{{photo.photo_url}}" alt="" class="rounded-circle h-4 image-200" style="border: 1px solid #333333;">
               <div class="w-100 p-3 d-flex align-items-center justify-content-center">
                 <button class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="width: auto;border:none;">
                   Cambiar foto
@@ -16,10 +16,10 @@
         </div>
         <div class="col-sm-12 col-lg-6 px-2">
           <div class="profile__user-data">
-            <div class="w-100"><p class="font-weight-bold"><strong>{{ userProfile.name }}</strong></p></div>
-            <div class="w-100"><p class="font-weight-bold">{{ userProfile.birthDate | date:'dd/MM/YYYY' }}</p></div>
-            <div class="w-100"><p class="font-weight-bold">{{ userProfile.email }}</p></div>
-            <div class="w-100"><p class="font-weight-bold">{{ userProfile.phone }}</p></div>
+            <div class="w-100"><p class="font-weight-bold"><strong>{{ profile.name }} {{ profile.midlename }} {{ profile.lastname }}</strong></p></div>
+            <div class="w-100"><p class="font-weight-bold">{{ profile.birthdate | date:'dd/MM/YYYY' }}</p></div>
+            <div class="w-100"><p class="font-weight-bold">{{ profile.email }}</p></div>
+            <div class="w-100"><p class="font-weight-bold">{{ profile.phone }}</p></div>
           </div>
         </div>
       </div>

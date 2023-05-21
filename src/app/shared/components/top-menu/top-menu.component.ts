@@ -107,6 +107,8 @@ export class TopMenuComponent implements OnInit {
       this.login_response = res;
       if (res.status == 200) {
         localStorage.setItem("token", res.body.token);
+        localStorage.setItem("user_id", res.body.user_id);
+        localStorage.setItem("email", res.body.email);
         this.modalService.dismissAll();
         this.router.navigate(['/perfil'])
               .then(() => {

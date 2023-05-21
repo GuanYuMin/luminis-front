@@ -5,7 +5,7 @@
         text-align: center;
 
         @media screen and (min-width: $tablet) {
-            text-align: left;
+            text-align: center;
     }
     }
     .profile__user-data{
@@ -15,4 +15,9 @@
             text-align: left;
     }
     }
+}
+
+.image-200 {
+  width: 200px;
+  height: 200px;
 }
