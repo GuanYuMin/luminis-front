@@ -59,7 +59,8 @@ const routes: Routes = [
   {
     path: 'ver-blog/:id',
     component: BlogComponent,
-    canActivate: [ClientGuard]
+    canActivate: [ClientGuard],
+    pathMatch: 'full'
   },
   {
     path: 'faqs',
@@ -77,9 +78,10 @@ const routes: Routes = [
     canActivate: [ClientGuard]
   },
   {
-    path: 'confirmacion',
+    path: 'confirmacion/:id',
     component: ConfirmacionComponent,
-    canActivate: [ClientGuard]
+    canActivate: [ClientGuard],
+    pathMatch: 'full'
   }
 ];
 
