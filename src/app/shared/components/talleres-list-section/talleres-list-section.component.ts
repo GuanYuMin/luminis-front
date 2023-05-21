@@ -10,6 +10,8 @@ import { VideoService } from 'app/shared/services/video.service';
 })
 export class TalleresListSectionComponent implements OnInit {
   vmCurso: CursoViewModel[] = [];
+  displayMessage = "LO MÁS NUEVO";
+  sortOptions = ["LO MÁS NUEVO", "LO MÁS ANTIGUO"]
 
   constructor(
     private videoService: VideoService,
@@ -33,8 +35,26 @@ export class TalleresListSectionComponent implements OnInit {
   fn_ObtenerCursos(){
     this.cursoService.fn_ObtenerLista().subscribe((res:any) => {
       //debugger;
-      this.vmCurso = res;
+      this.vmCurso = res.body;
       //debugger;
     });
+  }
+
+  changeMessage(selectedItem: string, index: number){
+    this.displayMessage = selectedItem;
+    switch (index) {
+      case 0: {
+        this.vmCurso.sort((a, b) => {
+          return <any>new Date(b.update_timestamp) - <any>new Date(a.update_timestamp);
+        });
+        break;
+      }
+      case 1: {
+        this.vmCurso.sort((b, a) => {
+          return <any>new Date(b.update_timestamp) - <any>new Date(a.update_timestamp);
+        });
+        break;
+      }
+    }
   }
 }
