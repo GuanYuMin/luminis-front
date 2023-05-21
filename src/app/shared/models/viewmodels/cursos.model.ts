@@ -4,6 +4,7 @@ export class CursoViewModel {
     content: string = "";
     description: string = "";
     update_timestamp: string = "";
+    active: boolean = false;
     constructor(){
 
     }

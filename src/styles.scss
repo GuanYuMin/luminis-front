@@ -170,7 +170,7 @@ html{
 
 .faqs{
   .accordion{
-    
+
     .accordion-item{
         border: 0;
         border-bottom: 1px solid black;
@@ -188,7 +188,7 @@ html{
             text-transform: uppercase;
             font-size: 1.5rem;
           }
-          
+
           &:focus{
             border: 0;
             box-shadow: none;
@@ -217,4 +217,13 @@ html{
 
 .bold{
   font-family: $bold;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon,
+.carousel-indicators {
+   filter: invert(1);
+}
+.carousel-indicators {
+  bottom: -10%;
 }
