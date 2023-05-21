@@ -10,6 +10,10 @@ import { VideoService } from 'app/shared/services/video.service';
 })
 export class TalleresListSectionComponent implements OnInit {
   vmCurso: CursoViewModel[] = [];
+  vmOrig: CursoViewModel[] = [];
+  displayMessage = "LO MÁS NUEVO";
+  sortOptions = ["LO MÁS NUEVO", "LO MÁS ANTIGUO"]
+  value = '';
 
   constructor(
     private videoService: VideoService,
@@ -33,8 +37,37 @@ export class TalleresListSectionComponent implements OnInit {
   fn_ObtenerCursos(){
     this.cursoService.fn_ObtenerLista().subscribe((res:any) => {
       //debugger;
-      this.vmCurso = res;
+      this.vmCurso = res.body;
+      this.vmOrig = res.body;
       //debugger;
     });
+  }
+
+  changeMessage(selectedItem: string, index: number){
+    this.displayMessage = selectedItem;
+    switch (index) {
+      case 0: {
+        this.vmCurso.sort((a, b) => {
+          return <any>new Date(b.update_timestamp) - <any>new Date(a.update_timestamp);
+        });
+        break;
+      }
+      case 1: {
+        this.vmCurso.sort((b, a) => {
+          return <any>new Date(b.update_timestamp) - <any>new Date(a.update_timestamp);
+        });
+        break;
+      }
+    }
+  }
+
+  onKey(event: any) {
+    this.value = event.target.value;
+    this.value = this.value.toLowerCase().trim();
+    if (this.value.length === 0) {
+      this.vmCurso = this.vmOrig;
+    } else {
+      this.vmCurso = this.vmOrig.filter(curso => curso.name.toLowerCase().includes(this.value) || (curso.description != null && curso.description.toLowerCase().includes(this.value)));
+    }
   }
 }

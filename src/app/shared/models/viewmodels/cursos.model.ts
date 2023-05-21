@@ -3,8 +3,8 @@ export class CursoViewModel {
     name: string = "";
     content: string = "";
     description: string = "";
-
+    update_timestamp: string = "";
     constructor(){
-        
+
     }
 }
