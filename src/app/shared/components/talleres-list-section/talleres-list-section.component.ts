@@ -10,8 +10,10 @@ import { VideoService } from 'app/shared/services/video.service';
 })
 export class TalleresListSectionComponent implements OnInit {
   vmCurso: CursoViewModel[] = [];
+  vmOrig: CursoViewModel[] = [];
   displayMessage = "LO MÁS NUEVO";
   sortOptions = ["LO MÁS NUEVO", "LO MÁS ANTIGUO"]
+  value = '';
 
   constructor(
     private videoService: VideoService,
@@ -36,6 +38,7 @@ export class TalleresListSectionComponent implements OnInit {
     this.cursoService.fn_ObtenerLista().subscribe((res:any) => {
       //debugger;
       this.vmCurso = res.body;
+      this.vmOrig = res.body;
       //debugger;
     });
   }
@@ -55,6 +58,16 @@ export class TalleresListSectionComponent implements OnInit {
         });
         break;
       }
+    }
+  }
+
+  onKey(event: any) {
+    this.value = event.target.value;
+    this.value = this.value.toLowerCase().trim();
+    if (this.value.length === 0) {
+      this.vmCurso = this.vmOrig;
+    } else {
+      this.vmCurso = this.vmOrig.filter(curso => curso.name.toLowerCase().includes(this.value) || (curso.description != null && curso.description.toLowerCase().includes(this.value)));
     }
   }
 }
