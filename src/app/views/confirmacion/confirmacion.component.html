@@ -19,11 +19,11 @@
           <div class="checkout-block__items">
             <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="checkout-block__product-card">
-                    <img src="assets/img/bg.webp" alt="">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
+                    <img src="{{datos.membership_url}}" alt="">
+                    <p>{{datos.name}}</p>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+            <!--<div class="col-12 col-sm-6 col-md-6 col-lg-4">
                 <div class="checkout-block__product-card">
                     <img src="assets/img/bg.webp" alt="">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
@@ -40,7 +40,7 @@
                     <img src="assets/img/bg.webp" alt="">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
                 </div>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
@@ -50,15 +50,15 @@
         <div class="checkout-block__purchase-details">
           <div class="checkout-block__subtotal">
             <h6>Subtotal:</h6>
-            <h5>$300</h5>
+            <h5>${{datos.cost}}</h5>
           </div>
           <div class="checkout-block__discounts">
             <h6>Descuento:</h6>
-            <h5>-$300</h5>
+            <h5>-${{descuento}}</h5>
           </div>
           <div class="checkout-block__total">
             <h3>Total:</h3>
-            <h4>$300</h4>
+            <h4>${{datos.cost}}</h4>
           </div>
         </div>
         <button class="btn l-btn-primary" (click)="confirmar = !confirmar">Confirmar compra <i-feather

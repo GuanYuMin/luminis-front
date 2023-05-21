@@ -10,7 +10,11 @@ import { Observable } from 'rxjs';
 export class MembresiaService {
   constructor(public http: HttpClient) { }
 
-  fn_ObtenerLista(): Observable<any>{
+  fn_ObtenerLista(): Observable<any> {
     return this.http.get(environment.apiURL + 'membership/detail', { observe: 'response' });
+  }
+
+  fn_ObtenerDatos(id: string): Observable<any> {
+    return this.http.get(environment.apiURL + 'membership/detail/' + id, { observe: 'response' });
   }
 }
