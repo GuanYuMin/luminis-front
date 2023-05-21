@@ -43,7 +43,7 @@ export class TalleresListSectionComponent implements OnInit {
     });
   }
 
-  changeMessage(selectedItem: string, index: number){
+  changeMessage(selectedItem: string, index: number) {
     this.displayMessage = selectedItem;
     switch (index) {
       case 0: {
@@ -63,11 +63,15 @@ export class TalleresListSectionComponent implements OnInit {
 
   onKey(event: any) {
     this.value = event.target.value;
-    this.value = this.value.toLowerCase().trim();
+    this.value = this.replaceChars(this.value.toLowerCase().trim());
     if (this.value.length === 0) {
       this.vmCurso = this.vmOrig;
     } else {
-      this.vmCurso = this.vmOrig.filter(curso => curso.name.toLowerCase().includes(this.value) || (curso.description != null && curso.description.toLowerCase().includes(this.value)));
+      this.vmCurso = this.vmOrig.filter(curso => this.replaceChars(curso.name.toLowerCase()).includes(this.value) || (curso.description != null && this.replaceChars(curso.description.toLowerCase()).includes(this.value)));
     }
+  }
+
+  replaceChars(origin: string) {
+    return origin.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n");
   }
 }
