@@ -1,0 +1,20 @@
+.l-btn-primary{
+    background-color: $primary-color;
+    color: white;
+    transition: 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    -webkit-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+    -moz-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+    box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+    
+    &:hover{
+        background-color: $primary-color;
+        color: white;
+        opacity: .8;
+    }
+
+    i-feather{
+        margin-left: 0.5rem;
+    }
+}

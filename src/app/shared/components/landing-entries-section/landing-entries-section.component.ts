@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BlogService } from 'app/shared/services/blog.service';
 
 interface Posts {
@@ -15,6 +15,7 @@ interface Posts {
 })
 export class LandingEntriesSectionComponent implements OnInit {
   posts: Posts[];
+  @Input() blogsort: number;
 
   constructor(
   private blogService: BlogService
@@ -27,7 +28,7 @@ export class LandingEntriesSectionComponent implements OnInit {
   loadPosts() {
     this.blogService.fn_ObtenerLista().subscribe((res) => {
       if (res.status == 200) {
-        this.posts = res.body.slice(0,5);
+        this.posts = res.body.slice(0,this.blogsort);
       }
     }, (err) => {
 

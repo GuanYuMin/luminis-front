@@ -1,6 +1,10 @@
 <div>
 	<app-top-menu></app-top-menu>
-  <ngx-toasta></ngx-toasta>
+ 	<ngx-toasta></ngx-toasta>
 	<router-outlet></router-outlet>
 	<app-landing-footer-section></app-landing-footer-section>
+
+	<button class="btn btn-success" (click)="testSucc()">Success</button>
+	<button class="btn btn-success" (click)="testWarning()">Warning</button>
+	<button class="btn btn-success" (click)="testError()">Error</button>
 </div>

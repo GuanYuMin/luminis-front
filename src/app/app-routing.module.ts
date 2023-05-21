@@ -12,6 +12,8 @@ import { BlogComponent } from './views/blog/blog.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { AvisoComponent } from './views/aviso/aviso.component';
 import { TycComponent } from './views/tyc/tyc.component';
+import { ConfirmacionComponent } from './views/confirmacion/confirmacion.component';
+import { BlogListComponent } from './views/blog-list/blog-list.component';
 
 const routes: Routes = [
   {
@@ -55,6 +57,11 @@ const routes: Routes = [
     canActivate: [ClientGuard]
   },
   {
+    path: 'blog-list',
+    component: BlogListComponent,
+    canActivate: [ClientGuard]
+  },
+  {
     path: 'faqs',
     component: FaqsComponent,
     canActivate: [ClientGuard]
@@ -67,6 +74,11 @@ const routes: Routes = [
   {
     path: 'tyc',
     component: TycComponent,
+    canActivate: [ClientGuard]
+  },
+  {
+    path: 'confirmacion',
+    component: ConfirmacionComponent,
     canActivate: [ClientGuard]
   }
 ];

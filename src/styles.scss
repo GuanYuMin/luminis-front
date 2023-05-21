@@ -1,4 +1,12 @@
 
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'assets/scss/variables';
+@import 'assets/scss/buttons';
+
 body{
   height: 100vh;
   /* font-size: 1em; */
@@ -7,7 +15,13 @@ body{
 
 html{
   a{
+    color: inherit;
     text-decoration: none;
+
+    &:hover{
+      text-decoration: underline;
+      color: $primary-color;
+    }
   }
   ul,ol{
     padding: 0;
@@ -18,6 +32,15 @@ html{
     border: none;
     box-shadow: none;
   }
+  h1,h2,h3,h4{
+    margin: 0;
+    padding: 0;
+    font-family: $bold;
+  }
+  h5,h6{
+    margin: 0;
+    padding: 0;
+  }
 }
 
 * {
@@ -26,37 +49,33 @@ html{
 }
 
 @font-face {
-  font-family: GreycliffCFBold;
+  font-family: 'GreycliffCFBold';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Bold.woff2);
 }
 @font-face {
-  font-family: GreycliffCFDemiBold;
+  font-family: 'GreycliffCFDemiBold';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-DemiBold.woff2);
 }
 @font-face {
-  font-family: GreycliffCExtraBold;
+  font-family: 'GreycliffCExtraBold';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-ExtraBold.woff2);
 }
 @font-face {
-  font-family: GreycliffCFHeavy;
+  font-family: 'GreycliffCFHeavy';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Heavy.woff2);
 }
 @font-face {
-  font-family: GreycliffCFLight;
+  font-family: 'GreycliffCFLight';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Light.woff2);
 }
 @font-face {
-  font-family: GreycliffCFMedium;
+  font-family: 'GreycliffCFMedium';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Medium.woff2);
 }
 @font-face {
-  font-family: GreycliffCFRegular;
+  font-family: 'GreycliffCFRegular';
   src: url(assets/fonts/greycliff-cf/GreycliffCF-Regular.woff2);
 }
-@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
-@import 'assets/scss/variables';
 
 .text-white{
   color: $white;
@@ -148,9 +167,6 @@ html{
 .background-primary-mutted{
   background-color: $primary-color-opacity;
 }
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
-
 
 .faqs{
   .accordion{
@@ -189,4 +205,16 @@ html{
         }
     }
 }
+}
+
+.custom-alerts{
+  padding: 2rem 1rem 2rem 1rem !important;
+
+  .swal2-icon{
+    margin: 0 auto !important;
+  }
+}
+
+.bold{
+  font-family: $bold;
 }
