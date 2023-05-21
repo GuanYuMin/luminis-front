@@ -9,9 +9,21 @@
         <div class="pe-3 w-30">
           Ordenar por:
         </div>
+        <!--
         <div class="d-flex w-auto justify-content-between px-4 py-2 search-outline align-items-center">
           <input type="text" placeholder="LO MÁS NUEVO" aria-label="LO MÁS NUEVO" aria-describedby="button-addon2">
           <i-feather name="arrow-down" class="big"></i-feather>
+        </div>-->
+        <div ngbDropdown class="d-inline-block w-auto px-4 py-2 search-outline align-items-center">
+          <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+            {{displayMessage}}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <div *ngFor="let option of sortOptions; let index = index">
+              <button class="dropdown-item"
+                      id="{{index}}" on-click="changeMessage(option,index)">{{option}}</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
