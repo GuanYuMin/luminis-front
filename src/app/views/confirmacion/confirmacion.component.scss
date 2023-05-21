@@ -1,0 +1,226 @@
+@import '../../../assets/scss/variables';
+
+.checkout__note {
+    max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 10px solid $primary-color;
+  border-radius: 10px;
+  padding: 2rem 1rem;
+  margin-bottom: 5rem;
+  -webkit-box-shadow: 10px 15px 22px -7px rgba(145, 145, 145, 0.7);
+  -moz-box-shadow: 10px 15px 22px -7px rgba(145, 145, 145, 0.7);
+  box-shadow: 10px 15px 22px -7px rgba(145, 145, 145, 0.7);
+
+  @media screen and (min-width: $mobile) {
+    flex-direction: row;
+  }
+
+  >div {
+
+    &:first-child {
+      i-feather {
+        margin-right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+    &:nth-child(2) {
+      text-align: center;
+      margin-top: 1rem;
+
+      @media screen and (min-width: $mobile) {
+        text-align: left;
+        margin-top: 0;
+      }
+
+      h5 {
+        font-family: $bold;
+      }
+    }
+
+  }
+}
+
+.checkout-block {
+  padding: 2rem;
+
+  .row {
+    div {
+      margin-top: 2rem;
+
+      @media screen and (min-width: $tablet) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .checkout-block__items-detail {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1.5rem;
+
+    .checkout-block__items {
+      display: flex;
+      flex-wrap: wrap;
+
+      .checkout-block__product-card {
+        border: 1px solid lightgray;
+        margin: 0.5rem;
+        display: flex;
+        flex-direction: column;
+
+        img {
+          object-fit: cover;
+          min-height: 12rem;
+          width: 100%;
+        }
+
+        p {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+
+  .checkout-block__purchase-details {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    >div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &.checkout-block__subtotal {
+        h6 {
+          color: gray;
+        }
+
+        h5 {
+          color: gray;
+          font-family: $bold;
+        }
+      }
+
+      &.checkout-block__discounts {
+        h6 {
+          color: $red-color;
+        }
+
+        h5 {
+          color: $red-color;
+          font-family: $bold;
+        }
+      }
+
+      &.checkout-block__total {
+        margin-top: 2rem;
+
+        h3 {
+          font-family: $bold;
+        }
+
+        h4 {
+          font-family: $bold;
+        }
+      }
+
+    }
+  }
+
+  button {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
+.confirmation-block {
+  padding: 2rem;
+
+  .row {
+    div {
+      margin-top: 2rem;
+
+      @media screen and (min-width: $tablet) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .confirmation-block__items-detail {
+    border-radius: 5px;
+
+    .confirmation-block__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid lightgray;
+      padding: 1.5rem;
+
+      div {
+        i-feather {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+    }
+
+    .confirmation-block__items {
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid lightgray;
+      padding: 1.5rem;
+
+      .confirmation-block__purchase-info {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: lightgray;
+
+        small {
+            display: block;
+
+          &:first-child {
+            font-family: $bold;
+            margin-bottom: 1rem;
+          }
+
+          &:nth-child(2) {}
+        }
+      }
+    }
+  }
+
+  .confirmation-block__links {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid lightgray;
+    padding: 1.5rem;
+
+    ul {
+      list-style: circle;
+      margin-left: 1rem;
+
+      li {
+        margin-bottom: 1rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

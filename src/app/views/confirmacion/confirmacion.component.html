@@ -1,0 +1,161 @@
+<div class="checkout-block" *ngIf="!confirmar">
+  <div class="container">
+    <div class="col-12">
+      <div class="checkout__note">
+        <div>
+          <i-feather name="bell"></i-feather>
+        </div>
+        <div>
+          <h5 class="mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quam ratione aliquam id, a saepe?
+          </h5>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, hic.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-7 col-lg-8">
+        <h2 class="mb-4">Detalle de compra</h2>
+        <div class="checkout-block__items-detail">
+          <div class="checkout-block__items">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="checkout-block__product-card">
+                    <img src="assets/img/bg.webp" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="checkout-block__product-card">
+                    <img src="assets/img/bg.webp" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="checkout-block__product-card">
+                    <img src="assets/img/bg.webp" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                <div class="checkout-block__product-card">
+                    <img src="assets/img/bg.webp" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, harum!</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-5 col-lg-4">
+        <h2 class="mb-4">Resumen de compra</h2>
+        <div class="checkout-block__purchase-details">
+          <div class="checkout-block__subtotal">
+            <h6>Subtotal:</h6>
+            <h5>$300</h5>
+          </div>
+          <div class="checkout-block__discounts">
+            <h6>Descuento:</h6>
+            <h5>-$300</h5>
+          </div>
+          <div class="checkout-block__total">
+            <h3>Total:</h3>
+            <h4>$300</h4>
+          </div>
+        </div>
+        <button class="btn l-btn-primary" (click)="confirmar = !confirmar">Confirmar compra <i-feather
+            name="chevron-right"></i-feather></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-block" *ngIf="confirmar">
+  <div class="container">
+    <div class="col-12">
+      <div class="checkout__note">
+        <div>
+          <i-feather name="bell"></i-feather>
+        </div>
+        <div>
+          <h5 class="mb-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quam ratione aliquam id, a saepe?
+          </h5>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, hic.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 col-lg-8">
+        <div class="confirmation-block__items-detail">
+          <div class="confirmation-block__header">
+            <h1 class="">Gracias por tu compra!</h1>
+            <div>
+              <i-feather name="check-circle"></i-feather>
+            </div>
+          </div>
+          <div class="confirmation-block__items">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim veritatis molestias! Consequatur
+              blanditiis, ratione excepturi ipsum, aperiam minima soluta sunt fuga fugit incidunt amet iusto culpa!
+              Odio, ea ducimus.</p>
+            <table class="mt-3 table table-responsive">
+              <tbody>
+                <tr>
+                  <td class="bold" scope="col">Folio de compra:</td>
+                  <td scope="col">635464564645</td>
+                </tr>
+                <tr>
+                  <td class="bold" scope="col">Fecha:</td>
+                  <td scope="col">20/05/23</td>
+                </tr>
+                <tr>
+                  <td class="bold" scope="col">Importe por:</td>
+                  <td scope="col">$300</td>
+                </tr>
+                <tr>
+                  <td class="bold" scope="col">Método de pago:</td>
+                  <td scope="col">credit</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="confirmation-block__purchase-info">
+              <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim veritatis molestias!</small>
+              <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim veritatis molestias!
+                Consequatur
+                blanditiis, ratione excepturi ipsum, aperiam minima soluta sunt fuga fugit incidunt amet iusto culpa!
+                Odio, ea ducimus.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 col-lg-4">
+        <div class="confirmation-block__links">
+          <h4 class="mb-4">Información importante</h4>
+          <ul>
+            <li>
+              <a href="#">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, nesciunt!
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, nesciunt!
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, nesciunt!
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas, nesciunt!
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

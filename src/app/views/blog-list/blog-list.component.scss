@@ -1,0 +1,10 @@
+@import '../../../assets/scss/variables';
+
+.blog-list{
+    background-color: $primary-color;
+    padding-top: 3rem;
+
+    h1{
+        color: white;
+    }
+}

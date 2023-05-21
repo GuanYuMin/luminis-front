@@ -41,6 +41,8 @@ import { BlogComponent } from './views/blog/blog.component';
 import { FaqsComponent } from './views/faqs/faqs.component';
 import { AvisoComponent } from './views/aviso/aviso.component';
 import { TycComponent } from './views/tyc/tyc.component';
+import { ConfirmacionComponent } from './views/confirmacion/confirmacion.component';
+import { BlogListComponent } from './views/blog-list/blog-list.component';
 
 
 /* const icons = {
@@ -79,7 +81,9 @@ import { TycComponent } from './views/tyc/tyc.component';
     BlogComponent,
     FaqsComponent,
     AvisoComponent,
-    TycComponent
+    TycComponent,
+    ConfirmacionComponent,
+    BlogListComponent
   ],
   imports: [
     HttpClientModule,
