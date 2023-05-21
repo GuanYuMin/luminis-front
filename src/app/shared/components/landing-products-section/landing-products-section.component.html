@@ -1,20 +1,20 @@
 <div class="container my-5 px-3">
   <div class="row">
-    <h1 class="mb-5 ">Productos</h1>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let product of products">
-      <div class="product-card">
+    <h1 class="mb-5 ">Membresías</h1>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let membresia of membresias">
+      <div *ngIf="membresia.active" class="product-card">
         <div class="product-img">
-          <img src="assets/img/{{product.img}}" alt="">
+          <img src="{{membresia.membership_url}}" alt="">
         </div>
         <div class="product-name p-3">
-          {{product.name}}
+          {{membresia.name}}
         </div>
         <div class="product-description px-3 py-1">
-          {{product.description}}
+          {{membresia.description}}
       </div>
       <div class="product-price d-flex mt-5 justify-content-center">
         <a class="rounded-large-third-button px-3 py-1 text-decoration-none">
-          COMPRAR POR ${{product.price}}
+          COMPRAR POR ${{membresia.cost}}
         </a>
       </div>
     </div>

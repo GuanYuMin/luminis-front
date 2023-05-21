@@ -7,7 +7,8 @@ interface Course {
   image: string,
   description: string,
   product: string,
-  active: boolean
+  active: boolean,
+  price: number
 }
 
 @Component({
@@ -35,25 +36,4 @@ export class AboutFormacionSectionComponent implements OnInit {
 
     });
   }
-   /*= [
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    }
-  ]*/
-
 }

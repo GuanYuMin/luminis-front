@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MembresiaService } from 'app/shared/services/membresia.service';
 
-interface Product { 
+interface Product {
   img: string,
   name: string,
   description: string,
   price: string,
+}
+
+interface Membresia {
+  name: string,
+  description: string,
+  active: boolean,
+  cost: number,
+  membership_id: number,
+  membership_url: string
 }
 
 @Component({
@@ -13,31 +23,23 @@ interface Product {
   styleUrls: ['./landing-products-section.component.scss']
 })
 export class LandingProductsSectionComponent {
-  products: Product[] = [
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-    {
-      img: 'bg.webp',
-      name: 'Nombre de producto',
-      description: 'Descripción del producto. Lorem ipsum dolor sit amet. Consectetuer adipiscing elit, sed diam nonummy nibh. ',
-      price: '500 MXN',
-    },
-  ]
+  membresias: Membresia[];
 
+  constructor(
+  private membresiaService: MembresiaService
+  ) { }
+
+  ngOnInit(): void {
+    this.loadMembresias();
+  }
+
+  loadMembresias() {
+    this.membresiaService.fn_ObtenerLista().subscribe((res) => {
+      if (res.status == 200) {
+        this.membresias = res.body;
+      }
+    }, (err) => {
+
+    });
+  }
 }
