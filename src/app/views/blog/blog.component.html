@@ -4,7 +4,7 @@
       <div class="col-12 col-md-6">
         <div class="blog__header-txt">
           <h6>ENERO 18, 2022</h6>
-          <h1>Lorem ipsum dolor sit amet.</h1>
+          <h1>{{blog.title}}</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, cupiditate! Ratione corporis
             voluptatibus facilis culpa corrupti ex perspiciatis sed, quae est aut ullam distinctio fuga beatae
             reiciendis magni qui repellat?</p>
@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="container blog__post">
-    <h6>POR NOMBRE AUTOR </h6>
+    <h6>POR {{blog.author}}</h6>
     <h2>Lorem ipsum dolor sit amet.</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, cupiditate! Ratione corporis voluptatibus
       facilis culpa corrupti ex perspiciatis sed, quae est aut ullam distinctio fuga beatae reiciendis magni qui
@@ -35,5 +35,5 @@
       fugit labore nulla. Excepturi, dolores debitis! Minima omnis quidem, excepturi velit expedita numquam? Nisi
       distinctio odit blanditiis deleniti asperiores possimus pariatur laudantium eius!</p>
   </div>
-  <app-landing-entries-section></app-landing-entries-section>
+  <app-landing-entries-section [blogsort]="blogpages"></app-landing-entries-section>
 </div>

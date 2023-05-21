@@ -53,12 +53,12 @@ const routes: Routes = [
   },
   {
     path: 'blog',
-    component: BlogComponent,
+    component: BlogListComponent,
     canActivate: [ClientGuard]
   },
   {
-    path: 'blog-list',
-    component: BlogListComponent,
+    path: 'ver-blog/:id',
+    component: BlogComponent,
     canActivate: [ClientGuard]
   },
   {

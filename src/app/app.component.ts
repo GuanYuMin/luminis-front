@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {AlertsService} from "./shared/services/alerts.service";
+import { AlertsService } from "app/shared/services/alerts.service";
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,17 @@ import {AlertsService} from "./shared/services/alerts.service";
 export class AppComponent {
   title = 'luminis_client';
 
-  constructor(private modalService: NgbModal,private alerts: AlertsService) {}
+  constructor(private modalService: NgbModal, private alerts: AlertsService) { }
 
-  testSucc(){
+  testSucc() {
     this.alerts.successAlert('La compra fue exitosa');
   }
 
-  testWarning(){
+  testWarning() {
     this.alerts.warningAlert('Warning');
   }
 
-  testError(){
+  testError() {
     this.alerts.errorAlert('Error');
   }
 }
