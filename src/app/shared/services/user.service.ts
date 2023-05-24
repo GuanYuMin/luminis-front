@@ -16,7 +16,6 @@ export class UserService {
 
   fn_UpdateUser(user: any, id: string): Observable<any>{
     let headers = new HttpHeaders({
-      //'Content-Type': 'application/json',
       'Authorization': localStorage.getItem("token") });
     let options = { headers: headers };
     return this.http.put(environment.apiURL + 'user/update_user/' + id, user, options);
