@@ -10,34 +10,6 @@ import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model'
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model'
 
-/*interface Avatar {
-  img: string
-}*/
-
-/*const AVATARS: Avatar[] = [
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-  {
-    img: 'assets/img/bg.webp'
-  },
-]*/
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -50,8 +22,6 @@ export class ProfileComponent {
   profile: PerfilViewModel = {} as PerfilViewModel;
   photo: PhotoViewModel = {} as PhotoViewModel;
   avatars: PhotoViewModel[] = [];
-  new_avatar: PhotoViewModel = {} as PhotoViewModel;
-  //avatars = AVATARS;
 
   constructor(
     private loginService: LoginService,
@@ -145,16 +115,13 @@ export class ProfileComponent {
   }
 
   updateAvatar() {
-    console.log(this.profile);
     this.loading = true;
     this.userService.fn_UpdateUser(
        this.profile, localStorage.getItem("user_id")
     ).subscribe((res) => {
       this.loading = false;
-      /*this.profile = res.body;
-      this.getUserPhoto();*/
       console.log(res);
-
+      this.getUserData();
     }, (err) => {
       if (err.error.message) {
         this.showError("Cambiar avatar", err.error.message);
