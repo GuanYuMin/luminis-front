@@ -1,0 +1,149 @@
+@import "../../../../assets/scss/variables";
+
+.titulo-membresias {
+  .titulo-membresias__title-container {
+    background-color: $secondary-color-opacity;
+    width: 100%;
+    padding: 3rem;
+    height: auto;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+    }
+
+    >div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-right: 1rem;
+
+      @media screen and (min-width: $tablet) {
+        height: 30rem;
+      }
+
+      small {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 2.3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    .titulo-membresias__icon {
+      height: 15rem;
+      transform: rotate(-30deg);
+      margin: auto;
+    }
+  }
+}
+
+.membresias-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 4rem;
+
+  .membresias-list__card {
+    max-width: 13rem;
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    &:nth-child(odd) {
+      background-color: $third-color-opacity;
+    }
+
+    &:nth-child(even) {}
+  }
+}
+
+.membresias-detail {
+ /*  min-height: 20rem;
+
+  @media screen and (min-width: $tablet) {
+    min-height: 50rem;
+  } */
+
+  .col-12 {
+    min-height: 20rem;
+
+    @media screen and (min-width: $tablet) {
+      min-height: 50rem;
+    }
+
+    >div {
+      margin: auto;
+      width: 80%;
+      padding: 0 2rem;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      flex-direction: column;
+
+      @media screen and (min-width: $tablet-landscape) {
+        width: 60%;
+      }
+    }
+  }
+
+  .background-sky-blue-mutted {
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+      display: block;
+    }
+  }
+
+  &:not(.background-sky-blue) {
+    >div {
+      h1 {
+        color: black;
+      }
+
+      small {
+        color: black;
+      }
+
+      p {
+        color: black;
+      }
+
+      a {
+        max-width: 15rem;
+      }
+    }
+  }
+
+  .background-sky-blue {
+    >div {
+      h1 {
+        color: white;
+      }
+
+      small {
+        color: white;
+      }
+
+      p {
+        color: white;
+      }
+
+      a {
+        max-width: 15rem;
+      }
+    }
+  }
+}
