@@ -12,4 +12,8 @@ export class PhotoService {
   fn_GetPhoto(id: string): Observable<any>{
     return this.http.get(environment.apiURL + 'photo/photos/' + id, { observe: 'response' });
   }
+
+  fn_GetPhotos(): Observable<any>{
+    return this.http.get(environment.apiURL + 'photo/photos', { observe: 'response' });
+  }
 }

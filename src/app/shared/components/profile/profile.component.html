@@ -9,7 +9,7 @@
               <img loading="lazy" src="{{photo.photo_url}}" alt="" class="rounded-circle h-4 image-200" style="border: 1px solid #333333;">
               <div class="w-100 p-3 d-flex align-items-center justify-content-center">
                 <button (click)="openUpdatePhotoModal(updatephotocontent)" class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="width: auto;border:none;">
-                  Cambiar foto
+                  Cambiar avatar
                 </button>
               </div>
           </div>
@@ -105,12 +105,15 @@
 
 <ng-template #updatephotocontent let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Actualizar avatar</h4>
+		<h4 class="modal-title" id="modal-basic-title">Cambiar avatar</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
 		<div class="update-photo-modal__avatar-list">
-      <div class="update-photo-modal__img selected">
+      <div class="update-photo-modal__img" *ngFor="let a of avatars" [ngClass]="{'selected' : a.id === profile.photo_id }" (click)="profile.photo_id = a.id">
+        <img loading="lazy" src="{{a.photo_url}}" alt="" class="image-70">
+      </div>
+      <!--<div class="update-photo-modal__img selected">
         <img src="assets/img/bg.webp" alt="">
       </div>
       <div class="update-photo-modal__img">
@@ -124,11 +127,24 @@
       </div>
       <div class="update-photo-modal__img">
         <img src="assets/img/bg.webp" alt="">
-      </div>
+      </div>-->
     </div>
 	</div>
+  <div class="my-container">
+    <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+        <h4>Por favor espere...</h4>
+      </div>
+    </ng-template>
+
+    <ngx-loading
+      [show]="loading"
+      [config]="{ backdropBorderRadius: '3px' }"
+      [template]="customLoadingTemplate"
+    ></ngx-loading>
+  </div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+		<button type="button" class="btn btn-outline-dark" (click)="updateAvatar();">Guardar</button><!--modal.close('Save click')-->
 	</div>
 </ng-template>
 

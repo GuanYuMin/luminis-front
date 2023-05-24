@@ -10,11 +10,11 @@ import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model'
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model'
 
-interface Avatar {
+/*interface Avatar {
   img: string
-}
+}*/
 
-const AVATARS: Avatar[] = [
+/*const AVATARS: Avatar[] = [
   {
     img: 'assets/img/bg.webp'
   },
@@ -36,7 +36,7 @@ const AVATARS: Avatar[] = [
   {
     img: 'assets/img/bg.webp'
   },
-]
+]*/
 
 @Component({
   selector: 'app-profile',
@@ -47,9 +47,11 @@ export class ProfileComponent {
   logout_response: any;
   updatePasswordForm: FormGroup;
   public loading: boolean = false;
-  profile: PerfilViewModel;
-  photo: PhotoViewModel;
-  avatars = AVATARS
+  profile: PerfilViewModel = {} as PerfilViewModel;
+  photo: PhotoViewModel = {} as PhotoViewModel;
+  avatars: PhotoViewModel[] = [];
+  new_avatar: PhotoViewModel = {} as PhotoViewModel;
+  //avatars = AVATARS;
 
   constructor(
     private loginService: LoginService,
@@ -65,7 +67,6 @@ export class ProfileComponent {
     this.toastaConfig.position = 'top-right';
     this.createForms();
     this.getUserData();
-    this.getUserPhoto();
   }
 
   createForms() {
@@ -88,9 +89,9 @@ export class ProfileComponent {
     this.userService.fn_GetUser(
        localStorage.getItem("user_id")
     ).subscribe((res) => {
-      //this.loading = false;
-      console.log(res);
       this.profile = res.body;
+      console.log(res.body);
+      this.getUserPhoto();
     }, (err) => {
       if (err.error.message) {
         this.showError("Perfil", err.error.message);
@@ -104,7 +105,7 @@ export class ProfileComponent {
   getUserPhoto() {
     //this.loading = true;
     this.photoService.fn_GetPhoto(
-       localStorage.getItem("user_id")
+       String(this.profile.photo_id)
     ).subscribe((res) => {
       //this.loading = false;
       console.log(res);
@@ -120,14 +121,49 @@ export class ProfileComponent {
   }
 
   openUpdatePhotoModal(updatephotocontent: any) {
+    this.avatars = [];
+    this.profile.photo_id = this.photo.id;
     let ngbModalOptions: NgbModalOptions = {
           backdrop : 'static',
           keyboard : false,
           modalDialogClass: 'update-photo-modal'
     };
     this.modalService.open(updatephotocontent, ngbModalOptions);
+
+    this.loading = true;
+    this.photoService.fn_GetPhotos().subscribe((res) => {
+      this.loading = false;
+      this.avatars = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Cambiar avatar", err.error.message);
+      } else {
+        this.showError("Cambiar avatar", err.message);
+      }
+      this.loading = false;
+    });
   }
 
+  updateAvatar() {
+    console.log(this.profile);
+    this.loading = true;
+    this.userService.fn_UpdateUser(
+       this.profile, localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      this.loading = false;
+      /*this.profile = res.body;
+      this.getUserPhoto();*/
+      console.log(res);
+
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Cambiar avatar", err.error.message);
+      } else {
+        this.showError("Cambiar avatar", err.message);
+      }
+      this.loading = false;
+    });
+  }
 
   public userProfile = {
     name: "Jhon Wick",
