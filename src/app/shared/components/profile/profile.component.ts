@@ -10,6 +10,34 @@ import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model'
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model'
 
+interface Avatar {
+  img: string
+}
+
+const AVATARS: Avatar[] = [
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+  {
+    img: 'assets/img/bg.webp'
+  },
+]
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -21,6 +49,7 @@ export class ProfileComponent {
   public loading: boolean = false;
   profile: PerfilViewModel;
   photo: PhotoViewModel;
+  avatars = AVATARS
 
   constructor(
     private loginService: LoginService,
@@ -88,6 +117,15 @@ export class ProfileComponent {
       }
       //this.loading = false;
     });
+  }
+
+  openUpdatePhotoModal(updatephotocontent: any) {
+    let ngbModalOptions: NgbModalOptions = {
+          backdrop : 'static',
+          keyboard : false,
+          modalDialogClass: 'update-photo-modal'
+    };
+    this.modalService.open(updatephotocontent, ngbModalOptions);
   }
 
 

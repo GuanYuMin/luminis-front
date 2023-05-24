@@ -8,7 +8,7 @@
             <div class="profile__photo">
               <img loading="lazy" src="{{photo.photo_url}}" alt="" class="rounded-circle h-4 image-200" style="border: 1px solid #333333;">
               <div class="w-100 p-3 d-flex align-items-center justify-content-center">
-                <button class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="width: auto;border:none;">
+                <button (click)="openUpdatePhotoModal(updatephotocontent)" class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="width: auto;border:none;">
                   Cambiar foto
                 </button>
               </div>
@@ -102,6 +102,35 @@
   </div>
 </div>
 </div>
+
+<ng-template #updatephotocontent let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Actualizar avatar</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<div class="update-photo-modal__avatar-list">
+      <div class="update-photo-modal__img selected">
+        <img src="assets/img/bg.webp" alt="">
+      </div>
+      <div class="update-photo-modal__img">
+        <img src="assets/img/bg.webp" alt="">
+      </div>
+      <div class="update-photo-modal__img">
+        <img src="assets/img/bg.webp" alt="">
+      </div>
+      <div class="update-photo-modal__img">
+        <img src="assets/img/bg.webp" alt="">
+      </div>
+      <div class="update-photo-modal__img">
+        <img src="assets/img/bg.webp" alt="">
+      </div>
+    </div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+	</div>
+</ng-template>
 
 <ng-template #updatepasswordcontent let-modal>
   <div class="modal-header">
