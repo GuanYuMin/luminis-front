@@ -7,6 +7,7 @@
     img{
       height: 100%;
       width: 100%;
+      object-fit: cover;
     }
   }
   .product-name {
@@ -16,5 +17,8 @@
   }
   .product-description {
     font-family: 'Montserrat';
+  }
+  .product-price{
+    cursor: pointer;
   }
 }

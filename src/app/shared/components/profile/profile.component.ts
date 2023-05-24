@@ -19,8 +19,9 @@ export class ProfileComponent {
   logout_response: any;
   updatePasswordForm: FormGroup;
   public loading: boolean = false;
-  profile: PerfilViewModel;
-  photo: PhotoViewModel;
+  profile: PerfilViewModel = {} as PerfilViewModel;
+  photo: PhotoViewModel = {} as PhotoViewModel;
+  avatars: PhotoViewModel[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -36,7 +37,6 @@ export class ProfileComponent {
     this.toastaConfig.position = 'top-right';
     this.createForms();
     this.getUserData();
-    this.getUserPhoto();
   }
 
   createForms() {
@@ -59,9 +59,9 @@ export class ProfileComponent {
     this.userService.fn_GetUser(
        localStorage.getItem("user_id")
     ).subscribe((res) => {
-      //this.loading = false;
-      console.log(res);
       this.profile = res.body;
+      console.log(res.body);
+      this.getUserPhoto();
     }, (err) => {
       if (err.error.message) {
         this.showError("Perfil", err.error.message);
@@ -75,7 +75,7 @@ export class ProfileComponent {
   getUserPhoto() {
     //this.loading = true;
     this.photoService.fn_GetPhoto(
-       localStorage.getItem("user_id")
+       String(this.profile.photo_id)
     ).subscribe((res) => {
       //this.loading = false;
       console.log(res);
@@ -90,6 +90,47 @@ export class ProfileComponent {
     });
   }
 
+  openUpdatePhotoModal(updatephotocontent: any) {
+    this.avatars = [];
+    this.profile.photo_id = this.photo.id;
+    let ngbModalOptions: NgbModalOptions = {
+          backdrop : 'static',
+          keyboard : false,
+          modalDialogClass: 'update-photo-modal'
+    };
+    this.modalService.open(updatephotocontent, ngbModalOptions);
+
+    this.loading = true;
+    this.photoService.fn_GetPhotos().subscribe((res) => {
+      this.loading = false;
+      this.avatars = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Cambiar avatar", err.error.message);
+      } else {
+        this.showError("Cambiar avatar", err.message);
+      }
+      this.loading = false;
+    });
+  }
+
+  updateAvatar() {
+    this.loading = true;
+    this.userService.fn_UpdateUser(
+       this.profile, localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      this.loading = false;
+      console.log(res);
+      this.getUserData();
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Cambiar avatar", err.error.message);
+      } else {
+        this.showError("Cambiar avatar", err.message);
+      }
+      this.loading = false;
+    });
+  }
 
   public userProfile = {
     name: "Jhon Wick",

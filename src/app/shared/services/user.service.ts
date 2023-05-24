@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,10 @@ export class UserService {
   }
 
   fn_UpdateUser(user: any, id: string): Observable<any>{
-    return this.http.put(environment.apiURL + 'user/update_user/' + id, user);
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.put(environment.apiURL + 'user/update_user/' + id, user, options);
   }
 
   fn_RecoverPassword(email: string): Observable<any>{
