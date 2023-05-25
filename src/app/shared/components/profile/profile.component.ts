@@ -120,8 +120,9 @@ export class ProfileComponent {
        this.profile, localStorage.getItem("user_id")
     ).subscribe((res) => {
       this.loading = false;
-      console.log(res);
+      this.modalService.dismissAll();
       this.getUserData();
+      this.showSuccess("Cambiar avatar", res.message);
     }, (err) => {
       if (err.error.message) {
         this.showError("Cambiar avatar", err.error.message);
