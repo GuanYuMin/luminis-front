@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -7,6 +10,7 @@ import * as moment from 'moment';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+
   public userProfile = {
     name: "Jhon Wick",
     birthDate: moment().subtract(18, 'years').toDate(),
@@ -55,5 +59,11 @@ export class ProfileComponent {
       id: 2
     }
   ]
+
+  constructor(private modalService: NgbModal) {}
+
+  openUserInfoModal(userinfo: any) {
+		this.modalService.open(userinfo)
+	}
 
 }
