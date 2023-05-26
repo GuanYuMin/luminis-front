@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="col-lg-6 col-sm-12 d-flex align-items-center flex-column py-3 justify-content-center">
-      <button class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="border:none;">
+      <button (click)="openUserInfoModal(userinfo)" class="rounded-large-primary-button py-2 px-3 font-weight-cliff-bold" style="border:none;">
         Editar Información
       </button>
       <button (click)="openUpdatePasswordModal(updatepasswordcontent)" class="rounded-large-secondary-button py-2 px-3 mt-2 font-weight-cliff-bold" style="border:none;">
@@ -184,5 +184,59 @@
   </div>
   <div class="modal-footer d-flex justify-content-center">
     <button type="button" [disabled]="updatePasswordForm.pristine || updatePasswordForm.invalid" class="btn btn-outline-dark" (click)="doUpdatePassword(password.value)">Enviar</button>
+  </div>
+</ng-template>
+
+<ng-template #userinfo let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Información</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="formGroupExampleInput" class="form-label">Correo</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="formGroupExampleInput" class="form-label">Nombre(s)</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-6">
+          <label for="formGroupExampleInput2" class="form-label">Apellido Paterno</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="formGroupExampleInput2" class="form-label">Apellido Materno</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="formGroupExampleInput" class="form-label">Fecha de nacimiento</label>
+          <div class="input-group">
+            <input class="form-control" [minDate]="{year: 1920, month: 1, day: 1}" [maxDate]="{year: 2005, month: 1, day: 1}" [startDate]="{year: 2005, month: 1}" placeholder="yyyy-mm-dd" name="dp" [displayMonths]="1" [navigation]="'select'"
+              [showWeekNumbers]="false" [outsideDays]="'visible'" ngbDatepicker #d="ngbDatepicker" />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
+              <i-feather name="calendar" class="feather-icons"></i-feather>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <label for="formGroupExampleInput" class="form-label">Teléfono</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark">Guardar</button>
   </div>
 </ng-template>

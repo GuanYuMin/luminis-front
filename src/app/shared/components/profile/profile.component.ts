@@ -31,7 +31,7 @@ export class ProfileComponent {
     private toastaService: ToastaService,
     private toastaConfig: ToastaConfig,
     private userService: UserService,
-    private photoService: PhotoService
+    private photoService: PhotoService,
   ) {
     this.toastaConfig.theme = 'bootstrap';
     this.toastaConfig.position = 'top-right';
@@ -234,5 +234,9 @@ export class ProfileComponent {
           theme: 'bootstrap'
       };
       this.toastaService.success(toastOptions);
+  }
+
+  openUserInfoModal(userinfo: any) {
+    this.modalService.open(userinfo)
   }
 }
