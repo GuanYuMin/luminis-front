@@ -12,6 +12,7 @@ export class PerfilViewModel {
     role_id: number = 0;
     updated_at: string = "";
     username: string = "";
+    password: string = "";
     constructor(){
 
     }

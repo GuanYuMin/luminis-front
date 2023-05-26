@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 import { ToastaModule } from 'ngx-toasta';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -104,7 +104,7 @@ import { BlogListComponent } from './views/blog-list/blog-list.component';
     ToastaModule.forRoot(),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
