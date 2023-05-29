@@ -83,4 +83,26 @@ export class AlertsService {
             this.router.navigate([link])
         });
     }
+
+    errorLostSession() {
+      return Alert.fire({
+        icon: "error",
+        title: "Sesión expirada",
+        text: "Su sesión ha expirado.",
+        showCancelButton: false,
+        showConfirmButton: true,
+        confirmButtonText: "Aceptar",
+        customClass:{
+          confirmButton: 'btn btn-danger',
+          popup: 'custom-alerts',
+        },
+        buttonsStyling: false,
+        allowOutsideClick: false
+      }).then((result) => {
+          this.router.navigate(['/home'])
+          .then(() => {
+            window.location.reload();
+          });
+      });
+    }
 }

@@ -69,6 +69,23 @@
         </div>
       </div>
       <div class="row mb-3">
+        <div class="col-12">
+          <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="fecha_nacimiento" id="fecha_nacimiento" [minDate]="{year: 1920, month: 1, day: 1}" [maxDate]="{year: 2005, month: 1, day: 1}" [startDate]="{year: 2005, month: 1}" placeholder="dd/mm/yyyy" name="dp" [displayMonths]="1" [navigation]="'select'"
+                   [showWeekNumbers]="false" [outsideDays]="'visible'" ngbDatepicker #d="ngbDatepicker" #fecha_nacimiento readonly />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
+              <i-feather name="calendar" class="feather-icons"></i-feather>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['fecha_nacimiento'].invalid && (registerForm.controls['fecha_nacimiento'].dirty || registerForm.controls['fecha_nacimiento'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['fecha_nacimiento'].errors?.['required']">
+          Fecha de nacimiento requerida.
+        </div>
+      </div>
+      <div class="row mb-3">
         <div class="col">
           <label for="telefono" class="form-label">Teléfono</label>
           <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono maxlength="10">
@@ -139,6 +156,6 @@
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
+    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, fecha_nacimiento.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
   </div>
 </ng-template>

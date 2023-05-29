@@ -21,8 +21,15 @@ export class UserService {
     return this.http.put(environment.apiURL + 'user/update_user/' + id, user, options);
   }
 
-  fn_RecoverPassword(email: string): Observable<any>{
-    return this.http.post(environment.apiURL + 'user/recovery_password?email=' + email, null, { observe: 'response' });
+  fn_ChangePassword(user: any, id: string): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.put(environment.apiURL + 'user/update_user_pwd/' + id, user, options);
+  }
+
+  fn_RecoverPassword(email: any): Observable<any>{
+    return this.http.post(environment.apiURL + 'user/recovery_password', email, { observe: 'response' });
   }
 
   fn_GetUser(id: string): Observable<any>{
