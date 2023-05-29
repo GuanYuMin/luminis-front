@@ -10,6 +10,7 @@ import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model';
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
 import { DatePipe } from '@angular/common';
+import { AlertsService } from "app/shared/services/alerts.service";
 
 @Component({
   selector: 'app-profile',
@@ -34,7 +35,8 @@ export class ProfileComponent {
     private toastaConfig: ToastaConfig,
     private userService: UserService,
     private photoService: PhotoService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private alerts: AlertsService
   ) {
     this.toastaConfig.theme = 'bootstrap';
     this.toastaConfig.position = 'top-right';
@@ -53,7 +55,7 @@ export class ProfileComponent {
       nombres: ['', [Validators.required, Validators.minLength(2)]],
       apellidos: ['', [Validators.required, Validators.minLength(2)]],
       telefono: ['', [Validators.required, Validators.minLength(10)]],
-      fecha_nacimiento: ['', [Validators.required]]
+      fecha_nacimiento: ['', []]
        /*nombre_usuario: ['', [Validators.required, Validators.minLength(2)]],*/
 
 
@@ -222,8 +224,30 @@ export class ProfileComponent {
   }
 
   doUpdatePassword(password: string) {
-    this.modalService.dismissAll();
-    this.showSuccess("Actualizar contraseña", "Contraseña actualizada.");
+    this.loading = true;
+    this.userService.fn_ChangePassword(
+        {
+          email: this.profile.email,
+          password: password
+        }, localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      this.loading = false;
+      this.modalService.dismissAll();
+      this.showSuccess("Actualizar contraseña", res.message);
+    }, (err) => {
+      if (err.status && err.status === 401) {
+        this.modalService.dismissAll();
+        localStorage.clear();
+        this.alerts.errorLostSession();
+      } else {
+        if (err.error.message) {
+          this.showError("Actualizar contraseña", err.error.message);
+        } else {
+          this.showError("Actualizar contraseña", err.message);
+        }
+      }
+      this.loading = false;
+    });
   }
 
   showError(title: string, message: string) {
@@ -258,13 +282,15 @@ export class ProfileComponent {
   }
 
   loadData() {
+    console.log(this.profile);
     this.updateDataForm.patchValue({ email: this.profile.email });
     let n = this.profile.name + ' ' + this.profile.midlename;
     this.updateDataForm.patchValue({ nombres: n.trim() });
     this.updateDataForm.patchValue({ apellidos: this.profile.lastname });
     this.updateDataForm.patchValue({ telefono: this.profile.phone });
-    var d = new Date(this.profile.birthdate);
+    var d = new Date(this.profile.birthdate.split('/')[2] + "-" + this.profile.birthdate.split('/')[1] + "-" + this.profile.birthdate.split('/')[0]);
     d.setDate(d.getDate() + 1);
+    console.log(d);
     const birthYear =  Number(this.datePipe.transform(d, 'yyyy'));
     const birthMonth =  Number(this.datePipe.transform(d, 'MM'));
     const birthDay =  Number(this.datePipe.transform(d, 'dd'));
@@ -286,17 +312,16 @@ export class ProfileComponent {
     }
     this.userService.fn_UpdateUser(
        {
-        email: email,
-        password: this.profile.password,
-        username: this.profile.username,
-        name: n[0],
-        midlename: mn.trim(),
-        lastname: apellidos,
-        birthdate: fecha_nacimiento,
-        phone: telefono,
-        role_id: this.profile.role_id,
-        photo_id: this.profile.photo_id,
-        is_activate: this.profile.is_activate
+          email: email,
+          username: this.profile.username,
+          name: n[0],
+          midlename: mn.trim(),
+          lastname: apellidos,
+          birthdate: fecha_nacimiento.split("-")[2] + "/" + fecha_nacimiento.split("-")[1] + "/" + fecha_nacimiento.split("-")[0],
+          phone: telefono,
+          role_id: this.profile.role_id,
+          photo_id: this.profile.photo_id,
+          is_activate: this.profile.is_activate
         }, localStorage.getItem("user_id")
     ).subscribe((res) => {
       this.loading = false;
@@ -304,10 +329,16 @@ export class ProfileComponent {
       this.getUserData();
       this.showSuccess("Editar Información", res.message);
     }, (err) => {
-      if (err.error.message) {
-        this.showError("Editar Información", err.error.message);
+      if (err.status && err.status === 401) {
+        this.modalService.dismissAll();
+        localStorage.clear();
+        this.alerts.errorLostSession();
       } else {
-        this.showError("Editar Información", err.message);
+        if (err.error.message) {
+          this.showError("Editar Información", err.error.message);
+        } else {
+          this.showError("Editar Información", err.message);
+        }
       }
       this.loading = false;
     });

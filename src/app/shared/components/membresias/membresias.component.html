@@ -108,7 +108,7 @@
   </div>
 </div>
 
-<!-- 
+<!--
 <div class="d-flex mt-5" style="height: 80vh;">
   <div
     class="col-sm-12 col-lg-6 text-white background-sky-blue d-flex align-items-start p-5 justify-content-center h-100 flex-column">
@@ -164,7 +164,7 @@
     </div>
   </div>
 </div> -->
-<!-- 
+<!--
 <div class="d-flex" style="height: 80vh;">
   <div
     class="col-sm-12 col-lg-6 text-white background-sky-blue d-flex align-items-start p-5 justify-content-center h-100 flex-column">
@@ -326,12 +326,9 @@
     <form [formGroup]="registerForm" autocomplete="off" novalidate>
       <div class="mb-3">
         <label for="nombres" class="form-label">Nombre(s)</label>
-        <input type="text" class="form-control" formControlName="nombres" id="nombres" placeholder="" #nombres
-          maxlength="255">
+        <input type="text" class="form-control" formControlName="nombres" id="nombres" placeholder="" #nombres maxlength="255">
       </div>
-      <div
-        *ngIf="registerForm.controls['nombres'].invalid && (registerForm.controls['nombres'].dirty || registerForm.controls['nombres'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['nombres'].invalid && (registerForm.controls['nombres'].dirty || registerForm.controls['nombres'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['nombres'].errors?.['required']">
           Nombre(s) requerido.
         </div>
@@ -341,12 +338,9 @@
       </div>
       <div class="mb-3">
         <label for="apellidos" class="form-label">Apellido(s)</label>
-        <input type="text" class="form-control" formControlName="apellidos" id="apellidos" placeholder="" #apellidos
-          maxlength="255">
+        <input type="text" class="form-control" formControlName="apellidos" id="apellidos" placeholder="" #apellidos maxlength="255">
       </div>
-      <div
-        *ngIf="registerForm.controls['apellidos'].invalid && (registerForm.controls['apellidos'].dirty || registerForm.controls['apellidos'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['apellidos'].invalid && (registerForm.controls['apellidos'].dirty || registerForm.controls['apellidos'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['apellidos'].errors?.['required']">
           Apellido(s) requerido.
         </div>
@@ -356,12 +350,9 @@
       </div>
       <div class="mb-3">
         <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-        <input type="text" class="form-control" formControlName="nombre_usuario" id="nombre_usuario" placeholder=""
-          #nombre_usuario maxlength="255">
+        <input type="text" class="form-control" formControlName="nombre_usuario" id="nombre_usuario" placeholder="" #nombre_usuario maxlength="255">
       </div>
-      <div
-        *ngIf="registerForm.controls['nombre_usuario'].invalid && (registerForm.controls['nombre_usuario'].dirty || registerForm.controls['nombre_usuario'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['nombre_usuario'].invalid && (registerForm.controls['nombre_usuario'].dirty || registerForm.controls['nombre_usuario'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['nombre_usuario'].errors?.['required']">
           Nombre de usuario requerido.
         </div>
@@ -370,20 +361,33 @@
         </div>
       </div>
       <div class="row mb-3">
+        <div class="col-12">
+          <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="fecha_nacimiento" id="fecha_nacimiento" [minDate]="{year: 1920, month: 1, day: 1}" [maxDate]="{year: 2005, month: 1, day: 1}" [startDate]="{year: 2005, month: 1}" placeholder="dd/mm/yyyy" name="dp" [displayMonths]="1" [navigation]="'select'"
+                   [showWeekNumbers]="false" [outsideDays]="'visible'" ngbDatepicker #d="ngbDatepicker" #fecha_nacimiento readonly />
+            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
+              <i-feather name="calendar" class="feather-icons"></i-feather>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="registerForm.controls['fecha_nacimiento'].invalid && (registerForm.controls['fecha_nacimiento'].dirty || registerForm.controls['fecha_nacimiento'].touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.controls['fecha_nacimiento'].errors?.['required']">
+          Fecha de nacimiento requerida.
+        </div>
+      </div>
+      <div class="row mb-3">
         <div class="col">
           <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono
-            maxlength="10">
+          <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono maxlength="10">
         </div>
         <div class="col">
           <label for="email_registro" class="form-label">Correo</label>
-          <input type="email" class="form-control" formControlName="email_registro" id="email_registro" placeholder=""
-            #email_registro maxlength="255">
+          <input type="email" class="form-control" formControlName="email_registro" id="email_registro" placeholder="" #email_registro maxlength="255">
         </div>
       </div>
-      <div
-        *ngIf="registerForm.controls['telefono'].invalid && (registerForm.controls['telefono'].dirty || registerForm.controls['telefono'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['telefono'].invalid && (registerForm.controls['telefono'].dirty || registerForm.controls['telefono'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['telefono'].errors?.['required']">
           Teléfono es requerido.
         </div>
@@ -391,9 +395,7 @@
           Teléfono inválido.
         </div>
       </div>
-      <div
-        *ngIf="registerForm.controls['email_registro'].invalid && (registerForm.controls['email_registro'].dirty || registerForm.controls['email_registro'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['email_registro'].invalid && (registerForm.controls['email_registro'].dirty || registerForm.controls['email_registro'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['email_registro'].errors?.['required']">
           Correo es requerido.
         </div>
@@ -404,18 +406,14 @@
       <div class="row mb-3">
         <div class="col">
           <label for="password_registro" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" formControlName="password_registro" id="password_registro"
-            placeholder="" #password_registro maxlength="50">
+          <input type="password" class="form-control" formControlName="password_registro" id="password_registro" placeholder="" #password_registro maxlength="50">
         </div>
         <div class="col">
           <label for="password_registro2" class="form-label">Confirme contraseña</label>
-          <input type="password" class="form-control" formControlName="password_registro2" id="password_registro2"
-            placeholder="" #password_registro2 maxlength="50">
+          <input type="password" class="form-control" formControlName="password_registro2" id="password_registro2" placeholder="" #password_registro2 maxlength="50">
         </div>
       </div>
-      <div
-        *ngIf="registerForm.controls['password_registro'].invalid && (registerForm.controls['password_registro'].dirty || registerForm.controls['password_registro'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['password_registro'].invalid && (registerForm.controls['password_registro'].dirty || registerForm.controls['password_registro'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['password_registro'].errors?.['required']">
           Contraseña es requerida.
         </div>
@@ -423,14 +421,11 @@
           Contraseña inválida.
         </div>
       </div>
-      <div
-        *ngIf="registerForm.controls['password_registro2'].invalid && (registerForm.controls['password_registro2'].dirty || registerForm.controls['password_registro2'].touched)"
-        class="alert alert-danger">
+      <div *ngIf="registerForm.controls['password_registro2'].invalid && (registerForm.controls['password_registro2'].dirty || registerForm.controls['password_registro2'].touched)" class="alert alert-danger">
         <div *ngIf="registerForm.controls['password_registro2'].errors?.['required']">
           Debe confirmar su contraseña.
         </div>
-        <div
-          *ngIf="registerForm.controls['password_registro2'].invalid && password_registro2.value.length > 0 && !registerForm.get('password_registro2').hasError('isSame')">
+        <div *ngIf="registerForm.controls['password_registro2'].invalid && password_registro2.value.length > 0 && !registerForm.get('password_registro2').hasError('isSame')">
           Confirmación de contraseña inválida.
         </div>
         <div *ngIf="registerForm.get('password_registro2').hasError('isSame') && password_registro2.value.length > 0">
@@ -445,12 +440,14 @@
         </div>
       </ng-template>
 
-      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
-      </ngx-loading>
+      <ngx-loading
+        [show]="loading"
+        [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"
+      ></ngx-loading>
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid"
-      (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
+    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, fecha_nacimiento.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
   </div>
 </ng-template>

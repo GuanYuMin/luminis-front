@@ -32,6 +32,7 @@ export class LandingThirdSectionComponent implements OnInit {
          nombres: ['', [Validators.required, Validators.minLength(2)]],
          apellidos: ['', [Validators.required, Validators.minLength(2)]],
          nombre_usuario: ['', [Validators.required, Validators.minLength(2)]],
+         fecha_nacimiento: ['', [Validators.required]],
          telefono: ['', [Validators.required, Validators.minLength(10)]],
          email_registro: ['', [Validators.required, Validators.email]],
          password_registro: ['', [Validators.required, Validators.minLength(12)]],
@@ -62,16 +63,23 @@ export class LandingThirdSectionComponent implements OnInit {
     this.modalService.open(registercontent, ngbModalOptions);
   }
 
-  doRegister(nombres: string, apellidos: string, nombre_usuario: string, telefono: string, email: string, password: string, password2: string) {
+  doRegister(nombres: string, apellidos: string, nombre_usuario: string, fecha_nacimiento: string, telefono: string, email: string, password: string, password2: string) {
+    var n = nombres.split(" ");
+    var mn = "";
+    if (n.length > 1) {
+      for (var x = 1; x < n.length; x++) {
+        mn = mn + " " + n[x];
+      }
+    }
     this.loading = true;
     this.userService.fn_CreateUser({
         email: email,
         password: password,
         username: nombre_usuario,
-        name: nombres,
-        midlename: "",
+        name: n[0],
+        midlename: mn.trim(),
         lastname: apellidos,
-        birthdate: "1984-11-27T16:09:01.057Z",
+        birthdate: fecha_nacimiento.split("-")[2] + "/" + fecha_nacimiento.split("-")[1] + "/" + fecha_nacimiento.split("-")[0],
         phone: telefono,
         role_id: 2,
         photo_id: 1
