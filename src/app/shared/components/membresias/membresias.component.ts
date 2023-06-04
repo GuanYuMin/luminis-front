@@ -17,6 +17,7 @@ import { MembresiaViewModel } from 'app/shared/models/viewmodels/membresia.model
 export class MembresiasComponent implements OnInit {
   @ViewChild('logincontent') logincontent : TemplateRef<any>;
   membresias: MembresiaViewModel[];
+  temp: MembresiaViewModel[] = [];
   htmlMembresias: SafeHtml;
   tempHtml: string = '';
   flag: boolean = true;
@@ -83,7 +84,12 @@ export class MembresiasComponent implements OnInit {
   loadMembresias() {
     this.membresiaService.fn_ObtenerLista().subscribe((res) => {
       if (res.status == 200) {
-        this.membresias = res.body;
+        res.body.forEach((item) =>{
+          if (item.active == true) {
+            this.temp.push(item);
+          }
+        });
+        this.membresias = this.temp;
       }
     }, (err) => {
 
