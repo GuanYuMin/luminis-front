@@ -35,4 +35,18 @@ export class UserService {
   fn_GetUser(id: string): Observable<any>{
     return this.http.get(environment.apiURL + 'user/get_user/' + id, { observe: 'response' });
   }
+
+  fn_GetUserTransactions(): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.get(environment.apiURL + 'user/get_user_transactions', options);
+  }
+
+  fn_GetUserMemberships(): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.get(environment.apiURL + 'user/get_user_memberships', options);
+  }
 }
