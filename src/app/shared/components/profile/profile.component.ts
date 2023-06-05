@@ -9,6 +9,8 @@ import { UserService } from 'app/shared/services/user.service';
 import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model';
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
+import { PaymentViewModel } from 'app/shared/models/viewmodels/payment.model';
+import { UserMembershipViewModel } from 'app/shared/models/viewmodels/membresia_usuario.model';
 import { DatePipe } from '@angular/common';
 import { AlertsService } from "app/shared/services/alerts.service";
 
@@ -25,6 +27,8 @@ export class ProfileComponent {
   profile: PerfilViewModel = {} as PerfilViewModel;
   photo: PhotoViewModel = {} as PhotoViewModel;
   avatars: PhotoViewModel[] = [];
+  paymentsHistory: PaymentViewModel[] = [];
+  membresias: UserMembershipViewModel[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -42,6 +46,8 @@ export class ProfileComponent {
     this.toastaConfig.position = 'top-right';
     this.createForms();
     this.getUserData();
+    this.getUserTransactions();
+    this.getUserMemberships();
   }
 
   createForms() {
@@ -147,41 +153,13 @@ export class ProfileComponent {
     });
   }
 
-  /*public userProfile = {
-    name: "Jhon Wick",
-    birthDate: moment().subtract(18, 'years').toDate(),
-    email: "jhonwick@luminis.mx",
-    phone: "5512988827"
-  }*/
-
-  public membresias = [{
+  public membresias2 = [{
     name: 'Membresía Psicólogos',
     period: "anual",
     since: moment().subtract(3, 'months').toDate(),
     nextBill: moment().add(1, 'month').toDate(),
     id: 1
   }];
-
-  public paymentsHistory = [
-    {
-      item: 'Membresía Psicólogos',
-      date: moment().subtract(1, 'month').toDate(),
-      ammount: 1000,
-      id: 1
-    },
-    {
-      item: 'Membresía Psicólogos',
-      date: moment().subtract(2, 'month').toDate(),
-      ammount: 1000,
-      id: 2
-    },
-    {
-      item: 'Membresía Psicólogos',
-      date: moment().subtract(3, 'month').toDate(),
-      ammount: 1000,
-      id: 3
-    }
-  ];
 
   public preguntas = [
     {
@@ -341,6 +319,37 @@ export class ProfileComponent {
         }
       }
       this.loading = false;
+    });
+  }
+
+  getUserTransactions() {
+    //this.loading = true;
+    this.paymentsHistory = [];
+    this.userService.fn_GetUserTransactions().subscribe((res) => {
+      this.paymentsHistory = res;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Transacciones", err.error.message);
+      } else {
+        this.showError("Transacciones", err.message);
+      }
+      //this.loading = false;
+    });
+  }
+
+  getUserMemberships() {
+    //this.loading = true;
+    this.paymentsHistory = [];
+    this.userService.fn_GetUserMemberships().subscribe((res) => {
+      console.log(res);
+      this.membresias = res;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Membresías", err.error.message);
+      } else {
+        this.showError("Membresías", err.message);
+      }
+      //this.loading = false;
     });
   }
 }
