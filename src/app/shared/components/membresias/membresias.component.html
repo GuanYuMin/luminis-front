@@ -10,8 +10,7 @@
             ¡Una membresía específica para ti!
           </h3>
           <p>
-            Vel illum dolore eu feugiat nulla facilisis at
-            vero eros et accumsan et iusto.
+            Tenemos increíbles talleres y herramientas para tí. Revisa nuestras diferentes membresías y conoce los beneficios.
           </p>
         </div>
       </div>
@@ -23,13 +22,17 @@
 <div class="container">
   <div class="membresias-list">
     <div class="membresias-list__card" *ngFor="let membresia of membresias;">
-      <h4 class="mb-3">{{membresia.name}}</h4>
-      <p>{{membresia.description}}</p>
-      <h5 class="bold mb-4">${{membresia.cost}} MXN</h5>
-      <button (click)="doPurchase(membresia.membership_id)" class="background-blue rounded-pill p-2 text-white"
+      <div>
+        <h4 class="mb-3">{{membresia.name}}</h4>
+        <p>{{membresia.description}}</p>
+      </div>
+      <div>
+        <h5 class="bold mb-4">${{membresia.cost}} MXN</h5>
+        <button (click)="doPurchase(membresia.membership_id)" class="background-sky-blue rounded-pill px-3 py-2 text-white"
         style="border:none;">
         ADQUIRIR
       </button>
+    </div>
     </div>
   </div>
 </div>

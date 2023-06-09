@@ -21,8 +21,8 @@
   }
 
   .menu__logo{
-    width: 4rem;
     height: 4rem;
+    object-fit: contain;
   }
   .menu__links{
     display: flex;

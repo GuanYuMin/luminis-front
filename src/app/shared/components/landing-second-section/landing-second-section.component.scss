@@ -1,10 +1,15 @@
 @import '../../../../assets/scss/variables';
 
 .conoce-mas{
-    padding: 5rem 0;
+
+    h1{
+        font-family: $regular;
+    }
 
     .conoce-mas__img-col{
         margin-top: 5rem;
+        background-color: $primary-color-opacity;
+        padding: 2rem;
 
         @media screen and (min-width: $tablet-landscape) {
             margin-top: 0;
