@@ -49,17 +49,22 @@
 .membresias-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   margin-bottom: 4rem;
-
+  justify-content: center;
+  
+  @media screen and (min-width: $tablet) {
+    justify-content: space-between;
+  }
+  
   .membresias-list__card {
-    max-width: 12rem;
+    max-width: 20rem;
     margin: 1rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 20rem;
+    height: 25rem;
+    box-shadow: 10px 15px 22px -7px rgba(145, 145, 145, 0.7);
 
     &:nth-child(odd) {
       background-color: $third-color-opacity;
@@ -68,11 +73,11 @@
     &:nth-child(even) {}
 
     p{
-      font-size: 0.8rem;
+      font-size: 1.2rem;
     }
 
     h5{
-      font-size: 1rem;
+      font-size: 2rem;
     }
 
     button{
@@ -106,6 +111,18 @@
 
       @media screen and (min-width: $tablet-landscape) {
         width: 60%;
+      }
+    }
+    .membresia-img{
+      width: 70%;
+      max-width: 30rem;
+      margin: auto;
+      display: block;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
   }
