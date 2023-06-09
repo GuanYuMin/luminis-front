@@ -1,19 +1,58 @@
-<div class="container my-5 px-3">
-  <div class="row">
-    <h1 class="mb-5 ">Formación</h1>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5" *ngFor="let course of courses">
-      <div *ngIf="course.active" class="product-card">
-        <div class="product-img">
-          <img src="{{course.image}}" alt="">
+<div class="formacion">
+  <div class="container">
+    <div class="row">
+      <h1 class="mb-5 ">Formación</h1>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="assets/img/fer-anapau.png" alt="">
+          </div>
+          <div class="product-body">
+            <div class="product-name">
+              Ada Luz
+            </div>
+            <div class="product-description">
+              Disfruta de ver crecer a sus nietos y sigue descubriendo la vida a través de los niños y adolescentes. Se
+              inquieta ante la tendencia al individualismo y el desapego. Mantiene la esperanza en el ser humano y su
+              capacidad de hacer historia a través de los vínculos.
+            </div>
+          </div>
         </div>
-        <div class="product-name p-3">
-          {{course.name}}
-        </div>
-        <div class="product-description px-3 py-1">
-          {{course.description}}
       </div>
-    </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="assets/img/fer-anapau2.png" alt="">
+          </div>
+          <div class="product-body">
+            <div class="product-name">
+              Ana Paula
+            </div>
+            <div class="product-description">
+              Se ha reencontrado con la naturaleza y con su profesión de psicóloga, mientras navega una nueva aventura
+              con su familia mixta, su esposo y 4 hijos cada uno en una etapa distinta de la vida (adulto joven,
+              adolescente, pre adolescente y niña)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4 mb-5">
+        <div class="product-card">
+          <div class="product-img">
+            <img src="assets/img/fer-anapau3.png" alt="">
+          </div>
+          <div class="product-body">
+            <div class="product-name">
+              Fernanda
+            </div>
+            <div class="product-description">
+              Fer ha pasado 36 años aprendiendo a vivir, buscando sentido a la vida y encontrando su propósito en
+              pequeños lugares inesperados. Trabaja tranquilamente desde su casa en San Miguel de Allende disfrutando de
+              la compañía de su novio, su cuñado y sus 4 perros.
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

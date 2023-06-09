@@ -2,7 +2,7 @@
 
 .nuestra-mision {
   padding: 5rem 2rem;
-  background-color: rgba(17, 138, 178, 0.3);
+  background-color: $third-color;
   min-height: 40rem;
 
   .nuestra-mision__block-title {
@@ -35,6 +35,7 @@
     }
     
   p {
-    font-size: 2rem;
+    text-align: center;
+    font-size: 3rem;
   }
 }

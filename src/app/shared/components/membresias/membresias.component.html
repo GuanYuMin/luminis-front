@@ -10,8 +10,7 @@
             ¡Una membresía específica para ti!
           </h3>
           <p>
-            Vel illum dolore eu feugiat nulla facilisis at
-            vero eros et accumsan et iusto.
+            Tenemos increíbles talleres y herramientas para tí. Revisa nuestras diferentes membresías y conoce los beneficios.
           </p>
         </div>
       </div>
@@ -23,13 +22,17 @@
 <div class="container">
   <div class="membresias-list">
     <div class="membresias-list__card" *ngFor="let membresia of membresias;">
-      <h4 class="mb-3">{{membresia.name}}</h4>
-      <p>{{membresia.description}}</p>
-      <h5 class="bold mb-4">${{membresia.cost}} MXN</h5>
-      <button (click)="doPurchase(membresia.membership_id)" class="background-blue rounded-pill p-2 text-white"
+      <div>
+        <h4 class="mb-3">{{membresia.name}}</h4>
+        <p>{{membresia.description}}</p>
+      </div>
+      <div>
+        <h5 class="bold mb-4">${{membresia.cost}} MXN</h5>
+        <button (click)="doPurchase(membresia.membership_id)" class="background-sky-blue rounded-pill px-3 py-2 text-white"
         style="border:none;">
         ADQUIRIR
       </button>
+    </div>
     </div>
   </div>
 </div>
@@ -42,27 +45,35 @@
           Padres y madres de familia
         </h1>
         <small class="mb-3">ALGUNOS TALLERES</small>
-        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, nam!</p>
+        <p class="mb-4">{{padres?.description}}</p>
         <a href="#listado_membresias" class="rounded-pill py-2 px-4"
           style="border:none; color:#000; background-color:white;">
           ADQUIERE UNA &nbsp; <i-feather name="arrow-right" class="big"></i-feather>
         </a>
       </div>
     </div>
-    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted"></div>
+    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted">
+      <div>
+        <img src="assets/img/PadresYMadresdeFamilia.png" alt="">
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="membresias-detail container-fluid">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted"></div>
+    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted">
+      <div>
+        <img src="assets/img/Maestrosytutores.png" alt="">
+      </div>
+    </div>
     <div class="col-12 col-md-6 col-lg-6">
       <div>
         <h1 class="mb-1">
           Maestros y tutores
         </h1>
         <small class="mb-3">ALGUNOS TALLERES</small>
-        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, nam!</p>
+        <p class="mb-4">{{maestros?.description}}</p>
         <a href="#listado_membresias"class="rounded-pill py-2 px-4 text-white background-sky-blue" style="border:none;">
           ADQUIERE UNA &nbsp; <i-feather name="arrow-right" class="big"></i-feather>
         </a>
@@ -79,27 +90,35 @@
           Psicólogos
         </h1>
         <small class="mb-3">ALGUNOS TALLERES</small>
-        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, nam!</p>
+        <p class="mb-4">{{psicologos?.description}}</p>
         <a href="#listado_membresias" class="rounded-pill py-2 px-4"
           style="border:none; color:#000; background-color:white;">
           ADQUIERE UNA &nbsp; <i-feather name="arrow-right" class="big"></i-feather>
         </a>
       </div>
     </div>
-    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted"></div>
+    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted">
+      <div class="">
+        <img src="assets/img/Psicologos.png" alt="">
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="membresias-detail container-fluid">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted"></div>
+    <div class="col-12 col-md-6 col-lg-6 background-sky-blue-mutted">
+      <div>
+        <img src="assets/img/AdultosJovenes.png" alt="">
+      </div>
+    </div>
     <div class="col-12 col-md-6 col-lg-6">
       <div>
         <h1 class="mb-1">
           Adultos jóvenes
         </h1>
         <small class="mb-3">ALGUNOS TALLERES</small>
-        <p class="mb-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, nam!</p>
+        <p class="mb-4">{{adultos?.description}}</p>
         <a href="#listado_membresias" class="rounded-pill py-2 px-4 text-white background-sky-blue" style="border:none;">
           ADQUIERE UNA &nbsp; <i-feather name="arrow-right" class="big"></i-feather>
         </a>

@@ -1,22 +1,26 @@
-<div class="container my-5 px-3">
+<div class="container-fluid products-container">
   <div class="row">
-    <h1 class="mb-5 ">Membresías</h1>
+    <h1 class="mb-5">Membresías</h1>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5" *ngFor="let membresia of membresias">
       <div *ngIf="membresia.active" class="product-card">
         <div class="product-img">
           <img src="{{membresia.membership_url}}" alt="">
         </div>
-        <div class="product-name p-3">
-          {{membresia.name}}
+        <div class="product-body">
+          <div>
+            <div class="product-name">
+              {{membresia.name}}
+            </div>
+            <div class="product-description">
+              {{membresia.description}}
+            </div>
+          </div>
+          <div class="product-price">
+            <a (click)="doPurchase(membresia.membership_id)" class="rounded-large-third-button px-3 py-1 text-decoration-none">
+              COMPRAR POR ${{membresia.cost}}
+            </a>
+          </div>
         </div>
-        <div class="product-description px-3 py-1">
-          {{membresia.description}}
-      </div>
-      <div class="product-price d-flex mt-5 justify-content-center">
-        <a (click)="doPurchase(membresia.membership_id)" class="rounded-large-third-button px-3 py-1 text-decoration-none">
-          COMPRAR POR ${{membresia.cost}}
-        </a>
-      </div>
     </div>
     </div>
   </div>

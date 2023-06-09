@@ -30,7 +30,7 @@ export class AboutFormacionSectionComponent implements OnInit {
   loadCourses() {
     this.cursoService.fn_ObtenerLista().subscribe((res) => {
       if (res.status == 200) {
-        this.courses = res.body.slice(0,5);
+        this.courses = res.body.slice(0,3);
       }
     }, (err) => {
 

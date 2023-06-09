@@ -1,13 +1,36 @@
-.product-card{
-  padding: 1rem;
+@import '../../../../assets/scss/variables';
 
+.products-container{
+  padding: 3rem;
+  background-color: $secondary-color-opacity;
+
+  h1{
+    color: white;
+  }
+
+  .product-card{
+    
+    .product-body{
+      border: 1px solid $primary-color;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 15rem;
+      padding: 2rem;
+      background-color: white;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+  
   .product-img{
     height: 15rem;
-
+    
     img{
       height: 100%;
       width: 100%;
       object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
   }
   .product-name {
@@ -21,4 +44,5 @@
   .product-price{
     cursor: pointer;
   }
+}
 }
