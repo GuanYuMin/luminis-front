@@ -30,6 +30,10 @@ export class MembresiasComponent implements OnInit {
   recoverForm: FormGroup;
   registerForm: FormGroup;
   modalReference: NgbModalRef;
+  padres: any;
+  maestros: any;
+  psicologos: any;
+  adultos: any;
 
   constructor(
   private membresiaService: MembresiaService,
@@ -90,6 +94,11 @@ export class MembresiasComponent implements OnInit {
           }
         });
         this.membresias = this.temp;
+        this.padres = this.membresias[3]
+        this.maestros = this.membresias[2]
+        this.psicologos = this.membresias[0]
+        this.adultos = this.membresias[1]
+        console.log(this.membresias)
       }
     }, (err) => {
 

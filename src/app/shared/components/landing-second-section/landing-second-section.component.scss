@@ -16,8 +16,10 @@
         }
 
         img{
-            width: 100%;
-            height: 100%;
+            width: 70%;
+            max-width: 30rem;
+            margin: auto;
+            display: block;
         }
     }
 }
