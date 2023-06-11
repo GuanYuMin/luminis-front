@@ -3,8 +3,10 @@ export class CursoViewModel {
     name: string = "";
     content: string = "";
     description: string = "";
+    course_url: string = "";
     update_timestamp: string = "";
     active: boolean = false;
+    video_list: number[] = [];
     constructor(){
 
     }
