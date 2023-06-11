@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
@@ -11,5 +11,12 @@ export class CursoService {
 
   fn_ObtenerLista(): Observable<any>{
     return this.http.get(environment.apiURL + 'course/detail', { observe: 'response' });
+  }
+
+  fn_GetUserCourses(): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.get(environment.apiURL + 'course/user_detail', options);
   }
 }

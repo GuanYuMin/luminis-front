@@ -6,11 +6,13 @@ import { LoginService } from 'app/shared/services/login.service';
 import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UserService } from 'app/shared/services/user.service';
+import { CursoService } from 'app/shared/services/curso.service';
 import { PhotoService } from 'app/shared/services/photo.service';
 import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model';
 import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
 import { PaymentViewModel } from 'app/shared/models/viewmodels/payment.model';
 import { UserMembershipViewModel } from 'app/shared/models/viewmodels/membresia_usuario.model';
+import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
 import { DatePipe } from '@angular/common';
 import { AlertsService } from "app/shared/services/alerts.service";
 
@@ -29,6 +31,8 @@ export class ProfileComponent {
   avatars: PhotoViewModel[] = [];
   paymentsHistory: PaymentViewModel[] = [];
   membresias: UserMembershipViewModel[] = [];
+  membresias2: UserMembershipViewModel[] = [];
+  cursos: CursoViewModel[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -38,6 +42,7 @@ export class ProfileComponent {
     private toastaService: ToastaService,
     private toastaConfig: ToastaConfig,
     private userService: UserService,
+    private cursoService: CursoService,
     private photoService: PhotoService,
     private datePipe: DatePipe,
     private alerts: AlertsService
@@ -48,6 +53,7 @@ export class ProfileComponent {
     this.getUserData();
     this.getUserTransactions();
     this.getUserMemberships();
+    this.getUserCourses();
   }
 
   createForms() {
@@ -153,13 +159,13 @@ export class ProfileComponent {
     });
   }
 
-  public membresias2 = [{
+  /*public membresias2 = [{
     name: 'Membresía Psicólogos',
     period: "anual",
     since: moment().subtract(3, 'months').toDate(),
     nextBill: moment().add(1, 'month').toDate(),
     id: 1
-  }];
+  }];*/
 
   public preguntas = [
     {
@@ -339,7 +345,7 @@ export class ProfileComponent {
 
   getUserMemberships() {
     //this.loading = true;
-    this.paymentsHistory = [];
+    this.membresias = [];
     this.userService.fn_GetUserMemberships().subscribe((res) => {
       console.log(res);
       this.membresias = res;
@@ -351,5 +357,36 @@ export class ProfileComponent {
       }
       //this.loading = false;
     });
+  }
+
+  getUserCourses() {
+    //this.loading = true;
+      this.cursos = [];
+      this.cursoService.fn_GetUserCourses().subscribe((res) => {
+        console.log(res);
+        this.membresias2 = res;
+        for (var x = 0; x < this.membresias2.length; x++) {
+          for (var y = 0; y < this.membresias2[x].courses.length; y++) {
+            this.cursos.push(this.membresias2[x].courses[y]);
+          }
+        }
+      }, (err) => {
+        if (err.error.message) {
+          this.showError("Mis talleres", err.error.message);
+        } else {
+          this.showError("Mis talleres", err.message);
+        }
+        //this.loading = false;
+      });
+  }
+
+  gotoCourse(id: number) {
+    let token = localStorage.getItem("token") || ""
+    let user_id = localStorage.getItem("user_id") || ""
+    if (token.length != 0 && user_id.length != 0) {
+      this.router.navigate([`taller/${id}`]);
+    } else {
+      this.router.navigate(['/home'])
+    }
   }
 }

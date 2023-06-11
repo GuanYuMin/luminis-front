@@ -37,9 +37,10 @@ const routes: Routes = [
     canActivate: [ClientGuard]
   },
   {
-    path: 'taller',
+    path: 'taller/:id',
     component: TallerComponent,
-    canActivate: [ClientGuard]
+    canActivate: [ClientGuard],
+    pathMatch: 'full'
   },
   {
     path: 'perfil',
