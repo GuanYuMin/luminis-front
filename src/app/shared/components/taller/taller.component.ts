@@ -15,6 +15,7 @@ import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.quest
   styleUrls: ['./taller.component.scss']
 })
 export class TallerComponent implements OnInit {
+  respuestasVisibles: boolean = false;
   public loading: boolean = false;
   id: string = "";
   secondary: string = "";
@@ -58,6 +59,10 @@ export class TallerComponent implements OnInit {
     } else {
       this.loadCourse();
     }
+  }
+
+  mostrarRespuestas() {
+    this.respuestasVisibles = !this.respuestasVisibles;
   }
 
   updateSrc(url) {

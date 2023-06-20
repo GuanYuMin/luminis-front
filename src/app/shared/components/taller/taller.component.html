@@ -127,11 +127,14 @@
         <a class="search-outline px-4 py-2">
           RESPONDER
         </a>-->
-        <div class="px-4 py-2">
+        <div class="px-4 py-2 search-outline" (click)="mostrarRespuestas()">
           <span class="me-2"><strong>VER RESPUESTAS</strong></span>
-          <i-feather name="arrow-down"></i-feather>
         </div>
       </div>
+      <div *ngIf="respuestasVisibles">
+        <span style="font-size: 1.75rem;">aqui va la respuesta aqui va la respuesta aqui va la respuestaaqui va la respuestaaqui va la respuestaaqui va la respuestaaqui va la respuestaaqui va la respuestaaqui va la respuestaaqui va la respuesta</span>
+      </div>
+ 
       <!--<div style="width:50%;" class="d-flex flex-wrap align-items-center justify-content-end">
         <a class="search-outline px-4 py-2">
           REPORTAR
