@@ -7,7 +7,9 @@ import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IFrameService } from 'app/shared/services/iframe.service';
 import { CursoQuestionService } from 'app/shared/services/curso.question.service';
+import { CursoAnswerService } from 'app/shared/services/curso.answer.service';
 import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.question.model';
+//import { CursoAnswerViewModel } from 'app/shared/models/viewmodels/curso.answer.model';
 
 @Component({
   selector: 'app-taller',
@@ -15,6 +17,7 @@ import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.quest
   styleUrls: ['./taller.component.scss']
 })
 export class TallerComponent implements OnInit {
+  respuestasVisibles: boolean = false;
   public loading: boolean = false;
   id: string = "";
   secondary: string = "";
@@ -29,6 +32,7 @@ export class TallerComponent implements OnInit {
   private activatedRoute: ActivatedRoute,
   private cursoService: CursoService,
   private cursoquestionService: CursoQuestionService,
+  private cursoanswerService: CursoAnswerService,
   private router: Router,
   private sanitizer: DomSanitizer,
   public iframeService: IFrameService
@@ -60,13 +64,38 @@ export class TallerComponent implements OnInit {
     }
   }
 
+  mostrarRespuestas(i, id) {
+    console.log(i);
+    console.log(id);
+    this.loading = true;
+    this.cursoanswerService.fn_ObtenerRespuestasPregunta(id).subscribe((res) => {
+      this.loading = false;
+      console.log(res.body);
+      this.questions[i].answers = res.body;
+      /*if (res.status == 200) {
+        this.loading = false;
+        console.log(res);
+        //this.datos = res.body;
+
+      } else {
+        //
+        this.loading = false;
+      }*/
+    }, (err) => {
+      this.loading = false;
+    });
+
+  }
+
   updateSrc(url) {
+    console.log(url);
       this.iframeService.changeSrc(this.sanitizer.bypassSecurityTrustResourceUrl(url));
   }
 
   loadCourse() {
     this.loading = true;
     this.cursoService.fn_ObtenerDetalle(this.id).subscribe((res) => {
+      this.loading = false;
       console.log(res);
       this.curso = res;
       if (this.curso) {
