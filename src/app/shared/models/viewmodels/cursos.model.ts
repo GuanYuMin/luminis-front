@@ -10,6 +10,9 @@ export class CursoViewModel {
     active: boolean = false;
     video_list: number[] = [];
     videos: VideoViewModel[] = [];
+    interactive: boolean = false;
+    learning: string[] = [];
+    index: string[] = [];
     constructor(){
 
     }

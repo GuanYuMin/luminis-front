@@ -3,17 +3,17 @@
     <span style="font-size: 2.5rem;" class="me-4">{{curso.name}}</span><span style="font-size: 1.8rem;">{{secondary}}</span>
     <div class="row mt-3">
       <div class="col-12" style="height: 60vh;">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/fQfZtg9Y_6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" [src]="iframeService.srcObservable$ | async" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-lg-2 col-sm-6 px-3 py-2">
-        <a class="search-outline px-4 py-2">
-          {{ taller.autor }}
+        <a class="search-outline px-4 py-2" *ngIf=curso.interactive>
+          Interactivo
         </a>
       </div>
-      <div class="col-lg-2 col-sm-6 px-2 py-2">
-        <a class="search-outline px-4 py-2">
+      <!--<div class="col-lg-2 col-sm-6 px-2 py-2">
+        <a class="search-outline px-4 py-2" *ngIf=curso.interactive>
           {{ taller.tipo }}
         </a>
       </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="row">
           <ul class="mi-lista">
-            <li *ngFor="let temario of taller.temario" style="font-size:1.5rem;" class="d-flex align-items-center">{{ temario.titulo }}</li>
+            <li *ngFor="let i of curso.index" style="font-size:1.5rem;" class="d-flex align-items-center">{{ i }}</li>
           </ul>
         </div>
       </div>
@@ -55,9 +55,9 @@
         </div>
         <div class="row">
           <ul class="">
-            <li *ngFor="let apr of taller.aprendizajes" class="d-flex align-items-center" style="font-size:1.5rem;">
+            <li *ngFor="let l of curso.learning" class="d-flex align-items-center" style="font-size:1.5rem;">
               <i-feather name="arrow-right" class="me-4 big"></i-feather>
-              {{ apr.titulo }}
+              {{ l }}
             </li>
           </ul>
         </div>
@@ -77,16 +77,16 @@
       <div class="col-12" style="background-color: white;">
         <div class="mt-3 d-flex">
           <div class="ms-3 me-3">
-            <img src="https://i.pravatar.cc/100" class="rounded-circle" />
+            <img loading="lazy" src="{{photo.photo_url}}" class="rounded-circle h-4 image-70" style="border: 1px solid #333333;" />
           </div>
           <div class="d-flex align-items-center" style="font-size:1.5rem;">
-            <strong>Nombre de usuario</strong>
+            <strong>{{ profile.name }} {{ profile.midlename }} {{ profile.lastname }}</strong>
           </div>
         </div>
         <div class="mt-3 d-flex px-4">
           <textarea rows="4" style="border:none;" class="w-100" placeholder="Escribe un comentario..."></textarea>
         </div>
-        <div class="mt-3 d-flex border-top mt-4 py-3 px-3 justify-content-between">
+        <!--<div class="mt-3 d-flex border-top mt-4 py-3 px-3 justify-content-between">
           <div>
             <a class="search-outline px-4 py-2 me-3">
               IMAGEN
@@ -100,7 +100,7 @@
               <i-feather name="smile" class="big"></i-feather>
             </a>
           </div>
-        </div>
+        </div>-->
 
       </div>
     </div>
