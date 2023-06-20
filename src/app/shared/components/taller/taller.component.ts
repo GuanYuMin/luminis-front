@@ -1,13 +1,76 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Taller } from '../../models/taller';
 import * as moment from 'moment';
+import { CursoService } from 'app/shared/services/curso.service';
+import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
 
 @Component({
   selector: 'app-taller',
   templateUrl: './taller.component.html',
   styleUrls: ['./taller.component.scss']
 })
-export class TallerComponent {
+export class TallerComponent implements OnInit {
+  public loading: boolean = false;
+  id: string = "";
+  secondary: string = "";
+  curso: CursoViewModel = {} as CursoViewModel;
+
+  constructor(
+  private activatedRoute: ActivatedRoute,
+  private cursoService: CursoService,
+  private router: Router
+  ) {
+    this.activatedRoute.params.subscribe(params => {
+      this.id = params['id'];
+      /*this.blogService.fn_ObtenerBlog(id).subscribe((res) => {
+        if (res.status == 200) {
+          this.blog = res.body;
+          if (this.blog.author != null) {
+            this.blog.author = 'POR ' + this.blog.author.toUpperCase();
+          }
+          this.formatDate(this.blog.registration_timestamp);
+        }
+      }, (err) => {
+        this.alerts.errorAlertNavigate('No se pudo obtener la información del blog.', '/blog');
+      });*/
+    });
+  }
+
+  ngOnInit(): void {
+    let token = localStorage.getItem("token") || ""
+    let user_id = localStorage.getItem("user_id") || ""
+    let email = localStorage.getItem("email") || ""
+    if (token.length === 0 || user_id.length === 0 || email.length === 0) {
+      this.router.navigate(['/home'])
+    } else {
+      this.loadCourse();
+    }
+  }
+
+  loadCourse() {
+    this.loading = true;
+    this.cursoService.fn_ObtenerDetalle(this.id).subscribe((res) => {
+      console.log(res);
+      this.curso = res;
+      if (this.curso) {
+        this.secondary = "- " + this.curso.videos.length + " módulos, 60 minutos.";
+      }
+      /*if (res.status == 200) {
+        this.loading = false;
+        console.log(res);
+        //this.datos = res.body;
+
+      } else {
+        //
+        this.loading = false;
+      }*/
+    }, (err) => {
+      this.loading = false;
+      this.router.navigate(['/home'])
+    });
+  }
+
   public taller: Taller = {
     name: 'Nombre del taller',
     descripcion: 'Descripción. Vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto. Lorem ipsum dolor sit amet. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper sus- cipit lobortis nisl ut aliquip ex ea commodo consequat.',
