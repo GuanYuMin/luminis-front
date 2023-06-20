@@ -9,7 +9,8 @@ import { IFrameService } from 'app/shared/services/iframe.service';
 import { CursoQuestionService } from 'app/shared/services/curso.question.service';
 import { CursoAnswerService } from 'app/shared/services/curso.answer.service';
 import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.question.model';
-//import { CursoAnswerViewModel } from 'app/shared/models/viewmodels/curso.answer.model';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { ToastaService, ToastaConfig, ToastOptions, ToastData } from 'ngx-toasta';
 
 @Component({
   selector: 'app-taller',
@@ -17,6 +18,7 @@ import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.quest
   styleUrls: ['./taller.component.scss']
 })
 export class TallerComponent implements OnInit {
+  sendQuestionForm: FormGroup;
   respuestasVisibles: boolean = false;
   public loading: boolean = false;
   id: string = "";
@@ -35,10 +37,16 @@ export class TallerComponent implements OnInit {
   private cursoanswerService: CursoAnswerService,
   private router: Router,
   private sanitizer: DomSanitizer,
-  public iframeService: IFrameService
+  public iframeService: IFrameService,
+  private fb: FormBuilder,
+  private toastaService: ToastaService,
+  private toastaConfig: ToastaConfig
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
+      this.toastaConfig.theme = 'bootstrap';
+      this.toastaConfig.position = 'top-right';
+      this.createForm();
       /*this.blogService.fn_ObtenerBlog(id).subscribe((res) => {
         if (res.status == 200) {
           this.blog = res.body;
@@ -62,6 +70,12 @@ export class TallerComponent implements OnInit {
     } else {
       this.loadCourse();
     }
+  }
+
+  createForm() {
+    this.sendQuestionForm = this.fb.group({
+       question_comment: ['', [Validators.minLength(10)]]
+    });
   }
 
   mostrarRespuestas(i, id) {
@@ -90,6 +104,28 @@ export class TallerComponent implements OnInit {
   updateSrc(url) {
     console.log(url);
       this.iframeService.changeSrc(this.sanitizer.bypassSecurityTrustResourceUrl(url));
+  }
+
+  sendComment(comment: string) {
+    this.loading = true;
+    this.cursoquestionService.fn_CrearPregunta(
+      {
+        question: comment,
+        active: 1,
+        course_id: this.id
+      }).subscribe((res) => {
+      this.loading = false;
+        this.showSuccess("Enviar comentario", res.message);
+        this.sendQuestionForm.patchValue({ question_comment: '' });
+        this.getQuestions();
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Enviar comentario", err.error.message);
+      } else {
+        this.showError("Enviar comentario", err.message);
+      }
+      this.loading = false;
+    });
   }
 
   loadCourse() {
@@ -132,6 +168,28 @@ export class TallerComponent implements OnInit {
        //this.loading = false;
        //this.router.navigate(['/home'])
      });
+  }
+
+  showError(title: string, message: string) {
+      var toastOptions:ToastOptions = {
+          title: title,
+          msg: message,
+          showClose: true,
+          timeout: 5000,
+          theme: 'bootstrap'
+      };
+      this.toastaService.error(toastOptions);
+  }
+
+  showSuccess(title: string, message: string) {
+      var toastOptions:ToastOptions = {
+          title: title,
+          msg: message,
+          showClose: true,
+          timeout: 5000,
+          theme: 'bootstrap'
+      };
+      this.toastaService.success(toastOptions);
   }
 
   public taller: Taller = {

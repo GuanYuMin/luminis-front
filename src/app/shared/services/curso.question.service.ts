@@ -9,9 +9,12 @@ import { Observable } from 'rxjs';
 export class CursoQuestionService {
   constructor(public http: HttpClient) { }
 
-  /*fn_ObtenerLista(): Observable<any>{
-    return this.http.get(environment.apiURL + 'course/detail', { observe: 'response' });
-  }*/
+  fn_CrearPregunta(question: any): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers }; //, observe: 'response'
+    return this.http.post(environment.apiURL + 'question_course/create_question', question, options);
+  }
 
   fn_ObtenerPreguntasCurso(id: string): Observable<any>{
     /*let headers = new HttpHeaders({
