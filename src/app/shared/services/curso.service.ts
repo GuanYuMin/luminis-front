@@ -13,6 +13,13 @@ export class CursoService {
     return this.http.get(environment.apiURL + 'course/detail', { observe: 'response' });
   }
 
+  fn_ObtenerDetalle(id: string): Observable<any>{
+    let headers = new HttpHeaders({
+      'Authorization': localStorage.getItem("token") });
+    let options = { headers: headers };
+    return this.http.get(environment.apiURL + 'course/detail/' + id, options);
+  }
+
   fn_GetUserCourses(): Observable<any>{
     let headers = new HttpHeaders({
       'Authorization': localStorage.getItem("token") });

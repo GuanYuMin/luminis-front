@@ -1,3 +1,5 @@
+import { VideoViewModel } from 'app/shared/models/viewmodels/video.model';
+
 export class CursoViewModel {
     course_id: number = 0;
     name: string = "";
@@ -7,6 +9,7 @@ export class CursoViewModel {
     update_timestamp: string = "";
     active: boolean = false;
     video_list: number[] = [];
+    videos: VideoViewModel[] = [];
     constructor(){
 
     }
