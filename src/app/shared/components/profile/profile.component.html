@@ -108,7 +108,7 @@
               <td>{{ question.question }}</td>
               <td style="width: 10rem;">{{ question.taller }}</td>
               <td style="width: 10rem;">
-                <button class="rounded-large-secondary-button py-2 px-3 mt-2 font-weight-cliff-bold" style="border:none; width:auto;" data-toggle="modalRespuesta" data-target="#verRespuesta">
+                <button class="rounded-large-secondary-button py-2 px-3 mt-2 font-weight-cliff-bold" style="border:none; width:auto;" (click)="abrirModal(modalRespuesta)">
                   Ver respuesta
                 </button>
               </td>
@@ -120,6 +120,21 @@
   </div>
 </div>
 </div>
+
+<ng-template #modalRespuesta let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Respuesta</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Contenido de la respuesta -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cerrar</button>
+  </div>
+</ng-template>
 
 <ng-template #updatephotocontent let-modal>
 	<div class="modal-header">

@@ -56,6 +56,10 @@ export class ProfileComponent {
     this.getUserCourses();
   }
 
+  abrirModal(content: any) {
+    this.modalService.open(content, { centered: true });
+  }
+
   createForms() {
     this.updatePasswordForm = this.fb.group({
        password: ['', [Validators.required, Validators.minLength(12)]],
