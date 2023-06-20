@@ -48,4 +48,8 @@ export class UserService {
     let options = { headers: headers };
     return this.http.get(environment.apiURL + 'user/get_user_memberships', options);
   }
+
+  fn_GetUserQuestions(id: string): Observable<any>{
+    return this.http.get(environment.apiURL + 'user/get_questions_by_user/' + id, { observe: 'response' });
+  }
 }

@@ -13,6 +13,9 @@ import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
 import { PaymentViewModel } from 'app/shared/models/viewmodels/payment.model';
 import { UserMembershipViewModel } from 'app/shared/models/viewmodels/membresia_usuario.model';
 import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
+import { QuestionViewModel } from 'app/shared/models/viewmodels/question.model';
+import { CursoAnswerViewModel } from 'app/shared/models/viewmodels/curso.answer.model';
+import { CursoAnswerService } from 'app/shared/services/curso.answer.service';
 import { DatePipe } from '@angular/common';
 import { AlertsService } from "app/shared/services/alerts.service";
 
@@ -33,6 +36,8 @@ export class ProfileComponent {
   membresias: UserMembershipViewModel[] = [];
   membresias2: UserMembershipViewModel[] = [];
   cursos: CursoViewModel[] = [];
+  preguntas: QuestionViewModel[] = [];
+  respuestas: CursoAnswerViewModel[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -44,6 +49,7 @@ export class ProfileComponent {
     private userService: UserService,
     private cursoService: CursoService,
     private photoService: PhotoService,
+    private caService: CursoAnswerService,
     private datePipe: DatePipe,
     private alerts: AlertsService
   ) {
@@ -54,10 +60,31 @@ export class ProfileComponent {
     this.getUserTransactions();
     this.getUserMemberships();
     this.getUserCourses();
+    this.getUserQuestions();
   }
 
-  abrirModal(content: any) {
-    this.modalService.open(content, { centered: true });
+  abrirModal(content: any, id) {
+    this.caService.fn_ObtenerRespuestasPregunta(
+       id
+    ).subscribe((res) => {
+      if (res.status == 200) {
+        this.respuestas = res.body;
+        if (this.respuestas.length > 0) {
+          this.modalService.open(content, { centered: true });
+        } else {
+          this.showError("Respuestas", "Su pregunta / comentario aún no ha sido respondido.");
+        }
+      } else {
+
+      }
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Respuestas", err.error.message);
+      } else {
+        this.showError("Respuestas", err.message);
+      }
+      //this.loading = false;
+    });
   }
 
   createForms() {
@@ -120,6 +147,22 @@ export class ProfileComponent {
     });
   }
 
+  getUserQuestions() {
+    this.userService.fn_GetUserQuestions(
+       localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      console.log(res);
+      this.preguntas = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        this.showError("Perfil", err.error.message);
+      } else {
+        this.showError("Perfil", err.message);
+      }
+      //this.loading = false;
+    });
+  }
+
   openUpdatePhotoModal(updatephotocontent: any) {
     this.avatars = [];
     this.profile.photo_id = this.photo.id;
@@ -171,7 +214,7 @@ export class ProfileComponent {
     id: 1
   }];*/
 
-  public preguntas = [
+  /*public preguntas = [
     {
       question: '¿Qué hacer si este wireframe está muy padre?',
       taller: 'Ansiedad',
@@ -182,7 +225,7 @@ export class ProfileComponent {
       taller: 'Verano',
       id: 2
     }
-  ]
+  ]*/
 
   doLogout() {
     /*this.loginService.fn_Logout({
