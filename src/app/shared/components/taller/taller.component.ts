@@ -4,6 +4,12 @@ import { Taller } from '../../models/taller';
 import * as moment from 'moment';
 import { CursoService } from 'app/shared/services/curso.service';
 import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
+import { DomSanitizer } from '@angular/platform-browser';
+import { IFrameService } from 'app/shared/services/iframe.service';
+import { UserService } from 'app/shared/services/user.service';
+import { PhotoService } from 'app/shared/services/photo.service';
+import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model';
+import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
 
 @Component({
   selector: 'app-taller',
@@ -14,12 +20,20 @@ export class TallerComponent implements OnInit {
   public loading: boolean = false;
   id: string = "";
   secondary: string = "";
+  main_video: string = "";
+  show_video: boolean = false;
   curso: CursoViewModel = {} as CursoViewModel;
+  profile: PerfilViewModel = {} as PerfilViewModel;
+  photo: PhotoViewModel = {} as PhotoViewModel;
 
   constructor(
   private activatedRoute: ActivatedRoute,
   private cursoService: CursoService,
-  private router: Router
+  private router: Router,
+  private sanitizer: DomSanitizer,
+  public iframeService: IFrameService,
+  private userService: UserService,
+  private photoService: PhotoService
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -48,6 +62,10 @@ export class TallerComponent implements OnInit {
     }
   }
 
+  updateSrc(url) {
+      this.iframeService.changeSrc(this.sanitizer.bypassSecurityTrustResourceUrl(url));
+  }
+
   loadCourse() {
     this.loading = true;
     this.cursoService.fn_ObtenerDetalle(this.id).subscribe((res) => {
@@ -55,6 +73,12 @@ export class TallerComponent implements OnInit {
       this.curso = res;
       if (this.curso) {
         this.secondary = "- " + this.curso.videos.length + " módulos, 60 minutos.";
+        if (this.curso.videos.length > 0) {
+          this.main_video = this.curso.videos[0].video_url;
+          this.updateSrc(this.main_video);
+          this.show_video = true;
+        }
+        this.getUserData();
       }
       /*if (res.status == 200) {
         this.loading = false;
@@ -68,6 +92,37 @@ export class TallerComponent implements OnInit {
     }, (err) => {
       this.loading = false;
       this.router.navigate(['/home'])
+    });
+  }
+
+  getUserData() {
+    //this.loading = true;
+    this.userService.fn_GetUser(
+       localStorage.getItem("user_id")
+    ).subscribe((res) => {
+      this.profile = res.body;
+      this.getUserPhoto();
+    }, (err) => {
+      if (err.error.message) {
+        //this.showError("Perfil", err.error.message);
+      } else {
+        //this.showError("Perfil", err.message);
+      }
+      //this.loading = false;
+    });
+  }
+
+  getUserPhoto() {
+    this.photoService.fn_GetPhoto(
+       String(this.profile.photo_id)
+    ).subscribe((res) => {
+      this.photo = res.body;
+    }, (err) => {
+      if (err.error.message) {
+        //this.showError("Perfil", err.error.message);
+      } else {
+        //this.showError("Perfil", err.message);
+      }
     });
   }
 
