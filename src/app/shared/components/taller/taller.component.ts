@@ -6,10 +6,8 @@ import { CursoService } from 'app/shared/services/curso.service';
 import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { IFrameService } from 'app/shared/services/iframe.service';
-import { UserService } from 'app/shared/services/user.service';
-import { PhotoService } from 'app/shared/services/photo.service';
-import { PerfilViewModel } from 'app/shared/models/viewmodels/perfil.model';
-import { PhotoViewModel } from 'app/shared/models/viewmodels/photo.model';
+import { CursoQuestionService } from 'app/shared/services/curso.question.service';
+import { CursoQuestionViewModel } from 'app/shared/models/viewmodels/curso.question.model';
 
 @Component({
   selector: 'app-taller',
@@ -23,17 +21,17 @@ export class TallerComponent implements OnInit {
   main_video: string = "";
   show_video: boolean = false;
   curso: CursoViewModel = {} as CursoViewModel;
-  profile: PerfilViewModel = {} as PerfilViewModel;
-  photo: PhotoViewModel = {} as PhotoViewModel;
+  questions: CursoQuestionViewModel[] = [];
+  fullname: string = "";
+  user_photo: string = "";
 
   constructor(
   private activatedRoute: ActivatedRoute,
   private cursoService: CursoService,
+  private cursoquestionService: CursoQuestionService,
   private router: Router,
   private sanitizer: DomSanitizer,
-  public iframeService: IFrameService,
-  private userService: UserService,
-  private photoService: PhotoService
+  public iframeService: IFrameService
   ) {
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
@@ -78,7 +76,9 @@ export class TallerComponent implements OnInit {
           this.updateSrc(this.main_video);
           this.show_video = true;
         }
-        this.getUserData();
+        this.fullname = localStorage.getItem("fullname");
+        this.user_photo = localStorage.getItem("user_photo");
+        this.getQuestions();
       }
       /*if (res.status == 200) {
         this.loading = false;
@@ -95,35 +95,14 @@ export class TallerComponent implements OnInit {
     });
   }
 
-  getUserData() {
-    //this.loading = true;
-    this.userService.fn_GetUser(
-       localStorage.getItem("user_id")
-    ).subscribe((res) => {
-      this.profile = res.body;
-      this.getUserPhoto();
-    }, (err) => {
-      if (err.error.message) {
-        //this.showError("Perfil", err.error.message);
-      } else {
-        //this.showError("Perfil", err.message);
-      }
-      //this.loading = false;
-    });
-  }
-
-  getUserPhoto() {
-    this.photoService.fn_GetPhoto(
-       String(this.profile.photo_id)
-    ).subscribe((res) => {
-      this.photo = res.body;
-    }, (err) => {
-      if (err.error.message) {
-        //this.showError("Perfil", err.error.message);
-      } else {
-        //this.showError("Perfil", err.message);
-      }
-    });
+  getQuestions() {
+    this.cursoquestionService.fn_ObtenerPreguntasCurso(this.id).subscribe((res) => {
+       this.questions = res.body;
+       console.log(this.questions);
+     }, (err) => {
+       //this.loading = false;
+       //this.router.navigate(['/home'])
+     });
   }
 
   public taller: Taller = {
