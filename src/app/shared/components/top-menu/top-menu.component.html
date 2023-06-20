@@ -24,9 +24,9 @@
       <button class="rounded-white-button py-2 px-3 font-weight-cliff-bold" (click)="openRegisterModal(registercontent)">REGISTRO</button>
     </div>
     <a href="#perfil" class="menu__user-info" *ngIf="logged_in">
-      <img src="assets/img/img-sitio.png" alt="">
+      <img loading="lazy" src="{{user_photo}}" class="rounded-circle" alt="">
       <div>
-        <p>Juan Perez</p>
+        <p>{{fullname}}</p>
       </div>
     </a>
   </div>

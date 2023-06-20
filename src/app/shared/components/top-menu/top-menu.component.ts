@@ -22,6 +22,8 @@ export class TopMenuComponent implements OnInit {
   recoverForm: FormGroup;
   registerForm: FormGroup;
   modalReference: NgbModalRef;
+  fullname: string = "";
+  user_photo: string = "";
 
   constructor(
   private modalService: NgbModal,
@@ -71,6 +73,8 @@ export class TopMenuComponent implements OnInit {
     let token = localStorage.getItem("token") || ""
     if (token.length > 0) {
       this.logged_in = true;
+      this.fullname = localStorage.getItem("fullname");
+      this.user_photo = localStorage.getItem("user_photo");
     }
   }
 
@@ -110,6 +114,10 @@ export class TopMenuComponent implements OnInit {
         localStorage.setItem("token", res.body.token);
         localStorage.setItem("user_id", res.body.user_id);
         localStorage.setItem("email", res.body.email);
+        localStorage.setItem("fullname", res.body.name + " " + res.body.lastname);
+        localStorage.setItem("user_photo", res.body.photo);
+        this.fullname = localStorage.getItem("fullname");
+        this.user_photo = localStorage.getItem("user_photo");
         this.modalService.dismissAll();
         this.router.navigate(['/perfil'])
               .then(() => {
