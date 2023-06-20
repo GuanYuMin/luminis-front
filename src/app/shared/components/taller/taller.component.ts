@@ -84,19 +84,22 @@ export class TallerComponent implements OnInit {
     this.loading = true;
     this.cursoanswerService.fn_ObtenerRespuestasPregunta(id).subscribe((res) => {
       this.loading = false;
-      console.log(res.body);
-      this.questions[i].answers = res.body;
-      /*if (res.status == 200) {
-        this.loading = false;
-        console.log(res);
-        //this.datos = res.body;
-
+      console.log(res);
+      if (res.status == 200) {
+        this.questions[i].answers = res.body;
+        if (this.questions[i].answers.length == 0) {
+          this.showError("Ver respuestas", "La pregunta o comentario no ha recibido respuestas.");
+        }
       } else {
-        //
-        this.loading = false;
-      }*/
+        this.showError("Ver respuestas", res.message);
+      }
     }, (err) => {
       this.loading = false;
+      if (err.error.message) {
+        this.showError("Ver respuestas", err.error.message);
+      } else {
+        this.showError("Ver respuestas", err.message);
+      }
     });
 
   }
