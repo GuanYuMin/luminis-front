@@ -117,7 +117,8 @@ export class ConfirmacionComponent implements OnInit {
 
   openPaymentModal(paymentcontent: any) {
       let ngbModalOptions: NgbModalOptions = {
-            size: 'lg',
+            modalDialogClass: 'payment-modal',
+            centered: true,
             backdrop : 'static',
             keyboard : false
       };

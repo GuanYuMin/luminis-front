@@ -329,3 +329,16 @@ html {
   margin-left: 15px;
   margin-bottom: 20px;
 }
+
+.payment-modal{
+  width: 100vw;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+
+  @media screen and (min-width: $tablet) {
+    --bs-modal-width: 800px;
+    margin: auto;
+    max-width: fit-content;
+  }
+}
