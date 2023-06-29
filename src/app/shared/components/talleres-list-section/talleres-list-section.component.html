@@ -1,76 +1,83 @@
-<div class="d-flex" style="min-height: 80vh;">
-  <div class="w-100 px-5">
-    <div class="d-flex justify-content-between px-5">
-      <div class="w-50 d-flex justify-content-between px-4 py-2 search-outline align-items-center">
-        <input type="text" placeholder="BUSCA TU CURSO" aria-label="BUSCA TU CURSO" aria-describedby="button-addon2" (keyup)="onKey($event)">
-        <i-feather name="search" class="big"></i-feather>
-      </div>
-      <div class="w-50 d-flex justify-content-end align-items-center ps-3">
-        <div class="pe-3 w-30">
-          Ordenar por:
-        </div>
-        <!--
-        <div class="d-flex w-auto justify-content-between px-4 py-2 search-outline align-items-center">
-          <input type="text" placeholder="LO MÁS NUEVO" aria-label="LO MÁS NUEVO" aria-describedby="button-addon2">
-          <i-feather name="arrow-down" class="big"></i-feather>
-        </div>-->
-        <div ngbDropdown class="d-inline-block w-auto px-4 py-2 search-outline align-items-center">
-          <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
-            {{displayMessage}}
-          </button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <div *ngFor="let option of sortOptions; let index = index">
-              <button class="dropdown-item"
-                      id="{{index}}" on-click="changeMessage(option,index)">{{option}}</button>
+<div class="lista-talleres">
+  <div class="container">
+    <div class="lista-talleres__filtros">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="search-filter mb-3">
+              <label>
+                Buscar
+              </label>
+              <div class="input-container">
+                <input type="text" placeholder="BUSCA TU CURSO" aria-label="BUSCA TU CURSO"
+                  aria-describedby="button-addon2" (keyup)="onKey($event)">
+                <i-feather name="search" class="big"></i-feather>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="sort-filter mb-3">
+              <label>
+                Ordenar por:
+              </label>
+              <div ngbDropdown class="d-inline-block w-auto px-4 py-2 search-outline align-items-center">
+                <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                  {{displayMessage}}
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <div *ngFor="let option of sortOptions; let index = index">
+                    <button class="dropdown-item" id="{{index}}"
+                      on-click="changeMessage(option,index)">{{option}}</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="d-flex w-100 px-4 pt-5">
-      <ngb-carousel #carousel [interval]="0" class="w-100">
-          <ng-template ngbSlide *ngFor="let s of slides">
-            <div class="d-flex w-100 px-4 pt-5">
-              <div *ngFor="let curso of s.cursos" class="col-sm-6 col-lg-4 p-3">
-                <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-                </div>
-                <div class="product-name p-3">
-                  {{ curso.name }}
-                </div>
-                <div class="product-description px-3 py-1">
-                  {{ curso.description }}
-                </div>
-              </div>
+
+    <div class="lista-talleres__carousel-container">
+      <owl-carousel-o [options]="talleresCarousel">
+        <ng-template carouselSlide *ngFor="let curso of vmCurso" [width]="400">
+          <div class="carousel__taller-slide">
+            <div class="taller-img">
+              <img src="assets/img/bg.webp" alt="">
             </div>
-          </ng-template>
-      </ngb-carousel>
+            <div class="taller-info">
+              <h5 class="mb-2">
+                {{ curso.name }}
+              </h5>
+              <p>
+                {{ curso.description }}
+              </p>
+            </div>
+          </div>
+        </ng-template>
+      </owl-carousel-o>
     </div>
-    <!--<div class="d-flex w-100 px-4 pt-5">
-      <div *ngFor="let curso of vmCurso" class="col-sm-6 col-lg-4 p-3">
-        <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
-        </div>
-        <div class="product-name p-3">
-          {{ curso.name }}
-        </div>
-        <div class="product-description px-3 py-1">
-          {{ curso.description }}
-        </div>
-      </div>
-    </div>-->
-    <!--<div class="product-author px-3 pb-3">
-          NOMBRE AUTOR
-        </div>-->
-    <!--
-    <div class="py-5 d-flex justify-content-center align-items-center">
-      <i-feather name="arrow-left" class="big"></i-feather>
-      <div class="d-flex align-items-center justify-content-center">
-        <div role="button"  class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2 active">1</div>
-        <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">2</div>
-        <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">3</div>
-        <div role="button" class="pagination-circle text-center d-flex align-items-center justify-content-center mx-2">...</div>
-      </div>
-      <i-feather name="arrow-right" class="big"></i-feather>
-    </div>
-    -->
   </div>
 </div>
+
+<!-- <div class="d-flex" style="min-height: 80vh;">
+  <div class="w-100 px-5">
+    <div class="d-flex w-100 px-4 pt-5">
+      <ngb-carousel #carousel [interval]="0" class="w-100">
+        <ng-template ngbSlide *ngFor="let s of slides">
+          <div class="d-flex w-100 px-4 pt-5">
+            <div *ngFor="let curso of s.cursos" class="col-sm-6 col-lg-4 p-3">
+              <div class="product-img background-sky-blue-mutted" style="height: 12rem;">
+              </div>
+              <div class="product-name p-3">
+                {{ curso.name }}
+              </div>
+              <div class="product-description px-3 py-1">
+                {{ curso.description }}
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,31 @@
+@import '../../../../assets/scss/variables';
+
+.titulo-talleres{
+    .titulo-talleres__container{
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $red-color;
+        color: white;
+        min-height: 30rem;
+
+        small{
+            font-size: 2rem;
+            font-weight: bold;
+
+            @media screen and (min-width: $tablet) {
+                font-size: 3.2rem;
+            }
+        }
+
+        .titulo-talleres__icon{
+            height: 10rem;
+            transform: rotate(-30deg);
+            margin-top: 3rem;
+
+            @media screen and (min-width: $tablet) {
+                margin-top: 0;
+            }
+        }
+        
+    }
+}

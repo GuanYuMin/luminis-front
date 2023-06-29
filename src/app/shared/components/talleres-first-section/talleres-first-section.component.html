@@ -1,29 +1,22 @@
-<div class="d-flex" style="min-height: 80vh;">
-  <div class="col-12 d-flex" style="padding: 5rem;">
-    <div class="background-red h-100 w-100 d-flex flex-wrap justify-content-center text-white">
-      <div class="col-8">
-        <div class="ps-5 pt-5" style="font-size:1.5rem;">
-          TALLERES Y CURSOS
-        </div>
-        <div class="ps-5 pt-3 pb-2" style="font-size:2.3rem;">
-          ¡Es hora de crecer!
-        </div>
-        <div class="ps-5 pt-5" style="font-size:1.5rem;">
-          Vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto.
-        </div>
-        <div *ngIf="!logged_in" class="ps-5 pt-5 d-flex align-items-center">
-          <a (click)="openLoginModal(logincontent)"
-            class="d-flex rounded-white-button px-3 py-2 text-decoration-none justify-content-between align-items-center"
-            style="width:17rem;">
-            <span class="font-weight-cliff-bold text-large">INICIA SESIÓN</span>
-            <i-feather name="arrow-right"></i-feather>
-          </a>
-        </div>
-      </div>
-      <div class="col-4 d-flex align-items-center justify-content-center">
-        <img style="height: 10rem; transform: rotate(-30deg);" src="/assets/img/iso-white-orange.png" />
-      </div>
+<div class="titulo-talleres">
+  <div class="container p-5">
+    <div class="titulo-talleres__container p-5">
+          <div class="col-12 col-md-8">
+            <small class="mb-5">
+              TALLERES Y CURSOS
+            </small>
+            <h3 class="mb-2">
+              ¡Es hora de crecer!
+            </h3>
+            <p>
+              Vel illum dolore eu feugiat nulla facilisis at
+              vero eros et accumsan et iusto.
+            </p>
+            <button *ngIf="!logged_in" (click)="openLoginModal(logincontent)" class="l-btn-white lg mt-5">INICIA SESIÓN <i-feather name="arrow-right"></i-feather></button>
+          </div>
+          <div class="col-12 col-md-4 d-flex align-items-center">
+            <img class="titulo-talleres__icon" src="/assets/img/iso-white-orange.png" />
+          </div>
     </div>
   </div>
 </div>
@@ -37,9 +30,12 @@
     <form [formGroup]="loginForm" autocomplete="off" novalidate>
       <div class="mb-3">
         <label for="email" class="form-label">Correo</label>
-        <input type="text" class="form-control" formControlName="email" id="email" placeholder="" #email maxlength="255">
+        <input type="text" class="form-control" formControlName="email" id="email" placeholder="" #email
+          maxlength="255">
       </div>
-      <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+        class="alert alert-danger">
         <div *ngIf="loginForm.controls['email'].errors?.['required']">
           Correo es requerido.
         </div>
@@ -49,9 +45,12 @@
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" formControlName="password" id="password" placeholder="" #password maxlength="50">
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="" #password
+          maxlength="50">
       </div>
-      <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+        class="alert alert-danger">
         <div *ngIf="loginForm.controls['password'].errors?.['required']">
           Contraseña es requerida.
         </div>
@@ -67,16 +66,15 @@
         </div>
       </ng-template>
 
-      <ngx-loading
-        [show]="loading"
-        [config]="{ backdropBorderRadius: '3px' }"
-        [template]="customLoadingTemplate"
-      ></ngx-loading>
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
+      </ngx-loading>
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
-    <button type="submit" class="btn btn-outline-dark" [disabled]="loginForm.pristine || loginForm.invalid" (click)="doLogin(email.value, password.value)">Iniciar sesión</button>
-    <button type="button" class="btn btn-outline-dark" (click)="openRecoverModal(restorepasswordcontent)">Recuperar contraseña</button>
+    <button type="submit" class="btn btn-outline-dark" [disabled]="loginForm.pristine || loginForm.invalid"
+      (click)="doLogin(email.value, password.value)">Iniciar sesión</button>
+    <button type="button" class="btn btn-outline-dark" (click)="openRecoverModal(restorepasswordcontent)">Recuperar
+      contraseña</button>
     <button type="button" class="btn btn-outline-dark" (click)="openRegisterModal(registercontent)">Registrarme</button>
   </div>
 </ng-template>
@@ -90,9 +88,12 @@
     <form [formGroup]="recoverForm" autocomplete="off" novalidate>
       <div class="mb-3">
         <label for="email_recover" class="form-label">Correo</label>
-        <input type="email" class="form-control" formControlName="email_recover" id="email_recover" placeholder="" #email_recover maxlength="255">
+        <input type="email" class="form-control" formControlName="email_recover" id="email_recover" placeholder=""
+          #email_recover maxlength="255">
       </div>
-      <div *ngIf="recoverForm.controls['email_recover'].invalid && (recoverForm.controls['email_recover'].dirty || recoverForm.controls['email_recover'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="recoverForm.controls['email_recover'].invalid && (recoverForm.controls['email_recover'].dirty || recoverForm.controls['email_recover'].touched)"
+        class="alert alert-danger">
         <div *ngIf="recoverForm.controls['email_recover'].errors?.['required']">
           Correo es requerido.
         </div>
@@ -108,15 +109,13 @@
         </div>
       </ng-template>
 
-      <ngx-loading
-        [show]="loading"
-        [config]="{ backdropBorderRadius: '3px' }"
-        [template]="customLoadingTemplate"
-      ></ngx-loading>
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
+      </ngx-loading>
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
-    <button type="button" [disabled]="recoverForm.pristine || recoverForm.invalid" class="btn btn-outline-dark" (click)="doRecover(email_recover.value)">Enviar</button>
+    <button type="button" [disabled]="recoverForm.pristine || recoverForm.invalid" class="btn btn-outline-dark"
+      (click)="doRecover(email_recover.value)">Enviar</button>
   </div>
 </ng-template>
 
@@ -129,9 +128,12 @@
     <form [formGroup]="registerForm" autocomplete="off" novalidate>
       <div class="mb-3">
         <label for="nombres" class="form-label">Nombre(s)</label>
-        <input type="text" class="form-control" formControlName="nombres" id="nombres" placeholder="" #nombres maxlength="255">
+        <input type="text" class="form-control" formControlName="nombres" id="nombres" placeholder="" #nombres
+          maxlength="255">
       </div>
-      <div *ngIf="registerForm.controls['nombres'].invalid && (registerForm.controls['nombres'].dirty || registerForm.controls['nombres'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['nombres'].invalid && (registerForm.controls['nombres'].dirty || registerForm.controls['nombres'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['nombres'].errors?.['required']">
           Nombre(s) requerido.
         </div>
@@ -141,9 +143,12 @@
       </div>
       <div class="mb-3">
         <label for="apellidos" class="form-label">Apellido(s)</label>
-        <input type="text" class="form-control" formControlName="apellidos" id="apellidos" placeholder="" #apellidos maxlength="255">
+        <input type="text" class="form-control" formControlName="apellidos" id="apellidos" placeholder="" #apellidos
+          maxlength="255">
       </div>
-      <div *ngIf="registerForm.controls['apellidos'].invalid && (registerForm.controls['apellidos'].dirty || registerForm.controls['apellidos'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['apellidos'].invalid && (registerForm.controls['apellidos'].dirty || registerForm.controls['apellidos'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['apellidos'].errors?.['required']">
           Apellido(s) requerido.
         </div>
@@ -153,9 +158,12 @@
       </div>
       <div class="mb-3">
         <label for="nombre_usuario" class="form-label">Nombre de usuario</label>
-        <input type="text" class="form-control" formControlName="nombre_usuario" id="nombre_usuario" placeholder="" #nombre_usuario maxlength="255">
+        <input type="text" class="form-control" formControlName="nombre_usuario" id="nombre_usuario" placeholder=""
+          #nombre_usuario maxlength="255">
       </div>
-      <div *ngIf="registerForm.controls['nombre_usuario'].invalid && (registerForm.controls['nombre_usuario'].dirty || registerForm.controls['nombre_usuario'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['nombre_usuario'].invalid && (registerForm.controls['nombre_usuario'].dirty || registerForm.controls['nombre_usuario'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['nombre_usuario'].errors?.['required']">
           Nombre de usuario requerido.
         </div>
@@ -167,15 +175,20 @@
         <div class="col-12">
           <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
           <div class="input-group">
-            <input class="form-control" formControlName="fecha_nacimiento" id="fecha_nacimiento" [minDate]="{year: 1920, month: 1, day: 1}" [maxDate]="{year: 2005, month: 1, day: 1}" [startDate]="{year: 2005, month: 1}" placeholder="dd/mm/yyyy" name="dp" [displayMonths]="1" [navigation]="'select'"
-                   [showWeekNumbers]="false" [outsideDays]="'visible'" ngbDatepicker #d="ngbDatepicker" #fecha_nacimiento readonly />
+            <input class="form-control" formControlName="fecha_nacimiento" id="fecha_nacimiento"
+              [minDate]="{year: 1920, month: 1, day: 1}" [maxDate]="{year: 2005, month: 1, day: 1}"
+              [startDate]="{year: 2005, month: 1}" placeholder="dd/mm/yyyy" name="dp" [displayMonths]="1"
+              [navigation]="'select'" [showWeekNumbers]="false" [outsideDays]="'visible'" ngbDatepicker
+              #d="ngbDatepicker" #fecha_nacimiento readonly />
             <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button">
               <i-feather name="calendar" class="feather-icons"></i-feather>
             </button>
           </div>
         </div>
       </div>
-      <div *ngIf="registerForm.controls['fecha_nacimiento'].invalid && (registerForm.controls['fecha_nacimiento'].dirty || registerForm.controls['fecha_nacimiento'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['fecha_nacimiento'].invalid && (registerForm.controls['fecha_nacimiento'].dirty || registerForm.controls['fecha_nacimiento'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['fecha_nacimiento'].errors?.['required']">
           Fecha de nacimiento requerida.
         </div>
@@ -183,14 +196,18 @@
       <div class="row mb-3">
         <div class="col">
           <label for="telefono" class="form-label">Teléfono</label>
-          <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono maxlength="10">
+          <input type="tel" class="form-control" formControlName="telefono" id="telefono" placeholder="" #telefono
+            maxlength="10">
         </div>
         <div class="col">
           <label for="email_registro" class="form-label">Correo</label>
-          <input type="email" class="form-control" formControlName="email_registro" id="email_registro" placeholder="" #email_registro maxlength="255">
+          <input type="email" class="form-control" formControlName="email_registro" id="email_registro" placeholder=""
+            #email_registro maxlength="255">
         </div>
       </div>
-      <div *ngIf="registerForm.controls['telefono'].invalid && (registerForm.controls['telefono'].dirty || registerForm.controls['telefono'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['telefono'].invalid && (registerForm.controls['telefono'].dirty || registerForm.controls['telefono'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['telefono'].errors?.['required']">
           Teléfono es requerido.
         </div>
@@ -198,7 +215,9 @@
           Teléfono inválido.
         </div>
       </div>
-      <div *ngIf="registerForm.controls['email_registro'].invalid && (registerForm.controls['email_registro'].dirty || registerForm.controls['email_registro'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['email_registro'].invalid && (registerForm.controls['email_registro'].dirty || registerForm.controls['email_registro'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['email_registro'].errors?.['required']">
           Correo es requerido.
         </div>
@@ -209,14 +228,18 @@
       <div class="row mb-3">
         <div class="col">
           <label for="password_registro" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" formControlName="password_registro" id="password_registro" placeholder="" #password_registro maxlength="50">
+          <input type="password" class="form-control" formControlName="password_registro" id="password_registro"
+            placeholder="" #password_registro maxlength="50">
         </div>
         <div class="col">
           <label for="password_registro2" class="form-label">Confirme contraseña</label>
-          <input type="password" class="form-control" formControlName="password_registro2" id="password_registro2" placeholder="" #password_registro2 maxlength="50">
+          <input type="password" class="form-control" formControlName="password_registro2" id="password_registro2"
+            placeholder="" #password_registro2 maxlength="50">
         </div>
       </div>
-      <div *ngIf="registerForm.controls['password_registro'].invalid && (registerForm.controls['password_registro'].dirty || registerForm.controls['password_registro'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['password_registro'].invalid && (registerForm.controls['password_registro'].dirty || registerForm.controls['password_registro'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['password_registro'].errors?.['required']">
           Contraseña es requerida.
         </div>
@@ -224,11 +247,14 @@
           Contraseña inválida.
         </div>
       </div>
-      <div *ngIf="registerForm.controls['password_registro2'].invalid && (registerForm.controls['password_registro2'].dirty || registerForm.controls['password_registro2'].touched)" class="alert alert-danger">
+      <div
+        *ngIf="registerForm.controls['password_registro2'].invalid && (registerForm.controls['password_registro2'].dirty || registerForm.controls['password_registro2'].touched)"
+        class="alert alert-danger">
         <div *ngIf="registerForm.controls['password_registro2'].errors?.['required']">
           Debe confirmar su contraseña.
         </div>
-        <div *ngIf="registerForm.controls['password_registro2'].invalid && password_registro2.value.length > 0 && !registerForm.get('password_registro2').hasError('isSame')">
+        <div
+          *ngIf="registerForm.controls['password_registro2'].invalid && password_registro2.value.length > 0 && !registerForm.get('password_registro2').hasError('isSame')">
           Confirmación de contraseña inválida.
         </div>
         <div *ngIf="registerForm.get('password_registro2').hasError('isSame') && password_registro2.value.length > 0">
@@ -243,14 +269,12 @@
         </div>
       </ng-template>
 
-      <ngx-loading
-        [show]="loading"
-        [config]="{ backdropBorderRadius: '3px' }"
-        [template]="customLoadingTemplate"
-      ></ngx-loading>
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate">
+      </ngx-loading>
     </div>
   </div>
   <div class="modal-footer d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid" (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, fecha_nacimiento.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
+    <button type="button" class="btn btn-outline-dark" [disabled]="registerForm.pristine || registerForm.invalid"
+      (click)="doRegister(nombres.value, apellidos.value, nombre_usuario.value, fecha_nacimiento.value, telefono.value, email_registro.value, password_registro.value, password_registro2.value)">Inscribirse</button>
   </div>
 </ng-template>

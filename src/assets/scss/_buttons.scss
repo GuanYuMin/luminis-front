@@ -1,20 +1,52 @@
-.l-btn-primary{
+.l-btn-primary {
+  background-color: $primary-color;
+  color: white;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+
+  &:hover {
     background-color: $primary-color;
     color: white;
-    transition: 0.2s ease-in-out;
-    display: flex;
-    align-items: center;
-    -webkit-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
-    -moz-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
-    box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
-    
-    &:hover{
-        background-color: $primary-color;
-        color: white;
-        opacity: .8;
-    }
+    opacity: .8;
+  }
 
-    i-feather{
+  i-feather {
+    margin-left: 0.5rem;
+  }
+}
+
+.l-btn-white {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  font-family: $bold;
+  border-radius: 20px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i-feather {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &:hover {}
+
+  &.lg {
+
+    @media screen and (min-width: $tablet) {
+      font-size: 2rem;
+
+      i-feather {
         margin-left: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+      }
     }
+  }
 }

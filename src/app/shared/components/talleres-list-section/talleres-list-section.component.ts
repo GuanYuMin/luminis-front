@@ -3,6 +3,7 @@ import { CursoViewModel } from 'app/shared/models/viewmodels/cursos.model';
 import { SlideViewModel } from 'app/shared/models/viewmodels/slide.model';
 import { CursoService } from 'app/shared/services/curso.service';
 import { VideoService } from 'app/shared/services/video.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-talleres-list-section',
@@ -19,6 +20,14 @@ export class TalleresListSectionComponent implements OnInit {
   slide: SlideViewModel = {} as SlideViewModel;
   contador_slides: number = 0;
 
+  talleresCarousel: OwlOptions = {
+    autoWidth: true,
+    loop: true,
+    dots: true,
+    nav: false,
+    navSpeed: 700,
+  }
+
   constructor(
     private videoService: VideoService,
     private cursoService: CursoService
@@ -26,6 +35,7 @@ export class TalleresListSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.fn_ObtenerCursos();
+    
   }
 
   fn_GetVideoList(){
@@ -43,7 +53,9 @@ export class TalleresListSectionComponent implements OnInit {
       this.vmCurso = res.body;
       this.vmOrig = res.body;
       this.displayCursos();
+      console.log("dsds", this.vmCurso)
     });
+
   }
 
   changeMessage(selectedItem: string, index: number) {
