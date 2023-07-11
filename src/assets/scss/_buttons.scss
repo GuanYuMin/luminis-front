@@ -16,18 +16,67 @@
 
   i-feather {
     margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.l-btn-secondary{
+  border-radius: 20px;
+  background-color: $secondary-color;
+  color: white;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+    opacity: .8;
+  }
+
+  i-feather {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.l-btn-tertiary{
+  border-radius: 20px;
+  background-color: $third-color;
+  color: white;
+  transition: 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  -webkit-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  -moz-box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+  box-shadow: 17px 12px 46px -20px rgba(0, 0, 0, 0.54);
+
+  &:hover {
+    background-color: $third-color;
+    color: white;
+    opacity: .8;
+  }
+
+  i-feather {
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
   }
 }
 
 .l-btn-white {
+  border-radius: 20px;
   padding: 0.5rem 1rem;
   background-color: white;
   font-family: $bold;
-  border-radius: 20px;
   font-size: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
 
   i-feather {
     margin-left: 0.5rem;
@@ -35,7 +84,10 @@
     height: 1rem;
   }
 
-  &:hover {}
+  &:hover {
+    background-color: white;
+    opacity: .8;
+  }
 
   &.lg {
 

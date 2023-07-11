@@ -40,6 +40,14 @@
         }
       }
       .post-description {
+        line-height: 1.2;
+        font-family: 'Montserrat';
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        font-size: 0.8rem;
         p{
           font-size: 0.8rem;
         }
